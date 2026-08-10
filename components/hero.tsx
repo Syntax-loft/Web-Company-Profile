@@ -8,6 +8,8 @@ import { useGSAP } from '@gsap/react'
 import Link from 'next/link'
 import { ArrowDownRight } from 'lucide-react'
 import { MagneticButton } from './magnetic-button'
+import heroLogo from '../public/assets/hero-logo.png'
+import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -67,7 +69,9 @@ export function Hero() {
         scrub: true,
       },
     })
-  }, heroRef)
+  }, {
+    scope: heroRef,
+  })
 
   return (
     <section
@@ -76,34 +80,44 @@ export function Hero() {
     >
       {/* Background gradient - slowest layer */}
       <div className="parallax-slow absolute inset-0 bg-gradient-to-b from-background via-background to-[#0f0f0f]" />
-      
+
       {/* Grid pattern overlay - medium layer */}
       <div className="parallax-medium absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:100px_100px]" />
-      
+
       {/* Animated circles - medium layer */}
       <div className="parallax-medium absolute top-1/4 left-1/4 w-96 h-96 bg-white/[0.02] rounded-full blur-3xl animate-pulse" />
       <div className="parallax-medium absolute bottom-1/4 right-1/4 w-64 h-64 bg-white/[0.02] rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
-      
+
       {/* Floating accent shapes - fast layer */}
       <div className="parallax-fast absolute top-1/3 right-1/5 w-32 h-32 border border-white/5 rounded-full" />
       <div className="parallax-fast absolute bottom-1/3 left-1/5 w-24 h-24 border border-white/5 rounded-full" />
 
       {/* Content with parallax */}
-      <div ref={textRef} className="hero-content relative z-10 max-w-7xl mx-auto px-6 lg:px-8 text-center">
+      <div ref={textRef} className="hero-content relative z-10 max-w-7xl mt-28 mx-auto px-6 lg:px-8 text-center">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
         >
-          <p className="text-muted-dark text-sm tracking-[0.3em] uppercase mb-6">
+          <p className="text-muted-dark text-sm tracking-[0.3em] uppercase -mb-6">
             Premium Software House
           </p>
         </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <Image
+            src={heroLogo}
+            alt='Hero Logo Wirasa'
+            width={630}
+            height={200}
+            className='mx-auto'
+          ></Image>
+        </motion.div>
 
-        <h1 className="syntax-loft-text text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-display font-bold tracking-tight leading-[0.9] mb-8">
-          <span className="block text-foreground">SYNTAX</span>
-          <span className="block text-gradient">LOFT</span>
-        </h1>
+
 
         <motion.p
           initial={{ opacity: 0, y: 40 }}
@@ -111,7 +125,7 @@ export function Hero() {
           transition={{ duration: 1, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
           className="text-muted text-lg md:text-xl max-w-2xl mx-auto mb-12 leading-relaxed"
         >
-          Transforming bold ideas into high-performance digital experiences. 
+          Transforming bold ideas into high-performance digital experiences.
           We build premium websites and applications that drive business growth.
         </motion.p>
 
@@ -150,7 +164,7 @@ export function Hero() {
               },
             },
           }}
-          className="mt-16 md:mt-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 max-w-3xl mx-auto px-4"
+          className="mt-16 md:mt-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 max-w-3xl mx-auto px-4 mb-28"
         >
           {[
             { value: 'Modern Tech Stack', label: 'Built with the latest and most secure technologies.' },
@@ -158,19 +172,19 @@ export function Hero() {
             { value: 'Scalable Architecture', label: 'Designed to grow seamlessly with your business.' },
             { value: 'Agile Development', label: 'Fast, transparent, and adaptive workflow.' },
           ].map((stat, index) => (
-            <motion.div 
-              key={index} 
+            <motion.div
+              key={index}
               className="text-center"
               variants={{
                 hidden: { opacity: 0, y: 20 },
-                visible: { 
-                  opacity: 1, 
+                visible: {
+                  opacity: 1,
                   y: 0,
                   transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
                 },
               }}
             >
-              <motion.div 
+              <motion.div
                 className="text-lg md:text-xl font-display font-bold text-foreground mb-2 leading-tight"
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.2 }}

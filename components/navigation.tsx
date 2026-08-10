@@ -3,13 +3,15 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
+import Image from "next/image";
+import logo from '../public/assets/logo2.png'
 import { Menu, X, ArrowUpRight, Mail, Phone, MapPin } from 'lucide-react'
+
 
 const navItems = [
   { label: 'Home', href: '/' },
   { label: 'Services', href: '/services' },
   { label: 'Work', href: '/work' },
-  { label: 'AI Chat', href: '/ai-chat' },
   { label: 'Clients', href: '/clients' },
   { label: 'About', href: '/about' },
   { label: 'Brief', href: '/project-brief' },
@@ -46,27 +48,20 @@ export function Navigation() {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          isScrolled
-            ? 'bg-background/90 backdrop-blur-xl border-b border-border'
-            : 'bg-transparent'
-        }`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
+          ? 'bg-background/90 backdrop-blur-xl border-b border-border'
+          : 'bg-transparent'
+          }`}
       >
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 sm:h-20">
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-2 group z-50">
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="text-lg sm:text-xl font-display font-bold tracking-tight"
-              >
-                <span className="text-foreground">SYNTAX</span>
-                <span className="text-muted-dark">/</span>
-                <span className="text-foreground">LOFT</span>
-              </motion.div>
-            </Link>
-
+            <Image
+              src={logo}
+              alt="Logo"
+              width={240}
+              height={200}
+            />
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center gap-8">
               {navItems.map((item) => (
@@ -137,7 +132,7 @@ export function Navigation() {
               onClick={() => setIsMobileMenuOpen(false)}
               className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm md:hidden"
             />
-            
+
             {/* Menu Panel */}
             <motion.div
               initial={{ x: '100%' }}
@@ -163,9 +158,9 @@ export function Navigation() {
                           className="group flex items-center justify-between py-4 text-lg font-medium text-foreground hover:text-muted transition-colors border-b border-border/50"
                         >
                           <span>{item.label}</span>
-                          <ArrowUpRight 
-                            size={20} 
-                            className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" 
+                          <ArrowUpRight
+                            size={20}
+                            className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"
                           />
                         </Link>
                       </motion.li>
