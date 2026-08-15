@@ -76,7 +76,7 @@ export function Hero() {
   return (
     <section
       ref={heroRef}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative min-h-[100dvh] flex items-center justify-center overflow-hidden"
     >
       {/* Background gradient - slowest layer */}
       <div className="parallax-slow absolute inset-0 bg-gradient-to-b from-background via-background to-[#0f0f0f]" />
@@ -99,8 +99,8 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
         >
-          <p className="text-muted-dark text-sm tracking-[0.3em] uppercase -mb-6">
-            Premium Software House
+          <p className="text-muted-dark text-xs tracking-[0.3em] uppercase mb-2 font-mono">
+            Boutique Consultancy & Engineering
           </p>
         </motion.div>
         <motion.div
@@ -113,20 +113,18 @@ export function Hero() {
             alt='Hero Logo Wirasa'
             width={630}
             height={200}
+            priority
             className='mx-auto'
           ></Image>
         </motion.div>
-
-
 
         <motion.p
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-          className="text-muted text-lg md:text-xl max-w-2xl mx-auto mb-12 leading-relaxed"
+          className="text-muted text-lg md:text-xl max-w-2xl mx-auto mb-12 leading-relaxed font-light"
         >
-          Transforming bold ideas into high-performance digital experiences.
-          We build premium websites and applications that drive business growth.
+          Engineering resilient web applications, custom software, and scalable digital infrastructure for ambitious companies.
         </motion.p>
 
         <motion.div
@@ -137,16 +135,16 @@ export function Hero() {
         >
           <Link
             href="/project-brief"
-            className="group px-8 py-4 bg-foreground text-background font-medium rounded-full hover:bg-muted transition-colors duration-300 flex items-center gap-2"
+            className="group px-8 py-4 bg-foreground text-background font-semibold rounded-full hover:bg-muted transition-all duration-300 flex items-center gap-2 tactile-btn shadow-xl shadow-white/5"
           >
             Start Your Project
             <ArrowDownRight size={18} className="group-hover:rotate-45 transition-transform duration-300" />
           </Link>
           <Link
             href="/work"
-            className="px-8 py-4 border border-border text-foreground font-medium rounded-full hover:bg-white/5 transition-colors duration-300"
+            className="px-8 py-4 border border-border text-foreground font-medium rounded-full hover:bg-white/5 transition-all duration-300 tactile-btn"
           >
-            View Our Work
+            View Selected Work
           </Link>
         </motion.div>
 

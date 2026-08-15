@@ -49,7 +49,7 @@ export function Navigation() {
         animate={{ y: 0 }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
-          ? 'bg-background/90 backdrop-blur-xl border-b border-border'
+          ? 'liquid-glass border-b border-white/10'
           : 'bg-transparent'
           }`}
       >
@@ -61,6 +61,7 @@ export function Navigation() {
               alt="Logo"
               width={240}
               height={200}
+              priority
             />
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center gap-8">
@@ -68,7 +69,7 @@ export function Navigation() {
                 <Link
                   key={item.label}
                   href={item.href}
-                  className="text-sm text-muted hover:text-foreground transition-colors duration-300 line-reveal py-1"
+                  className="text-sm font-medium text-muted hover:text-foreground transition-colors duration-300 line-reveal py-1"
                 >
                   {item.label}
                 </Link>
@@ -79,7 +80,7 @@ export function Navigation() {
             <div className="hidden md:block">
               <Link
                 href="/project-brief"
-                className="px-5 py-2.5 bg-foreground text-background text-sm font-medium rounded-full hover:bg-muted transition-colors duration-300"
+                className="px-5 py-2.5 bg-foreground text-background text-sm font-semibold rounded-full hover:bg-muted transition-all duration-300 tactile-btn shadow-lg shadow-white/5"
               >
                 Start Project
               </Link>

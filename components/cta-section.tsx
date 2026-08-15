@@ -14,24 +14,24 @@ export function CTASection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           viewport={{ once: true }}
-          className="relative rounded-3xl bg-[#0f0f0f] border border-border p-12 lg:p-20 overflow-hidden"
+          className="relative rounded-3xl liquid-glass p-12 lg:p-20 overflow-hidden"
         >
           {/* Background decoration */}
-          <div className="absolute top-0 right-0 w-96 h-96 bg-white/[0.02] rounded-full blur-3xl" />
-          <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/[0.02] rounded-full blur-3xl" />
+          <div className="absolute top-0 right-0 w-96 h-96 bg-white/[0.03] rounded-full blur-3xl" />
+          <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/[0.03] rounded-full blur-3xl" />
           
           <div className="relative z-10 max-w-3xl">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground leading-tight mb-6">
-              Ready to build something amazing?
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground leading-[1.1] mb-6 tracking-tight">
+              Ready to build high-performance software?
             </h2>
-            <p className="text-muted text-lg mb-10 max-w-xl">
-              Let&apos;s discuss how we can help transform your digital presence and drive measurable results for your business.
+            <p className="text-muted text-lg mb-10 max-w-xl font-light leading-relaxed">
+              Partner with a dedicated engineering team. We deliver custom web platforms, scalable APIs, and refined user experiences tailored for growth.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <MagneticButton>
                 <Link
                   href="/project-brief"
-                  className="group inline-flex items-center gap-2 px-8 py-4 bg-foreground text-background font-medium rounded-full hover:bg-muted transition-colors duration-300"
+                  className="group inline-flex items-center gap-2 px-8 py-4 bg-foreground text-background font-semibold rounded-full hover:bg-muted transition-all duration-300 tactile-btn shadow-lg shadow-white/5"
                 >
                   Start Your Project
                   <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
@@ -39,9 +39,9 @@ export function CTASection() {
               </MagneticButton>
               <Link
                 href="/work"
-                className="inline-flex items-center gap-2 px-8 py-4 border border-border text-foreground font-medium rounded-full hover:bg-white/5 transition-colors duration-300"
+                className="inline-flex items-center gap-2 px-8 py-4 border border-border text-foreground font-medium rounded-full hover:bg-white/5 transition-all duration-300 tactile-btn"
               >
-                View Our Work
+                View Selected Work
               </Link>
             </div>
           </div>

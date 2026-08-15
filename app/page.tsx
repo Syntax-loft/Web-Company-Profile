@@ -1,3 +1,4 @@
+import dynamic from 'next/dynamic'
 import { Hero } from '@/components/hero'
 import { ServiceCard } from '@/components/service-card'
 import { PortfolioCard } from '@/components/portfolio-card'
@@ -6,6 +7,19 @@ import { CTASection } from '@/components/cta-section'
 import { ScrollReveal, StaggerContainer, StaggerItem } from '@/components/scroll-reveal'
 import { Code2, Palette, Layers, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
+
+// Dynamic imports for code-splitting heavy interactive sections
+const TechStackShowcase = dynamic(() => import('@/components/tech-stack-showcase').then(mod => mod.TechStackShowcase), {
+  loading: () => <div className="py-24 text-center text-xs font-mono text-muted-dark">Loading Tech Stack...</div>
+})
+
+const TeamSection = dynamic(() => import('@/components/team-section').then(mod => mod.TeamSection), {
+  loading: () => <div className="py-24 text-center text-xs font-mono text-muted-dark">Loading Team...</div>
+})
+
+const ProjectEstimator = dynamic(() => import('@/components/project-estimator').then(mod => mod.ProjectEstimator), {
+  loading: () => <div className="py-24 text-center text-xs font-mono text-muted-dark">Loading Estimator...</div>
+})
 
 const services = [
   {
@@ -33,21 +47,24 @@ const featuredWorks = [
     title: 'E-Commerce Platform',
     category: 'Web Development',
     description: 'A modern e-commerce platform with seamless checkout experience and real-time inventory management.',
-    image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop',
+    image: '/assets/projects/project1.jpg',
+    fallbackImage: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop',
     href: '/work',
   },
   {
     title: 'SaaS Dashboard',
     category: 'UI/UX Design',
     description: 'Analytics dashboard with intuitive data visualization and customizable reporting features.',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop',
+    image: '/assets/projects/project2.jpg',
+    fallbackImage: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop',
     href: '/work',
   },
   {
     title: 'Corporate Website',
     category: 'Web Development',
     description: 'Premium corporate website with dynamic content management and multi-language support.',
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop',
+    image: '/assets/projects/project3.jpg',
+    fallbackImage: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop',
     href: '/work',
   },
 ]
@@ -77,8 +94,13 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Tech Stack & Architecture Showcase */}
+      <div className="content-visibility-auto transform-gpu">
+        <TechStackShowcase />
+      </div>
+
       {/* Featured Work Section */}
-      <section className="py-24 lg:py-32 bg-[#0f0f0f]">
+      <section className="py-24 lg:py-32 bg-[#0f0f0f] content-visibility-auto transform-gpu">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <ScrollReveal>
             <div className="flex items-end justify-between mb-16">
@@ -117,7 +139,7 @@ export default function Home() {
       </section>
 
       {/* Shape Divider Section */}
-      <section className="relative py-24 lg:py-32 overflow-hidden">
+      <section className="relative py-24 lg:py-32 overflow-hidden content-visibility-auto transform-gpu">
         {/* Top wave divider */}
         <div className="absolute top-0 left-0 w-full overflow-hidden leading-none rotate-180">
           <svg className="relative block w-full h-16 md:h-24" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
@@ -132,6 +154,8 @@ export default function Home() {
                 <img
                   src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=600&fit=crop"
                   alt="Code editor dark theme"
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-tr from-[#0A0A0A]/60 to-transparent" />
@@ -170,6 +194,16 @@ export default function Home() {
           </svg>
         </div>
       </section>
+
+      {/* Our Expert Team Section */}
+      <div className="content-visibility-auto transform-gpu">
+        <TeamSection />
+      </div>
+
+      {/* Interactive Project Scope & Budget Estimator */}
+      <div className="content-visibility-auto transform-gpu">
+        <ProjectEstimator />
+      </div>
 
       <CTASection />
     </>

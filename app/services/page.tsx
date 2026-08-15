@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { SectionHeader } from '@/components/section-header'
+import { TechStackShowcase } from '@/components/tech-stack-showcase'
 import { CTASection } from '@/components/cta-section'
 import { ScrollReveal, StaggerContainer, StaggerItem } from '@/components/scroll-reveal'
 import { Code2, Palette, Layers, Smartphone, Globe, Database, Check } from 'lucide-react'
@@ -138,6 +139,9 @@ export default function ServicesPage() {
           </StaggerContainer>
         </div>
       </section>
+
+      {/* Tech Stack & Architecture Showcase */}
+      <TechStackShowcase />
 
       <CTASection />
     </>
