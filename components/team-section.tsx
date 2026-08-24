@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { SectionHeader } from '@/components/section-header'
+import { buildImageCandidates } from './image-candidates'
 import {
   Users,
   Crown,
@@ -55,7 +56,7 @@ const TEAM_MEMBERS: TeamMember[] = [
     category: 'founder',
     categoryLabel: 'Founder & Consultant',
     bio: 'Bridging enterprise-level development with boutique consultancy. Specialized in Next.js, React, and modern web architecture.',
-    avatar: '/assets/team/dava.jpg',
+    avatar: '/assets/team/dava',
     fallbackAvatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=800',
     skills: ['Next.js', 'React', 'TypeScript', 'System Architecture', 'Tailwind CSS'],
     socials: {
@@ -73,7 +74,7 @@ const TEAM_MEMBERS: TeamMember[] = [
     category: 'cofounder',
     categoryLabel: 'Co-Founder & CTO',
     bio: 'Pakar arsitektur cloud terdistribusi dan sistem berkinerja tinggi. Memimpin visi teknis dan skalabilitas infrastruktur Syntax Loft.',
-    avatar: '/assets/team/cofounder.jpg',
+    avatar: '/assets/team/cofounder',
     fallbackAvatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800',
     skills: ['Microservices', 'Node.js', 'Go', 'GraphQL', 'AWS'],
     socials: {
@@ -91,7 +92,7 @@ const TEAM_MEMBERS: TeamMember[] = [
     category: 'frontend',
     categoryLabel: 'Frontend Engineering',
     bio: 'Fokus pada micro-interaction, aksesibilitas, dan performa UI/UX tingkat tinggi menggunakan React & Next.js App Router.',
-    avatar: '/assets/team/frontend-lead.jpg',
+    avatar: '/assets/team/frontend-lead',
     fallbackAvatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=800',
     skills: ['React', 'Next.js', 'Framer Motion', 'Tailwind CSS', 'TypeScript'],
     socials: {
@@ -107,7 +108,7 @@ const TEAM_MEMBERS: TeamMember[] = [
     category: 'frontend',
     categoryLabel: 'Frontend Engineering',
     bio: 'Spesialis dalam pembuatan design system modular, Storybook, dan pengujian komponen web modern.',
-    avatar: '/assets/team/frontend-senior.jpg',
+    avatar: '/assets/team/frontend-senior',
     fallbackAvatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=800',
     skills: ['Vue.js', 'React', 'Design Systems', 'Jest', 'CSS Architecture'],
     socials: {
@@ -123,7 +124,7 @@ const TEAM_MEMBERS: TeamMember[] = [
     category: 'backend',
     categoryLabel: 'Backend & Cloud',
     bio: 'Merancang API berkecepatan tinggi, integrasi basis data terdistribusi, serta keamanan enkripsi data end-to-end.',
-    avatar: '/assets/team/backend-lead.jpg',
+    avatar: '/assets/team/backend-lead',
     fallbackAvatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=800',
     skills: ['PostgreSQL', 'Redis', 'NestJS', 'Docker', 'Kubernetes'],
     socials: {
@@ -139,7 +140,7 @@ const TEAM_MEMBERS: TeamMember[] = [
     category: 'ui-ux',
     categoryLabel: 'UI/UX Design',
     bio: 'Menciptakan antarmuka yang estetis dan intuitif. Berfokus pada riset pengguna, wireframing, dan prototipe interaktif di Figma.',
-    avatar: '/assets/team/uiux-lead.jpg',
+    avatar: '/assets/team/uiux-lead',
     fallbackAvatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=800',
     skills: ['Figma', 'User Research', 'Prototyping', 'Design Systems', 'UX Writing'],
     socials: {
@@ -155,7 +156,7 @@ const TEAM_MEMBERS: TeamMember[] = [
     category: 'devops',
     categoryLabel: 'DevOps & Security',
     bio: 'Mengelola alur CI/CD otomatis, infrastruktur sebagai kode (IaC), dan pemantauan uptime server 99.99%.',
-    avatar: '/assets/team/devops-lead.jpg',
+    avatar: '/assets/team/devops-lead',
     fallbackAvatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=800',
     skills: ['Terraform', 'CI/CD Pipelines', 'AWS / GCP', 'Docker', 'Monitoring'],
     socials: {
@@ -274,15 +275,17 @@ export function TeamSection() {
                     {/* Top Image Section */}
                     <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#1a1a1a]">
                       <img
-                        src={member.avatar}
+                        src={buildImageCandidates(member.avatar)[0]}
                         alt={member.name}
                         loading="lazy"
                         decoding="async"
                         onError={(e) => {
-                          const target = e.currentTarget
-                          if (target.src !== member.fallbackAvatar) {
-                            target.src = member.fallbackAvatar
-                          }
+                          // Rantai format: .webp → .jpg → .png → fallback eksternal
+                          const img = e.currentTarget
+                          const list = [...buildImageCandidates(member.avatar), member.fallbackAvatar]
+                          const i = list.indexOf(img.getAttribute('src') ?? '')
+                          const next = i > -1 ? list[i + 1] : undefined
+                          if (next && img.getAttribute('src') !== next) img.setAttribute('src', next)
                         }}
                         className="w-full h-full object-cover object-center grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out transform-gpu"
                       />

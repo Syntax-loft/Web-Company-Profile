@@ -3,13 +3,14 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { ArrowUpRight } from 'lucide-react'
 import Link from 'next/link'
-import Image from 'next/image'
 import { useState, useRef } from 'react'
+import { buildImageCandidates } from './image-candidates'
 
 interface PortfolioCardProps {
   title: string
   category: string
   description: string
+  /** Nama dasar tanpa ekstensi (mis. '/assets/projects/project1') — format .webp/.jpg/.png dicoba berurutan. */
   image: string
   fallbackImage?: string
   href: string
@@ -17,7 +18,9 @@ interface PortfolioCardProps {
 }
 
 export function PortfolioCard({ title, category, description, image, fallbackImage, href, index = 0 }: PortfolioCardProps) {
-  const [imgSrc, setImgSrc] = useState(image)
+  // Rantai kandidat: .webp → .jpg → .png → fallback eksternal (placeholder)
+  const sources = [...buildImageCandidates(image), ...(fallbackImage ? [fallbackImage] : [])]
+  const [imgSrc, setImgSrc] = useState(sources[0])
   const cardRef = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({
     target: cardRef,
@@ -25,6 +28,11 @@ export function PortfolioCard({ title, category, description, image, fallbackIma
   })
 
   const scale = useTransform(scrollYProgress, [0, 0.5, 1], [1.15, 1, 1.15])
+
+  const handleError = () => {
+    const i = sources.indexOf(imgSrc)
+    if (i > -1 && i < sources.length - 1) setImgSrc(sources[i + 1])
+  }
 
   return (
     <motion.div
@@ -48,11 +56,7 @@ export function PortfolioCard({ title, category, description, image, fallbackIma
               alt={title}
               loading="lazy"
               decoding="async"
-              onError={() => {
-                if (fallbackImage && imgSrc !== fallbackImage) {
-                  setImgSrc(fallbackImage)
-                }
-              }}
+              onError={handleError}
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 transform-gpu"
             />
           </motion.div>

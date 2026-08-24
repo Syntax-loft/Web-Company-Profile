@@ -22,10 +22,10 @@ Section yang muncul di **semua halaman**:
 | No | Section | Komponen / Konten |
 |---|---|---|
 | 1 | **Hero** | `Hero` — Parallax background (gradient + grid + animated circles), headline "SYNTAX LOFT", subheadline, 2 CTA button (Start Your Project, View Our Work), stats baris (Modern Tech Stack, 100% Client Focus, Scalable Architecture, Agile Development), scroll indicator |
-| 2 | **Services** | `SectionHeader` (label: "Our Services"), 3 `ServiceCard` (Web Development, UI/UX Design, System Integration) dalam grid 3-col, wrapped `ScrollReveal` + `StaggerContainer` |
+| 2 | **Services** | `SectionHeader` (label: "Our Services"), **editorial index list** — 3 `ServiceRow` bernomor (/01 /02 /03) full-width, wrapped `ScrollReveal` |
 | 3 | **Featured Work** | `SectionHeader` (label: "Featured Work"), 3 `PortfolioCard` dalam grid 3-col, link "View all work", background `bg-[#0f0f0f]` |
 | 4 | **Our Approach** | Shape divider (wave SVG top/bottom), layout 2-col (gambar kode editor + teks "Built with precision. Powered by passion."), tech stack tags (Next.js, TypeScript, Tailwind CSS, Node.js) |
-| 5 | **CTA** | `CTASection` — Card "Ready to build something amazing?", 2 tombol (Start Your Project, View Our Work), efek magnetic |
+| 5 | **CTA** | `CTASection` — statement tipografis raksasa left-aligned ("Ready to build something that lasts?"), label mono "Next Step", 2 tombol |
 
 ---
 
@@ -113,13 +113,14 @@ Section yang muncul di **semua halaman**:
 | `Hero` | `components/hero.tsx` | Home saja |
 | `ScrollReveal` / `StaggerContainer` / `StaggerItem` | `components/scroll-reveal.tsx` | Home, Services, Clients |
 | `PortfolioCard` | `components/portfolio-card.tsx` | Home (featured), Work (grid) |
-| `ServiceCard` | `components/service-card.tsx` | Home (3 card), Services (6 card detail) |
+| `ServiceCard` | `components/service-card.tsx` | Services (6 card detail) |
+| `ServiceRow` | `components/service-row.tsx` | Home saja (editorial index list) |
 | `MagneticButton` | `components/magnetic-button.tsx` | Hero, CTA |
 | `GoogleFormEmbed` | `components/google-form-embed.tsx` | Project Brief |
 | `ProjectBriefFAQ` | `components/project-brief-faq.tsx` | Project Brief |
 | `AIChat` | `components/ai-chat.tsx` | AI Chat page |
-| `Marquee` | `components/marquee.tsx` | *(belum dipakai di page yang sudah ada)* |
-| `TextReveal` | `components/text-reveal.tsx` | *(belum dipakai di page yang sudah ada)* |
+| `Marquee` | `components/marquee.tsx` | Home (ticker klien, di bawah Hero) |
+| `TextReveal` / `SplitText` | `components/text-reveal.tsx` | `SplitText` dipakai `SectionHeader` (judul semua halaman) |
 | `PageTransition` | `components/page-transition.tsx` | *(belum dipakai di page yang sudah ada)* |
 
 ---

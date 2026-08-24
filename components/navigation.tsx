@@ -4,7 +4,8 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import Image from "next/image";
-import logo from '../public/assets/logo2.png'
+// Ganti logo brand di sini: timpa file public/assets/logo2.webp
+import logo from '../public/assets/logo2.webp'
 import { Menu, X, ArrowUpRight, Mail, Phone, MapPin } from 'lucide-react'
 
 
@@ -56,13 +57,16 @@ export function Navigation() {
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 sm:h-20">
             {/* Logo */}
-            <Image
-              src={logo}
-              alt="Logo"
-              width={240}
-              height={200}
-              priority
-            />
+            <Link href="/" aria-label="Syntax Loft — Home" className="flex shrink-0 items-center">
+              <Image
+                src={logo}
+                alt="Syntax Loft"
+                width={132}
+                height={44}
+                priority
+                className="h-9 sm:h-11 w-auto object-contain"
+              />
+            </Link>
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center gap-8">
               {navItems.map((item) => (
