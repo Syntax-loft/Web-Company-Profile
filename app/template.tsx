@@ -94,7 +94,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
             variants={logoVariants}
             className="text-foreground font-display font-bold text-xl tracking-tight"
           >
-            SYNTAX/LOFT
+            WIRASA/TECH
           </motion.span>
         </motion.div>
 

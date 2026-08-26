@@ -6,16 +6,16 @@ import { ArrowUpRight, Mail, MapPin, Phone } from 'lucide-react'
 
 const footerLinks = {
   company: [
-    { label: 'About', href: '/about' },
-    { label: 'Services', href: '/services' },
-    { label: 'Work', href: '/work' },
-    { label: 'Clients', href: '/clients' },
+    { label: 'Tentang Kami', href: '/about' },
+    { label: 'Layanan', href: '/services' },
+    { label: 'Portofolio', href: '/work' },
+    { label: 'Klien', href: '/clients' },
   ],
   resources: [
-    { label: 'Project Brief', href: '/project-brief' },
-    { label: 'Contact', href: '/contact' },
-    { label: 'Privacy Policy', href: '#' },
-    { label: 'Terms of Service', href: '#' },
+    { label: 'Brief Proyek', href: '/project-brief' },
+    { label: 'Kontak', href: '/contact' },
+    { label: 'Kebijakan Privasi', href: '#' },
+    { label: 'Syarat & Ketentuan', href: '#' },
   ],
 }
 
@@ -28,22 +28,22 @@ export function Footer() {
           <div className="lg:col-span-5 space-y-8">
             <Link href="/" className="inline-block">
               <span className="text-2xl font-display font-bold tracking-tight">
-                <span className="text-foreground">SYNTAX</span>
+                <span className="text-foreground">WIRASA</span>
                 <span className="text-muted-dark">/</span>
-                <span className="text-foreground">LOFT</span>
+                <span className="text-foreground">TECH</span>
               </span>
             </Link>
             <p className="text-muted-dark text-sm max-w-sm leading-relaxed">
-              Transforming ideas into high-performance digital experiences. 
-              We craft premium websites and applications for ambitious businesses.
+              Transformasi ide bisnis menjadi produk digital berkinerja tinggi. 
+              Kami merekayasa website premium dan aplikasi web modern untuk perusahaan ambisius.
             </p>
             <div className="space-y-2">
               <a
-                href="mailto:hello@syntaxloft.com"
+                href="mailto:hello@wirasa.tech"
                 className="flex items-center gap-3 py-2 text-sm text-muted hover:text-foreground transition-colors group min-h-[44px]"
               >
                 <Mail size={16} />
-                <span>hello@syntaxloft.com</span>
+                <span>hello@wirasa.tech</span>
                 <ArrowUpRight size={14} className="opacity-0 group-hover:opacity-100 transition-opacity" />
               </a>
               <a
@@ -56,7 +56,7 @@ export function Footer() {
               </a>
               <div className="flex items-center gap-3 py-2 text-sm text-muted min-h-[44px]">
                 <MapPin size={16} />
-                <span>Sukabumi, Indonesia</span>
+                <span>Jakarta, Indonesia</span>
               </div>
             </div>
           </div>
@@ -65,7 +65,7 @@ export function Footer() {
           <div className="lg:col-span-7">
             <div className="grid grid-cols-2 gap-8">
               <div>
-                <h4 className="text-sm font-semibold text-foreground mb-4">Company</h4>
+                <h4 className="text-sm font-semibold text-foreground mb-4">Perusahaan</h4>
                 <ul className="space-y-3">
                   {footerLinks.company.map((link) => (
                     <li key={link.label}>
@@ -80,7 +80,7 @@ export function Footer() {
                 </ul>
               </div>
               <div>
-                <h4 className="text-sm font-semibold text-foreground mb-4">Resources</h4>
+                <h4 className="text-sm font-semibold text-foreground mb-4">Akses & Bantuan</h4>
                 <ul className="space-y-3">
                   {footerLinks.resources.map((link) => (
                     <li key={link.label}>
@@ -101,14 +101,14 @@ export function Footer() {
         {/* Bottom */}
         <div className="mt-16 pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-sm text-muted-dark">
-            © {new Date().getFullYear()} Syntax Loft. All rights reserved.
+            © {new Date().getFullYear()} WIRASA TECH. Hak cipta dilindungi undang-undang.
           </p>
           <motion.button
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             whileHover={{ y: -2 }}
             className="text-sm text-muted hover:text-foreground transition-colors flex items-center gap-2"
           >
-            Back to top
+            Kembali ke atas
             <ArrowUpRight size={14} />
           </motion.button>
         </div>

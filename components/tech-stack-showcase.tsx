@@ -34,10 +34,10 @@ interface TechItem {
 }
 
 const TECH_CATEGORIES = [
-  { id: 'all', label: 'All Stack', icon: Layers },
-  { id: 'frontend', label: 'Frontend', icon: Code2 },
+  { id: 'all', label: 'Semua Stack', icon: Layers },
+  { id: 'frontend', label: 'Frontend Modern', icon: Code2 },
   { id: 'backend', label: 'Backend & API', icon: Terminal },
-  { id: 'database', label: 'Database & Storage', icon: Database },
+  { id: 'database', label: 'Basis Data & Storage', icon: Database },
   { id: 'devops', label: 'Cloud & DevOps', icon: Cloud },
 ]
 
@@ -80,7 +80,7 @@ const TECH_ITEMS: TechItem[] = [
     whyWeUseIt: 'Menjamin skalabilitas basis kode besar, auto-complete akurat, dan refactoring aman di tim pengembang.',
     performanceMetric: '0 Runtime Type Errors',
     advantages: ['Strict Type Checking', 'Enhanced Developer DX', 'Seamless IDE Integration'],
-    useCase: 'Digunakan di 100% basis kode proyek Syntax Loft untuk standar enterprise.',
+    useCase: 'Digunakan di 100% basis kode proyek WIRASA TECH untuk standar enterprise.',
     iconName: 'TS',
     badgeColor: 'from-blue-500/20 to-indigo-500/10 border-blue-500/30 text-blue-400',
   },
@@ -186,8 +186,8 @@ export function TechStackShowcase() {
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
         <SectionHeader
-          label="Our Stack & Architecture"
-          title="Powered by Modern Technologies"
+          label="Tech Stack &amp; Arsitektur"
+          title="Didukung oleh Ekosistem Teknologi Terkini"
           description="Kami menggunakan kombinasi teknologi berkinerja tinggi yang teruji untuk menjamin kecepatan, skalabilitas, dan keamanan aplikasi Anda."
           centered
         />
@@ -310,7 +310,7 @@ export function TechStackShowcase() {
                 <div className="space-y-5 border-t border-white/10 pt-5">
                   <div>
                     <h4 className="text-xs font-semibold uppercase tracking-wider text-white/90 mb-1 flex items-center gap-1.5">
-                      <ShieldCheck size={15} className="text-primary" /> Mengapa Syntax Loft Menggunakannya:
+                      <ShieldCheck size={15} className="text-primary" /> Mengapa WIRASA TECH Menggunakannya:
                     </h4>
                     <p className="text-xs text-muted-dark leading-relaxed pl-5">
                       {activeTech.whyWeUseIt}

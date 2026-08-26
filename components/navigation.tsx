@@ -10,13 +10,13 @@ import { Menu, X, ArrowUpRight, Mail, Phone, MapPin } from 'lucide-react'
 
 
 const navItems = [
-  { label: 'Home', href: '/' },
-  { label: 'Services', href: '/services' },
-  { label: 'Work', href: '/work' },
-  { label: 'Clients', href: '/clients' },
-  { label: 'About', href: '/about' },
-  { label: 'Brief', href: '/project-brief' },
-  { label: 'Contact', href: '/contact' },
+  { label: 'Beranda', href: '/' },
+  { label: 'Layanan', href: '/services' },
+  { label: 'Portofolio', href: '/work' },
+  { label: 'Klien', href: '/clients' },
+  { label: 'Tentang Kami', href: '/about' },
+  { label: 'Brief Proyek', href: '/project-brief' },
+  { label: 'Kontak', href: '/contact' },
 ]
 
 export function Navigation() {
@@ -57,10 +57,10 @@ export function Navigation() {
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 sm:h-20">
             {/* Logo */}
-            <Link href="/" aria-label="Syntax Loft — Home" className="flex shrink-0 items-center">
+            <Link href="/" aria-label="WIRASA TECH — Home" className="flex shrink-0 items-center">
               <Image
                 src={logo}
-                alt="Syntax Loft"
+                alt="WIRASA TECH"
                 width={132}
                 height={44}
                 priority
@@ -86,7 +86,7 @@ export function Navigation() {
                 href="/project-brief"
                 className="px-5 py-2.5 bg-foreground text-background text-sm font-semibold rounded-full hover:bg-muted transition-all duration-300 tactile-btn shadow-lg shadow-white/5"
               >
-                Start Project
+                Mulai Proyek
               </Link>
             </div>
 
@@ -94,7 +94,7 @@ export function Navigation() {
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="md:hidden relative z-50 p-2 text-foreground rounded-lg hover:bg-white/5 transition-colors"
-              aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+              aria-label={isMobileMenuOpen ? 'Tutup menu' : 'Buka menu'}
             >
               <AnimatePresence mode="wait">
                 {isMobileMenuOpen ? (
@@ -185,7 +185,7 @@ export function Navigation() {
                     onClick={() => setIsMobileMenuOpen(false)}
                     className="flex items-center justify-center gap-2 w-full py-4 bg-foreground text-background font-medium rounded-xl hover:bg-muted transition-colors"
                   >
-                    Start Your Project
+                    Mulai Proyek Anda
                     <ArrowUpRight size={18} />
                   </Link>
                 </motion.div>
@@ -198,11 +198,11 @@ export function Navigation() {
                   className="space-y-3 pt-6 border-t border-border"
                 >
                   <a
-                    href="mailto:hello@syntaxloft.com"
+                    href="mailto:hello@wirasa.tech"
                     className="flex items-center gap-3 text-sm text-muted hover:text-foreground transition-colors"
                   >
                     <Mail size={16} />
-                    hello@syntaxloft.com
+                    hello@wirasa.tech
                   </a>
                   <a
                     href="tel:+6281234567890"

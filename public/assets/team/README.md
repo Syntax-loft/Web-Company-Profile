@@ -1,8 +1,8 @@
 # Team Member Custom Images Folder
 
-Folder ini digunakan untuk menyimpan foto kustom anggota tim untuk halaman `/about`.
+Folder ini digunakan untuk menyimpan foto anggota tim untuk halaman `/about`.
 
-## Cara Ganti Foto (paling mudah)
+## Cara Ganti Foto (Paling Mudah)
 
 1. Siapkan foto dengan **nama file** sesuai tabel di bawah
 2. Taruh di folder ini (`public/assets/team/`)
@@ -10,26 +10,16 @@ Folder ini digunakan untuk menyimpan foto kustom anggota tim untuk halaman `/abo
 
 **Format bebas:** `.webp`, `.jpg`, atau `.png` — semuanya dikenali otomatis.
 
-## Biar Makin Ringan (opsional tapi disarankan)
+### Daftar Nama File & Anggota Tim
 
-Setelah foto terpasang, jalankan dari root project:
+| No | Nama Dasar | Anggota Tim | Jabatan / Role |
+|---|------------|-------------|----------------|
+| 1 | `dava` | Muhamad Dava Rayhan | Founder & Lead Architect |
+| 2 | `frontend-lead` | Muhammad Arul Andriansyah | Co-Founder & Lead Frontend |
+| 3 | `cofounder` | Satrio Rafli Sangaji | Co-Founder & Operations Lead |
+| 4 | `frontend-senior` | Maulana Malik | Frontend Developer |
+| 5 | `backend-lead` | Raditya Prima Alfiansyah | Backend Engineer |
+| 6 | `salim` | Salim Nur Rohman | Game Developer |
+| 7 | `dwiki` | Dwiki Kurniawan | Frontend Developer |
 
-```
-npm run convert:webp
-```
-
-Semua jpg/png di folder assets otomatis dikonversi ke `.webp` yang jauh lebih ringan saat hosting, lalu file aslinya dihapus.
-
-### Daftar Nama File
-
-| Nama Dasar | Anggota Tim | Jabatan / Role |
-|------------|-------------|----------------|
-| `dava` | Muhamad Dava Rayhan | Founder & Lead Consultant |
-| `cofounder` | Alexandra Chen | Co-Founder & CTO |
-| `frontend-lead` | Rizky Pratama | Lead Frontend Developer |
-| `frontend-senior` | Sarah Wijaya | Senior Frontend Engineer |
-| `backend-lead` | Budi Santoso | Senior Backend Architect |
-| `uiux-lead` | Diana Putri | Lead UI/UX Product Designer |
-| `devops-lead` | Kevin Hendra | Cloud & DevOps Specialist |
-
-> **Catatan**: Tambahkan ekstensi format pilihan Anda pada nama dasar di atas (mis. `dava.jpg`). Jika sebuah foto belum ada, website menampilkan foto placeholder bawaan secara otomatis tanpa error.
+> **Catatan**: Tambahkan ekstensi format pilihan Anda pada nama dasar di atas (mis. `cofounder.jpg` atau `.webp` / `.png`). Jika sebuah foto belum ada, website menampilkan foto placeholder berkualitas tinggi secara otomatis tanpa error.

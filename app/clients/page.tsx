@@ -7,28 +7,28 @@ import { ScrollReveal, StaggerContainer, StaggerItem } from '@/components/scroll
 import { Code2, ShoppingBag, GraduationCap, Heart, Building2, Zap, BarChart3, Users } from 'lucide-react'
 
 const industries = [
-  { name: 'Technology', icon: <Code2 size={28} />, description: 'SaaS platforms, developer tools, and tech startups' },
-  { name: 'Finance', icon: <BarChart3 size={28} />, description: 'Fintech solutions, banking interfaces, and trading platforms' },
-  { name: 'Healthcare', icon: <Heart size={28} />, description: 'Patient portals, telemedicine, and health tracking apps' },
-  { name: 'Education', icon: <GraduationCap size={28} />, description: 'E-learning platforms, course management, and training portals' },
-  { name: 'E-Commerce', icon: <ShoppingBag size={28} />, description: 'Online stores, marketplaces, and retail solutions' },
-  { name: 'Real Estate', icon: <Building2 size={28} />, description: 'Property listings, virtual tours, and agent platforms' },
-  { name: 'Energy', icon: <Zap size={28} />, description: 'Utility dashboards, monitoring systems, and sustainability tools' },
-  { name: 'Professional Services', icon: <Users size={28} />, description: 'Agency websites, portfolios, and service platforms' },
+  { name: 'Teknologi & SaaS', icon: <Code2 size={28} />, description: 'Platform SaaS, developer tools, dan startup teknologi berkembang' },
+  { name: 'Keuangan & FinTech', icon: <BarChart3 size={28} />, description: 'Solusi fintech, interface perbankan, dan platform trading aset' },
+  { name: 'Kesehatan & Medis', icon: <Heart size={28} />, description: 'Portal pasien, layanan telemedicine, dan aplikasi rekam medis' },
+  { name: 'Pendidikan & E-Learning', icon: <GraduationCap size={28} />, description: 'Platform kursus online, LMS institusi, dan portal pelatihan' },
+  { name: 'E-Commerce & Ritel', icon: <ShoppingBag size={28} />, description: 'Toko online direct-to-consumer, marketplace, dan POS ritel' },
+  { name: 'Properti & Real Estate', icon: <Building2 size={28} />, description: 'Listing properti, tur virtual 360°, dan CRM agen terintegrasi' },
+  { name: 'Energi & Manufaktur', icon: <Zap size={28} />, description: 'Dashboard monitoring IoT, utilitas cerdas, dan efisiensi pabrik' },
+  { name: 'Layanan Profesional', icon: <Users size={28} />, description: 'Website korporat, agensi konsultansi, dan platform portofolio' },
 ]
 
 const whyWorkWithUs = [
   {
-    title: 'Technical Excellence',
-    description: 'We write clean, maintainable code using modern frameworks like Next.js, React, and TypeScript. Our solutions are built to scale.',
+    title: 'Keunggulan Rekayasa Teknis',
+    description: 'Kami menulis kode yang bersih, terdokumentasi rapi, dan mudah dirawat menggunakan Next.js, React, dan TypeScript. Solusi kami dirancang siap menampung lonjakan traffic tinggi.',
   },
   {
-    title: 'Design-First Approach',
-    description: 'Every project starts with understanding your users. We create intuitive interfaces that look beautiful and function flawlessly.',
+    title: 'Pendekatan Berbasis Desain & Konversi',
+    description: 'Setiap proyek dimulai dengan memahami psikologi pengguna dan target bisnis Anda. Kami merancang antarmuka intuitif yang memukau secara visual dan memaksimalkan konversi.',
   },
   {
-    title: 'Clear Communication',
-    description: 'No technical jargon or black boxes. We keep you informed at every stage with regular updates and transparent timelines.',
+    title: 'Komunikasi Transparan Tanpa Perantara',
+    description: 'Tanpa jargon berbelit-belit atau perantara yang membingungkan. Anda mendapatkan update berkala, milestone jelas, dan akses langsung ke developer & arsitek kami.',
   },
 ]
 
@@ -40,9 +40,9 @@ export default function ClientsPage() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <ScrollReveal>
             <SectionHeader
-              label="Expertise"
-              title="Industries we serve"
-              description="We bring domain knowledge and technical expertise across multiple sectors, helping businesses of all sizes build impactful digital products."
+              label="Sektor &amp; Industri"
+              title="Industri yang Kami Dampingi"
+              description="Kami membawa pemahaman industri mendalam dan kapabilitas teknologi mutakhir di berbagai sektor, membantu bisnis dari startup hingga enterprise membangun produk digital berdampak nyata."
               centered
             />
           </ScrollReveal>
@@ -65,7 +65,7 @@ export default function ClientsPage() {
                   <h3 className="text-lg font-display font-semibold text-foreground mb-2">
                     {industry.name}
                   </h3>
-                  <p className="text-sm text-muted-dark">{industry.description}</p>
+                  <p className="text-sm text-muted-dark leading-relaxed">{industry.description}</p>
                 </motion.div>
               </StaggerItem>
             ))}
@@ -78,8 +78,8 @@ export default function ClientsPage() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <ScrollReveal>
             <SectionHeader
-              label="Our Approach"
-              title="Why work with us"
+              label="Pendekatan Kami"
+              title="Mengapa Memilih Bermitra dengan WIRASA TECH"
               centered
             />
           </ScrollReveal>

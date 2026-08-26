@@ -27,23 +27,23 @@ export function CTASection() {
         >
           <p className="flex items-center gap-3 font-mono text-muted-dark text-xs tracking-[0.25em] uppercase mb-8">
             <span className="inline-block w-10 h-px bg-white/30" aria-hidden />
-            Next Step
+            // Langkah Selanjutnya
           </p>
 
           <h2 className="text-5xl md:text-7xl lg:text-8xl font-display font-bold text-foreground leading-[1.02] tracking-tight max-w-6xl mb-10">
-            Ready to build{' '}
+            Siap membangun{' '}
             <span
               className="hidden md:inline-block align-middle w-[1.35em] h-[0.58em] rounded-full bg-cover bg-center ring-1 ring-white/20"
-              style={{ backgroundImage: "url('https://picsum.photos/seed/syntaxloft-build/480/220')" }}
+              style={{ backgroundImage: "url('/assets/studio-craft.jpg')" }}
               aria-hidden
             />
             <br />
-            <span className="text-gradient">something that lasts?</span>
+            <span className="text-gradient">platform digital yang andal &amp; scalable?</span>
           </h2>
 
           <p className="text-muted text-lg max-w-xl font-light leading-relaxed mb-12">
-            Partner with a dedicated engineering team. We deliver custom web platforms,
-            scalable APIs, and refined user experiences tailored for growth.
+            Bermitralah dengan tim engineering yang berdedikasi. Kami menghadirkan website kustom,
+            API berkecepatan tinggi, dan antarmuka web modern yang siap mendukung pertumbuhan bisnis Anda.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4">
@@ -51,14 +51,14 @@ export function CTASection() {
               href="/project-brief"
               className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-foreground text-background font-semibold rounded-full hover:bg-muted transition-all duration-300 tactile-btn"
             >
-              Start Your Project
+              Mulai Proyek Anda
               <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
             </Link>
             <Link
               href="/work"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 border border-border text-foreground font-medium rounded-full hover:bg-white/5 transition-all duration-300 tactile-btn"
             >
-              View Selected Work
+              Lihat Portofolio Pilihan
             </Link>
           </div>
         </motion.div>

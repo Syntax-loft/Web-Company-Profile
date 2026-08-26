@@ -139,24 +139,24 @@ const FEATURE_OPTIONS: FeatureOption[] = [
 const TIMELINE_OPTIONS: TimelineOption[] = [
   {
     id: 'express',
-    name: 'Express Speed',
+    name: 'Kecepatan Express',
     multiplier: 0.8,
     timeText: 'Sprint dipercepat dengan tim penuh',
-    badge: 'Fast Delivery',
+    badge: 'Cepat & Prioritas',
   },
   {
     id: 'standard',
-    name: 'Standard Timeline',
+    name: 'Jadwal Standar',
     multiplier: 1.0,
     timeText: 'Alokasi waktu optimal & pengujian menyeluruh',
-    badge: 'Recommended',
+    badge: 'Direkomendasikan',
   },
   {
     id: 'flexible',
-    name: 'Flexible Schedule',
+    name: 'Jadwal Fleksibel',
     multiplier: 1.2,
     timeText: 'Pengerjaan bertahap secara berkelanjutan',
-    badge: 'Flexible',
+    badge: 'Fleksibel',
   },
 ]
 
@@ -191,12 +191,12 @@ export function ProjectEstimator() {
     if (selectedFeatures.length >= 5) {
       complexityLevel = 'Enterprise Scale'
     } else if (selectedFeatures.length >= 3 && complexityLevel === 'Standard') {
-      complexityLevel = 'Advanced'
+      complexityLevel = 'Tingkat Lanjut'
     }
 
-    let recommendedTeam = '2 Engineers + 1 UI/UX'
+    let recommendedTeam = '2 Engineer + 1 UI/UX'
     if (complexityLevel === 'Enterprise Scale') {
-      recommendedTeam = '3-4 Engineers + DevOps & QA'
+      recommendedTeam = '3-4 Engineer + DevOps & QA'
     }
 
     return {
@@ -215,8 +215,8 @@ export function ProjectEstimator() {
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
         <SectionHeader
-          label="Estimate Your Project"
-          title="Interactive Scope & Timeline Estimator"
+          label="Estimasi Kebutuhan Proyek"
+          title="Kalkulator Interaktif Skala &amp; Durasi Pengerjaan"
           description="Rancang dan kalkulasi estimasi skala kebutuhan serta durasi pengerjaan proyek digital Anda secara transparan hanya dalam beberapa klik."
           centered
         />

@@ -10,80 +10,80 @@ import { Code2, Palette, Layers, Smartphone, Globe, Database, Check } from 'luci
 const services = [
   {
     icon: <Code2 size={32} />,
-    title: 'Web Development',
-    description: 'We build fast, scalable, and secure web applications using cutting-edge technologies.',
+    title: 'Pengembangan Web (Web Development)',
+    description: 'Kami membangun website dan aplikasi web modern yang cepat, aman, dan scalable menggunakan teknologi Next.js & React terkini.',
     features: [
-      'Next.js & React Applications',
-      'Headless CMS Integration',
-      'E-commerce Solutions',
-      'Custom Web Applications',
-      'API Development',
-      'Performance Optimization',
+      'Aplikasi Next.js & React Modern',
+      'Integrasi Headless CMS (Strapi/Sanity)',
+      'Solusi E-Commerce & Payment Gateway',
+      'Aplikasi Web Custom & Dashboard SaaS',
+      'Pembuatan & Optimasi REST/GraphQL API',
+      'Optimasi Kecepatan & Core Web Vitals',
     ],
   },
   {
     icon: <Palette size={32} />,
-    title: 'UI/UX Design',
-    description: 'Human-centered design that creates meaningful connections between brands and users.',
+    title: 'Desain UI/UX (UI/UX Design)',
+    description: 'Desain berorientasi pengguna (user-centered) yang menciptakan impresi visual premium dan meningkatkan rasio konversi bisnis Anda.',
     features: [
-      'User Research & Testing',
-      'Wireframing & Prototyping',
-      'Design Systems',
-      'Responsive Design',
-      'Interaction Design',
-      'Visual Identity',
+      'Riset Pengguna & Analisis Pasar',
+      'Wireframing & Prototipe Interaktif Figma',
+      'Sistem Desain (Design Systems) Skalabel',
+      'Desain Responsif Mobile-First',
+      'Mikro-Interaksi & Transisi Halus',
+      'Identitas Visual & Branding Digital',
     ],
   },
   {
     icon: <Layers size={32} />,
-    title: 'System Integration',
-    description: 'Seamlessly connect your digital ecosystem for improved efficiency and data flow.',
+    title: 'Integrasi Sistem (System Integration)',
+    description: 'Menghubungkan ekosistem digital Anda secara mulus untuk otomatisasi proses bisnis dan aliran data yang aman dan efisien.',
     features: [
-      'API Integration',
-      'Third-party Services',
-      'Legacy System Migration',
-      'Data Synchronization',
-      'Cloud Integration',
-      'Automation Workflows',
+      'Integrasi API Pihak Ketiga',
+      'Integrasi Payment Gateway & Logistik',
+      'Migrasi Sistem Legacy ke Cloud',
+      'Sinkronisasi Database Real-Time',
+      'Integrasi Cloud AWS/GCP/Vercel',
+      'Alur Kerja Otomasi & Webhook',
     ],
   },
   {
     icon: <Smartphone size={32} />,
-    title: 'Mobile Development',
-    description: 'Native and cross-platform mobile applications that deliver exceptional user experiences.',
+    title: 'Pengembangan Aplikasi Mobile (Mobile Apps)',
+    description: 'Aplikasi mobile native dan cross-platform yang memberikan pengalaman pengguna luar biasa di Android dan iOS.',
     features: [
-      'iOS & Android Apps',
-      'React Native Development',
-      'Progressive Web Apps',
-      'App Store Optimization',
-      'Push Notifications',
-      'Offline Functionality',
+      'Aplikasi iOS & Android Terpadu',
+      'Pengembangan React Native Modern',
+      'Progressive Web Apps (PWA)',
+      'Optimasi Toko Aplikasi (ASO)',
+      'Notifikasi Push Real-Time',
+      'Dukungan Fitur Offline',
     ],
   },
   {
     icon: <Globe size={32} />,
-    title: 'SEO & Performance',
-    description: 'Optimize your digital presence for search engines and maximum performance.',
+    title: 'SEO Teknis & Optimasi Performa',
+    description: 'Optimasi menyeluruh untuk memastikan website Anda mudah ditemukan di Google dan memiliki kecepatan akses super cepat.',
     features: [
-      'Technical SEO Audit',
-      'Core Web Vitals',
-      'Page Speed Optimization',
-      'Structured Data',
-      'Content Strategy',
-      'Analytics Setup',
+      'Audit SEO Teknis Mendalam',
+      'Skor Core Web Vitals 100/100',
+      'Optimasi Kecepatan Waktu Muat (Page Speed)',
+      'Penerapan Structured Data & Schema.org',
+      'Strategi Konten Berorientasi Search Intent',
+      'Konfigurasi Google Analytics & Search Console',
     ],
   },
   {
     icon: <Database size={32} />,
-    title: 'Consulting & Strategy',
-    description: 'Strategic guidance to help you navigate digital transformation and technology decisions.',
+    title: 'Konsultansi & Strategi Teknologi',
+    description: 'Panduan strategis dari arsitek perangkat lunak kami untuk memandu transformasi digital dan keputusan teknologi modern bisnis Anda.',
     features: [
-      'Digital Strategy',
-      'Technology Consulting',
-      'Project Planning',
-      'Architecture Review',
-      'Team Augmentation',
-      'Training & Support',
+      'Perumusan Strategi Arsitektur Digital',
+      'Konsultansi Pemilihan Tech Stack',
+      'Perencanaan Roadmap Produk & MVP',
+      'Audit Keamanan & Skalabilitas Sistem',
+      'Pendampingan Tim Teknis (Team Augmentation)',
+      'Training & Dukungan Pemeliharaan',
     ],
   },
 ]
@@ -96,9 +96,9 @@ export default function ServicesPage() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <ScrollReveal>
             <SectionHeader
-              label="Our Services"
-              title="Comprehensive digital solutions"
-              description="From strategy to execution, we provide end-to-end services that transform your digital presence and drive measurable results."
+              label="Layanan Kami"
+              title="Solusi Digital Menyeluruh Berstandar Enterprise"
+              description="Dari perancangan strategi arsitektur hingga rilis produksi, kami menyediakan layanan terpadu untuk mentransformasi kehadiran digital Anda dan mendorong hasil bisnis yang terukur."
               centered
             />
           </ScrollReveal>

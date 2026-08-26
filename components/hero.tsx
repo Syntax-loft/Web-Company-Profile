@@ -22,7 +22,7 @@ export function Hero() {
     // Respect user motion preference: skip parallax entirely
     if (shouldReduceMotion) return
 
-    gsap.from('.syntax-loft-text', {
+    gsap.from('.wirasa-text', {
       y: 60,
       opacity: 0,
       duration: 1.2,
@@ -114,7 +114,7 @@ export function Hero() {
           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
         >
           <p className="text-muted-dark text-xs tracking-[0.3em] uppercase mb-2 font-mono">
-            Boutique Consultancy & Engineering
+            Konsultansi & Rekayasa Perangkat Lunak Boutique
           </p>
         </motion.div>
         <motion.div
@@ -124,7 +124,7 @@ export function Hero() {
         >
           <Image
             src={heroLogo}
-            alt='Syntax Loft'
+            alt='WIRASA TECH — Jasa Pembuatan Website & Software House'
             width={630}
             height={200}
             priority
@@ -138,7 +138,7 @@ export function Hero() {
           transition={{ duration: 1, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
           className="text-muted text-lg md:text-xl max-w-2xl mx-auto mb-12 leading-relaxed font-light"
         >
-          Engineering resilient web applications, custom software, and scalable digital infrastructure for ambitious companies.
+          Kami membangun website modern, aplikasi web kustom berkinerja tinggi, dan infrastruktur digital yang scalable untuk mempercepat pertumbuhan bisnis Anda.
         </motion.p>
 
         <motion.div
@@ -151,14 +151,14 @@ export function Hero() {
             href="/project-brief"
             className="group px-8 py-4 bg-foreground text-background font-semibold rounded-full hover:bg-muted transition-all duration-300 flex items-center gap-2 tactile-btn shadow-xl shadow-white/5"
           >
-            Start Your Project
+            Mulai Proyek Anda
             <ArrowDownRight size={18} className="group-hover:rotate-45 transition-transform duration-300" />
           </Link>
           <Link
             href="/work"
             className="px-8 py-4 border border-border text-foreground font-medium rounded-full hover:bg-white/5 transition-all duration-300 tactile-btn"
           >
-            View Selected Work
+            Lihat Portofolio Pilihan
           </Link>
         </motion.div>
 
@@ -171,10 +171,10 @@ export function Hero() {
         >
           <div className="grid grid-cols-2 md:grid-cols-4 gap-y-8 border-t border-white/10 pt-6 text-left">
             {[
-              { value: 'Modern Tech Stack', label: 'Latest and most secure technologies.' },
-              { value: '100% Client Focus', label: 'Dedicated attention for your needs.' },
-              { value: 'Scalable Architecture', label: 'Grows seamlessly with your business.' },
-              { value: 'Agile Development', label: 'Fast, transparent, adaptive workflow.' },
+              { value: 'Teknologi Terkini', label: 'Stack modern Next.js, React & TypeScript yang aman dan cepat.' },
+              { value: 'Fokus Klien 100%', label: 'Kolaborasi langsung dengan developer & arsitek kami tanpa perantara.' },
+              { value: 'Arsitektur Skalabel', label: 'Infrastruktur andal yang tumbuh seiring skala bisnis Anda.' },
+              { value: 'Pengembangan Adaptif', label: 'Proses agile yang transparan, iteratif, dan tepat waktu.' },
             ].map((stat, index) => (
               <div
                 key={stat.value}

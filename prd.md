@@ -1,10 +1,10 @@
 # Product Requirements Document (PRD)
-**Project Name:** Syntax Loft - Official Company Profile
+**Project Name:** WIRASA TECH - Official Company Profile
 **Document Version:** 1.0
 **Date:** 23 April 2026
 
 ## 1. Project Overview
-**Syntax Loft** adalah *software house* yang berfokus pada pembuatan *website* premium dan performa tinggi. *Website company profile* ini berfungsi sebagai wajah digital perusahaan, dirancang untuk menarik calon klien B2B dengan menampilkan portofolio, layanan, dan kredibilitas teknis melalui UI/UX yang elegan dan interaktif.
+**WIRASA TECH** adalah *software house* yang berfokus pada pembuatan *website* premium dan performa tinggi. *Website company profile* ini berfungsi sebagai wajah digital perusahaan, dirancang untuk menarik calon klien B2B dengan menampilkan portofolio, layanan, dan kredibilitas teknis melalui UI/UX yang elegan dan interaktif.
 
 ## 2. Target Audience
 * Pemilik bisnis (UMKM hingga Korporat) yang membutuhkan transformasi digital.
@@ -38,7 +38,7 @@
     * *Call to Action* (CTA) untuk *meeting/contact*.
 2.  **Services:** Detail layanan (Web Dev, UI/UX Design, System Integration).
 3.  **Work / Portfolio:** Galeri proyek dengan filter kategori dan studi kasus (*case studies*).
-4.  **About Us:** Visi, filosofi "Syntax Loft", dan profil *founder*.
+4.  **About Us:** Visi, filosofi "WIRASA TECH", dan profil *founder*.
 5.  **Contact:** Formulir kontak, email, dan integrasi link kalender (misal: Calendly).
 6.  **Our Client** Isi logo client nya apa saja 
 ## 6. Kriteria Kesuksesan (Success Metrics)

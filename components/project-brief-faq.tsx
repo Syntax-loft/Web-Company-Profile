@@ -1,87 +1,67 @@
 'use client'
 
-import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { ChevronDown } from 'lucide-react'
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion'
+import { motion } from 'framer-motion'
 
 const faqs = [
   {
-    question: 'How long until I receive a response?',
-    answer: 'We typically review and respond to all project briefs within 24-48 business hours. For urgent projects, please mention it in your brief or contact us directly.',
+    id: 'faq-1',
+    question: 'How long until I receive a response on our brief?',
+    answer:
+      'We typically review and respond to all project briefs within 24-48 business hours with an initial technical assessment and discovery roadmap.',
   },
   {
-    question: 'What happens after I submit my brief?',
-    answer: 'After submission, our team will review your requirements and schedule a discovery call to discuss the project in detail. We\'ll then provide a detailed proposal and timeline.',
+    id: 'faq-2',
+    question: 'What happens after I submit the project brief?',
+    answer:
+      'Our lead architects review your technical requirements and schedule a focused discovery call to align on architecture, delivery milestones, and commercial scope.',
   },
   {
-    question: 'Can I edit my brief after submitting?',
-    answer: 'Yes, you can submit an updated brief if needed. However, we recommend including all relevant details initially to help us provide the most accurate proposal.',
+    id: 'faq-3',
+    question: 'Can I update or amend my brief after submission?',
+    answer:
+      'Yes. You can reply directly to our confirmation email with any supplementary specs, Figma links, or architecture diagrams.',
   },
   {
-    question: 'Is there a minimum project size?',
-    answer: 'We typically work on projects starting from $5,000. However, we\'re open to discussing smaller projects that have potential for long-term collaboration.',
+    id: 'faq-4',
+    question: 'What is your typical engagement model?',
+    answer:
+      'We work as a dedicated boutique engineering partner — offering end-to-end web builds, fractional CTO advisory, and dedicated development sprints with 100% direct code handover.',
   },
   {
-    question: 'Do you work with international clients?',
-    answer: 'Absolutely! We work with clients globally and have experience managing projects across different time zones. We use modern collaboration tools to ensure smooth communication.',
-  },
-  {
-    question: 'What information should I include in my brief?',
-    answer: 'The more details the better! Include your company background, project goals, target audience, design preferences, timeline, and budget range. Reference websites are also helpful.',
+    id: 'faq-5',
+    question: 'Do you collaborate with international and remote teams?',
+    answer:
+      'Yes. We operate globally across Southeast Asia, APAC, US, and Europe using structured asynchronous communication and daily progress syncing.',
   },
 ]
 
 export function ProjectBriefFAQ() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null)
-
-  const toggleFaq = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index)
-  }
-
   return (
-    <div className="space-y-4">
-      {faqs.map((faq, index) => (
-        <motion.div
-          key={index}
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: index * 0.1 }}
-          viewport={{ once: true }}
-          className="border border-border rounded-xl overflow-hidden"
-        >
-          <button
-            onClick={() => toggleFaq(index)}
-            className="w-full flex items-center justify-between p-5 text-left hover:bg-white/[0.02] transition-colors"
-          >
-            <span className="font-medium text-foreground pr-4">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      viewport={{ once: true }}
+      className="rounded-3xl border border-border/80 bg-[#121212] p-6 sm:p-8"
+    >
+      <Accordion type="single" collapsible className="w-full">
+        {faqs.map((faq) => (
+          <AccordionItem key={faq.id} value={faq.id} className="border-border/60">
+            <AccordionTrigger className="text-base sm:text-lg font-medium text-foreground hover:text-white">
               {faq.question}
-            </span>
-            <motion.div
-              animate={{ rotate: openIndex === index ? 180 : 0 }}
-              transition={{ duration: 0.2 }}
-            >
-              <ChevronDown size={20} className="text-muted shrink-0" />
-            </motion.div>
-          </button>
-          
-          <AnimatePresence>
-            {openIndex === index && (
-              <motion.div
-                initial={{ height: 0, opacity: 0 }}
-                animate={{ height: 'auto', opacity: 1 }}
-                exit={{ height: 0, opacity: 0 }}
-                transition={{ duration: 0.3 }}
-              >
-                <div className="px-5 pb-5 pt-0">
-                  <p className="text-muted-dark leading-relaxed">
-                    {faq.answer}
-                  </p>
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </motion.div>
-      ))}
-    </div>
+            </AccordionTrigger>
+            <AccordionContent className="text-muted-dark text-sm sm:text-base font-light leading-relaxed">
+              {faq.answer}
+            </AccordionContent>
+          </AccordionItem>
+        ))}
+      </Accordion>
+    </motion.div>
   )
 }

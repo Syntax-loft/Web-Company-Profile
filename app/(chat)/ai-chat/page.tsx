@@ -1,8 +1,8 @@
 import { AIChat } from '@/components/ai-chat'
 
 export const metadata = {
-  title: 'AI Chat | Syntax Loft',
-  description: 'Chat dengan asisten digital Syntax Loft untuk info layanan pembuatan website dan aplikasi',
+  title: 'AI Chat | WIRASA TECH',
+  description: 'Chat dengan asisten digital WIRASA TECH untuk info layanan pembuatan website dan aplikasi',
 }
 
 export default function AIChatPage() {

@@ -133,15 +133,15 @@ export function LoadingScreen() {
             className="relative z-10 text-center"
           >
             <h1 className="text-4xl md:text-5xl font-display font-bold text-foreground tracking-tight">
-              SYNTAX/LOFT
+              WIRASA/TECH
             </h1>
             <motion.p
               initial={{ opacity: 0 }}
               animate={isExiting ? { opacity: 0 } : { opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.5 }}
-              className="text-muted text-sm tracking-[0.3em] uppercase mt-4"
+              className="text-muted text-sm tracking-[0.3em] uppercase mt-4 font-mono"
             >
-              Premium Software Development
+              Software House &amp; Rekayasa Web
             </motion.p>
           </motion.div>
 
