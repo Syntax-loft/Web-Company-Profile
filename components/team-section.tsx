@@ -184,7 +184,7 @@ export function TeamSection() {
         <SectionHeader
           label="Meet the Team"
           title="Our Expert Team"
-          description="Para profesional berpengalaman yang berdedikasi menghadirkan solusi digital kelas dunia untuk bisnis Anda."
+          description="Para anak muda yang berdedikasi menghadirkan solusi digital untuk bisnis Anda."
           centered
         />
 
@@ -192,7 +192,7 @@ export function TeamSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mt-12">
           
           {/* Vertical Sidebar Category Navigation */}
-          <aside className="lg:col-span-4 xl:col-span-3 lg:sticky lg:top-28">
+          <aside className="lg:col-span-4 lg:sticky lg:top-28">
             <div className="p-4 sm:p-5 rounded-3xl bg-[#121212]/90 border border-border/60 backdrop-blur-xl shadow-2xl space-y-2">
               <div className="px-4 py-3 mb-2 border-b border-border/40 flex items-center justify-between">
                 <span className="text-xs font-semibold uppercase tracking-widest text-muted-dark flex items-center gap-2">
@@ -214,7 +214,7 @@ export function TeamSection() {
                   <button
                     key={cat.id}
                     onClick={() => setActiveCategory(cat.id)}
-                    className={`w-full flex items-center justify-between px-4 py-3.5 rounded-2xl text-sm font-medium transition-all duration-300 relative group ${
+                    className={`w-full flex items-center justify-between px-5 py-6 rounded-2xl text-sm font-medium transition-all duration-300 relative group ${
                       isActive
                         ? 'text-white font-semibold'
                         : 'text-muted-dark hover:text-foreground hover:bg-white/[0.04]'

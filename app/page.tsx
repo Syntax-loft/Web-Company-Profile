@@ -4,6 +4,7 @@ import { PortfolioCard } from '@/components/portfolio-card'
 import { SectionHeader } from '@/components/section-header'
 import { CTASection } from '@/components/cta-section'
 import { ScrollReveal, StaggerContainer, StaggerItem } from '@/components/scroll-reveal'
+import { ScrubText, ScrollScaleImage } from '@/components/gsap-effects'
 import { Marquee } from '@/components/marquee'
 import { ServiceRow } from '@/components/service-row'
 import { ArrowRight } from 'lucide-react'
@@ -73,21 +74,36 @@ export default function Home() {
       <Hero />
       <Marquee />
 
-      {/* Services Section */}
-      <section className="py-24 lg:py-32">
+      {/* Services Section — pinned editorial header, index list scrolls beside it */}
+      <section className="py-32 lg:py-48">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <ScrollReveal>
-            <SectionHeader
-              label="Our Services"
-              title="We build digital experiences that matter"
-              description="From concept to deployment, we deliver comprehensive solutions that drive business growth and user engagement."
-            />
-          </ScrollReveal>
-          {/* Editorial index list — deliberate anti-pattern to equal-card grids */}
-          <div className="mt-12 border-b border-border">
-            {services.map((service, i) => (
-              <ServiceRow key={service.title} index={i} title={service.title} description={service.description} href={service.href} />
-            ))}
+          <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] gap-12 lg:gap-20 items-start">
+            <div className="lg:sticky lg:top-32">
+              <ScrollReveal>
+                <SectionHeader
+                  label="Our Services"
+                  title={
+                    <>
+                      We build{' '}
+                      <span
+                        className="hidden sm:inline-block align-middle w-[1.5em] h-[0.66em] rounded-full mx-1 bg-cover bg-center ring-1 ring-white/20"
+                        style={{ backgroundImage: "url('https://picsum.photos/seed/syntaxloft-craft/320/160')" }}
+                        aria-hidden
+                      />{' '}
+                      digital experiences that matter
+                    </>
+                  }
+                  description="From concept to deployment, we deliver comprehensive solutions that drive business growth and user engagement."
+                />
+              </ScrollReveal>
+            </div>
+
+            {/* Editorial index list — deliberate anti-pattern to equal-card grids */}
+            <div className="border-b border-border">
+              {services.map((service, i) => (
+                <ServiceRow key={service.title} index={i} title={service.title} description={service.description} href={service.href} />
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -98,7 +114,7 @@ export default function Home() {
       </div>
 
       {/* Featured Work Section */}
-      <section className="py-24 lg:py-32 bg-[#0f0f0f] content-visibility-auto transform-gpu">
+      <section className="py-32 lg:py-48 bg-[#0f0f0f] content-visibility-auto transform-gpu">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <ScrollReveal>
             <div className="flex items-end justify-between mb-16">
@@ -138,20 +154,23 @@ export default function Home() {
       </section>
 
       {/* Approach Section — clean editorial treatment, no shape dividers */}
-      <section className="py-24 lg:py-32 bg-[#0f0f0f] border-y border-border content-visibility-auto transform-gpu">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      <section className="py-32 lg:py-48 bg-[#0f0f0f] border-y border-border content-visibility-auto transform-gpu relative overflow-hidden">
+        {/* Ambient radial depth behind the chapter */}
+        <div
+          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[60rem] h-[60rem] rounded-full bg-white/[0.02] blur-[160px] pointer-events-none"
+          aria-hidden
+        />
+        <div className="grain absolute inset-0 opacity-[0.04] pointer-events-none mix-blend-overlay" aria-hidden />
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <ScrollReveal direction="left">
-              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
-                <img
-                  src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=600&fit=crop"
-                  alt="Code editor dark theme"
-                  loading="lazy"
-                  decoding="async"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-tr from-[#0A0A0A]/60 to-transparent" />
-              </div>
+              <ScrollScaleImage
+                src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=600&fit=crop"
+                alt="Code editor dark theme"
+                className="relative aspect-[4/3] rounded-2xl"
+                imgClassName="contrast-110 saturate-[0.85]"
+              />
+              <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/10" aria-hidden />
             </ScrollReveal>
             <ScrollReveal direction="right">
               <div>
@@ -163,10 +182,10 @@ export default function Home() {
                   Built with precision.<br />
                   <span className="text-gradient">Powered by passion.</span>
                 </h2>
-                <p className="text-muted-dark text-lg leading-relaxed mb-8">
-                  Every line of code is crafted with intention. We combine cutting-edge technology
-                  with thoughtful design to create digital experiences that leave lasting impressions.
-                </p>
+                <ScrubText
+                  text="Every line of code is crafted with intention. We combine cutting-edge technology with thoughtful design to create digital experiences that leave lasting impressions."
+                  className="text-muted-dark text-lg leading-relaxed mb-8 max-w-xl"
+                />
                 <div className="flex flex-wrap gap-3">
                   {['Next.js', 'TypeScript', 'Tailwind CSS', 'Node.js'].map((tech) => (
                     <span

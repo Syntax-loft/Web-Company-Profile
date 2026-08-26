@@ -128,7 +128,7 @@ export function Hero() {
             width={630}
             height={200}
             priority
-            className='mx-auto'
+            className='mx-auto h-auto w-[clamp(260px,72vw,630px)]'
           ></Image>
         </motion.div>
 

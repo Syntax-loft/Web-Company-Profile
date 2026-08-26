@@ -1,11 +1,13 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { ReactNode } from 'react'
 import { SplitText } from './text-reveal'
 
 interface SectionHeaderProps {
   label?: string
-  title: string
+  /** Bisa string (di-split per kata untuk animasi) atau ReactNode (dirender apa adanya, teks tidak berubah). */
+  title: ReactNode
   description?: string
   centered?: boolean
 }
@@ -31,9 +33,13 @@ export function SectionHeader({ label, title, description, centered = false }: S
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
           viewport={{ once: true }}
-          className="block text-3xl md:text-5xl font-display font-bold text-foreground leading-tight"
+          className="block text-3xl md:text-5xl font-display font-bold text-foreground leading-tight tracking-tight"
         >
-          <SplitText text={title} delay={0.15} />
+          {typeof title === 'string' ? (
+            <SplitText text={title} delay={0.15} />
+          ) : (
+            title
+          )}
         </motion.span>
       </h2>
       {description && (

@@ -10,8 +10,15 @@ import { ArrowRight } from 'lucide-react'
  */
 export function CTASection() {
   return (
-    <section className="py-28 lg:py-40 border-t border-border">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    <section className="relative overflow-hidden py-32 lg:py-48 border-t border-border">
+      {/* Ambient radial depth + film grain for a cinematic closing chapter */}
+      <div
+        className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/3 w-[55rem] h-[55rem] rounded-full bg-white/[0.03] blur-[150px] pointer-events-none"
+        aria-hidden
+      />
+      <div className="grain absolute inset-0 opacity-[0.04] pointer-events-none mix-blend-overlay" aria-hidden />
+
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -23,8 +30,14 @@ export function CTASection() {
             Next Step
           </p>
 
-          <h2 className="text-5xl md:text-7xl lg:text-8xl font-display font-bold text-foreground leading-[1.02] tracking-tight max-w-5xl mb-10">
-            Ready to build<br />
+          <h2 className="text-5xl md:text-7xl lg:text-8xl font-display font-bold text-foreground leading-[1.02] tracking-tight max-w-6xl mb-10">
+            Ready to build{' '}
+            <span
+              className="hidden md:inline-block align-middle w-[1.35em] h-[0.58em] rounded-full bg-cover bg-center ring-1 ring-white/20"
+              style={{ backgroundImage: "url('https://picsum.photos/seed/syntaxloft-build/480/220')" }}
+              aria-hidden
+            />
+            <br />
             <span className="text-gradient">something that lasts?</span>
           </h2>
 

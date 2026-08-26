@@ -57,7 +57,7 @@ export function PortfolioCard({ title, category, description, image, fallbackIma
               loading="lazy"
               decoding="async"
               onError={handleError}
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 transform-gpu"
+              className="w-full h-full object-cover transition-[transform,filter] duration-700 ease-out group-hover:scale-105 grayscale group-hover:grayscale-0 contrast-[1.15] transform-gpu"
             />
           </motion.div>
         </div>
