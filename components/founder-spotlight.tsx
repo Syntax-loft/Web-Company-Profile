@@ -3,7 +3,6 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
 import {
   Tooltip,
   TooltipContent,
@@ -15,17 +14,7 @@ import {
   Sparkles,
   Linkedin,
   Github,
-  ArrowRight,
-  CheckCircle2,
-  Users,
-  ShieldCheck,
-  Zap,
-  Terminal,
-  Layers,
-  Code2,
-  Cpu,
 } from 'lucide-react'
-import Link from 'next/link'
 
 interface LeaderProfile {
   id: 'dava' | 'arul'
@@ -42,8 +31,6 @@ interface LeaderProfile {
   linkedin: string
   quote: string
   attribution: string
-  stats: Array<{ label: string; value: string; icon: typeof Terminal }>
-  pillars: string[]
 }
 
 export function FounderSpotlight() {
@@ -68,17 +55,6 @@ export function FounderSpotlight() {
       quote:
         'Kualitas sebuah produk digital ditentukan oleh integritas arsitekturnya sejak baris kode pertama. Kami memastikan klien memegang kendali penuh atas aset teknologi berstandar tinggi yang mereka miliki 100%.',
       attribution: 'Muhamad Dava Rayhan // Founder & Lead Architect',
-      stats: [
-        { label: 'Next.js & Cloud Edge', value: 'Next.js 15+', icon: Terminal },
-        { label: 'Standar Mutu Arsitektur', value: '100/100', icon: Zap },
-        { label: 'Kepemilikan Source Code', value: '100%', icon: ShieldCheck },
-      ],
-      pillars: [
-        'Next.js 14/15 App Router & SSR',
-        'Arsitektur Database & Cloud Edge',
-        'Optimasi Core Web Vitals & Keamanan',
-        'Skalabilitas Backend & API Terstruktur',
-      ],
     },
     {
       id: 'arul',
@@ -97,17 +73,6 @@ export function FounderSpotlight() {
       quote:
         'Antarmuka yang luar biasa bukan sekadar estetika visual, melainkan bagaimana setiap piksel, interaksi mikro, dan transisi bekerja secara presisi tanpa kompromi performa beban pengguna.',
       attribution: 'Muhammad Arul Andriansyah // Co-Founder & Lead Frontend',
-      stats: [
-        { label: 'Fluid Motion & GSAP', value: '60 FPS', icon: Cpu },
-        { label: 'Zero Visual Drift', value: 'Pixel Perfect', icon: Layers },
-        { label: 'Modern React & TypeScript', value: 'Strict Type', icon: Code2 },
-      ],
-      pillars: [
-        'Design System & Atomic Token UI',
-        'Advanced GSAP & Framer Motion',
-        'Antarmuka Responsif & Tactile Feel',
-        'Standar Aksesibilitas & Micro UX',
-      ],
     },
   ]
 
@@ -316,7 +281,7 @@ export function FounderSpotlight() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -12 }}
                 transition={{ duration: 0.35, ease: 'easeOut' }}
-                className="p-6 sm:p-7 rounded-2xl bg-[#121214] border border-white/15 relative shadow-2xl shadow-black/50 overflow-hidden"
+                className="p-6 sm:p-8 rounded-2xl bg-[#121214] border border-white/15 relative shadow-2xl shadow-black/50 overflow-hidden"
               >
                 {/* Accent line top */}
                 <div
@@ -331,7 +296,7 @@ export function FounderSpotlight() {
                   &ldquo;{activeLeader.quote}&rdquo;
                 </p>
 
-                <div className="mt-4 pt-4 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <div className="mt-5 pt-5 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                   <div className="flex items-center gap-2 text-xs font-mono text-white/90 font-medium">
                     <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
                     <span>{activeLeader.attribution}</span>
@@ -343,83 +308,6 @@ export function FounderSpotlight() {
               </motion.div>
             </AnimatePresence>
 
-            {/* Dynamic Telemetry Numbers */}
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={`stats-${activeLeader.id}`}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.3, ease: 'easeOut' }}
-                className="grid grid-cols-1 sm:grid-cols-3 gap-3.5"
-              >
-                {activeLeader.stats.map((stat) => {
-                  const Icon = stat.icon
-                  return (
-                    <div
-                      key={stat.label}
-                      className="p-4 rounded-xl bg-white/[0.03] border border-white/10 hover:border-white/20 transition-colors shadow-sm"
-                    >
-                      <div className="flex items-center gap-2 mb-1.5">
-                        <Icon size={15} className="text-muted-dark" />
-                        <span className="text-lg sm:text-xl font-display font-extrabold text-white">
-                          {stat.value}
-                        </span>
-                      </div>
-                      <p className="text-xs font-mono text-muted-dark leading-tight">
-                        {stat.label}
-                      </p>
-                    </div>
-                  )
-                })}
-              </motion.div>
-            </AnimatePresence>
-
-            {/* Dynamic Core Architectural / Frontend Focus Pillars */}
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={`pillars-${activeLeader.id}`}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.3 }}
-                className="space-y-2.5 pt-1"
-              >
-                <p className="text-xs font-mono uppercase tracking-widest text-muted-dark">
-                  Fokus Spesialisasi {activeLeader.name.split(' ')[1] || activeLeader.name}:
-                </p>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                  {activeLeader.pillars.map((pillar) => (
-                    <div
-                      key={pillar}
-                      className="flex items-center gap-2.5 text-xs text-foreground/85 font-mono py-0.5"
-                    >
-                      <CheckCircle2 size={13} className="text-emerald-400 shrink-0" />
-                      <span>{pillar}</span>
-                    </div>
-                  ))}
-                </div>
-              </motion.div>
-            </AnimatePresence>
-
-            {/* Action Bar (Full Team CTA) */}
-            <div className="pt-4 border-t border-white/10 flex flex-col sm:flex-row items-center gap-4">
-              <Button asChild size="lg" className="w-full sm:w-auto rounded-full bg-white text-black hover:bg-neutral-200 text-xs font-mono uppercase tracking-wider h-12 px-7 shadow-xl shadow-white/5">
-                <Link href="/about#team" className="inline-flex items-center justify-center gap-2">
-                  <Users size={16} />
-                  <span>Kenali Seluruh Tim Kami (7 Ahli)</span>
-                  <ArrowRight size={14} className="ml-1" />
-                </Link>
-              </Button>
-
-              <Link
-                href="/project-brief"
-                className="text-xs font-mono text-muted-dark hover:text-white transition-colors underline underline-offset-4"
-              >
-                Mulai konsultasi proyek baru &rarr;
-              </Link>
-            </div>
-
           </div>
 
         </div>
@@ -427,4 +315,5 @@ export function FounderSpotlight() {
     </section>
   )
 }
+
 
