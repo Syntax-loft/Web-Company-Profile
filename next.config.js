@@ -7,6 +7,7 @@ const nextConfig = {
   experimental: {
     optimizePackageImports: ['lucide-react', 'framer-motion'],
   },
+  output: 'export',
   images: {
     unoptimized: true,
     formats: ['image/avif', 'image/webp'],

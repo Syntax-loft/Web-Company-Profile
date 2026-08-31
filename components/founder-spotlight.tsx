@@ -175,9 +175,9 @@ export function FounderSpotlight() {
             </div>
 
             {/* Founder Quote Block */}
-            <div className="p-6 rounded-2xl bg-[#121214] border-l-2 border-white/40 border-y border-r border-border/60 relative shadow-xl">
+            <div className="p-6 rounded-2xl bg-[#121214] border border-white/10 relative shadow-xl shadow-black/40">
               <p className="text-sm sm:text-base text-foreground/90 italic font-light leading-relaxed">
-                &ldquo;Kualitas sebuah produk digital ditentukan oleh integritas arsitekturnya sejak baris kode pertama. Kami memastikan klien kami mendapatkan aset teknologi berstandar tinggi yang mereka miliki 100%.&rdquo;
+                &ldquo;Kualitas sebuah produk digital ditentukan oleh integritas arsitekturnya sejak baris kode pertama. Kami memastikan klien memegang kendali penuh atas aset teknologi berstandar tinggi yang mereka miliki 100%.&rdquo;
               </p>
               <div className="mt-3 flex items-center gap-2 text-xs font-mono text-muted-dark">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />

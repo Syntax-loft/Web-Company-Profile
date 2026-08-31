@@ -114,7 +114,7 @@ export function Hero() {
           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
         >
           <p className="text-muted-dark text-xs tracking-[0.3em] uppercase mb-2 font-mono">
-            Konsultansi & Rekayasa Perangkat Lunak Boutique
+            Studio Rekayasa Perangkat Lunak &amp; Web Modern
           </p>
         </motion.div>
         <motion.div
@@ -167,14 +167,14 @@ export function Hero() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-16 md:mt-20 w-full max-w-4xl mx-auto mb-28 px-4"
+          className="mt-16 md:mt-20 w-full max-w-4xl mx-auto mb-20 px-4"
         >
           <div className="grid grid-cols-2 md:grid-cols-4 gap-y-8 border-t border-white/10 pt-6 text-left">
             {[
-              { value: 'Teknologi Terkini', label: 'Stack modern Next.js, React & TypeScript yang aman dan cepat.' },
-              { value: 'Fokus Klien 100%', label: 'Kolaborasi langsung dengan developer & arsitek kami tanpa perantara.' },
-              { value: 'Arsitektur Skalabel', label: 'Infrastruktur andal yang tumbuh seiring skala bisnis Anda.' },
-              { value: 'Pengembangan Adaptif', label: 'Proses agile yang transparan, iteratif, dan tepat waktu.' },
+              { value: 'Arsitektur Next.js & Edge', label: 'Stack modern Next.js, React & TypeScript dengan latensi rendah di bawah 80ms.' },
+              { value: 'Direct Engineer Access', label: 'Konsultasi dan perancangan sistem langsung bersama lead engineer tanpa perantara.' },
+              { value: '100% Client IP Ownership', label: 'Repositori Git, arsitektur cloud, dan kode seutuhnya menjadi hak milik Anda tanpa lock-in.' },
+              { value: 'Standar Kode Zero-Drift', label: 'Pengetikan statis TypeScript ketat, arsitektur scalable, dan zero visual drift.' },
             ].map((stat, index) => (
               <div
                 key={stat.value}
@@ -192,22 +192,6 @@ export function Hero() {
           </div>
         </motion.div>
       </div>
-
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-      >
-        <div className="w-6 h-10 border-2 border-border rounded-full flex justify-center p-2">
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-            className="w-1 h-2 bg-foreground rounded-full"
-          />
-        </div>
-      </motion.div>
     </section>
   )
 }

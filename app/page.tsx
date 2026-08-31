@@ -37,32 +37,32 @@ const services = [
   },
   {
     title: 'Sistem Cloud, API & DevOps',
-    description: 'Otomasi alur CI/CD, klaster database terdistribusi, dan layanan cloud kontainer dengan garansi uptime 99.99%.',
+    description: 'Otomasi pipeline CI/CD, klaster database terdistribusi, dan deployment edge container teroptimasi dengan pemantauan real-time.',
     href: '/services',
   },
 ]
 
 const featuredWorks = [
   {
-    title: 'Platform E-Commerce Modern',
-    category: 'Pengembangan Web',
-    description: 'Platform toko online modern dengan alur checkout instan, payment gateway terintegrasi, dan sinkronisasi stok real-time.',
+    title: 'FinTech Analytics & Payment Gateway',
+    category: 'Arsitektur Fullstack',
+    description: 'Platform keuangan real-time dengan alur transaksi instan, integrasi payment gateway multi-kanal, dan audit trail otomatis.',
     image: '/assets/projects/project1',
     fallbackImage: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop',
     href: '/work',
   },
   {
-    title: 'Dashboard Analitik SaaS',
-    category: 'Desain UI/UX',
-    description: 'Dashboard analitik finansial dengan visualisasi data interaktif, filter multi-dimensi, dan laporan terotomasi.',
+    title: 'AI-Powered SaaS Workflow Platform',
+    category: 'Desain UI/UX & Cloud',
+    description: 'Dashboard analitik cerdas dengan visualisasi data interaktif, query semantik AI, dan manajemen workspace multi-tenant.',
     image: '/assets/projects/project2',
     fallbackImage: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop',
     href: '/work',
   },
   {
-    title: 'Website Korporat Profesional',
+    title: 'Enterprise Multi-Region Web Platform',
     category: 'Pengembangan Web',
-    description: 'Website perusahaan premium dengan CMS dinamis, dukungan multi-bahasa, dan performa Core Web Vitals 100/100.',
+    description: 'Website korporasi global dengan edge SSR caching, CMS terintegrasi, dukungan multi-bahasa, dan skor Core Web Vitals optimal.',
     image: '/assets/projects/project3',
     fallbackImage: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop',
     href: '/work',
