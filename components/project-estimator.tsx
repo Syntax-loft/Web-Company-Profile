@@ -21,7 +21,8 @@ import {
   ArrowRight,
   CheckCircle2,
   Layers,
-  Users
+  Users,
+  RotateCcw,
 } from 'lucide-react'
 
 interface ProjectType {
@@ -171,6 +172,12 @@ export function ProjectEstimator() {
     )
   }
 
+  const handleReset = () => {
+    setSelectedType('web-app')
+    setSelectedFeatures(['auth', 'payment'])
+    setSelectedTimeline('standard')
+  }
+
   // Calculation (Scope & Weeks only, NO Price)
   const calculation = useMemo(() => {
     const projectObj = PROJECT_TYPES.find((p) => p.id === selectedType) || PROJECT_TYPES[0]
@@ -229,10 +236,21 @@ export function ProjectEstimator() {
             
             {/* Step 1: Project Type */}
             <div className="space-y-4">
-              <h3 className="text-sm font-semibold uppercase tracking-wider text-white/90 flex items-center gap-2">
-                <span className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center text-xs text-white">1</span>
-                Pilih Tipe Proyek
-              </h3>
+              <div className="flex items-center justify-between">
+                <h3 className="text-sm font-semibold uppercase tracking-wider text-white/90 flex items-center gap-2">
+                  <span className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center text-xs text-white">1</span>
+                  Pilih Tipe Proyek
+                </h3>
+                <button
+                  type="button"
+                  onClick={handleReset}
+                  className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.04] hover:bg-white/10 text-xs font-mono text-muted-dark hover:text-white border border-white/10 transition-all duration-200 active:scale-95"
+                  title="Kembalikan ke konfigurasi awal"
+                >
+                  <RotateCcw size={12} />
+                  <span>Reset Pilihan</span>
+                </button>
+              </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {PROJECT_TYPES.map((type) => {

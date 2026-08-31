@@ -6,7 +6,7 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
 import Link from 'next/link'
-import { ArrowDownRight } from 'lucide-react'
+import { ArrowDownRight, ArrowRight } from 'lucide-react'
 import { MagneticButton } from './magnetic-button'
 import heroLogo from '../public/assets/hero-logo.webp'
 import Image from "next/image";
@@ -156,9 +156,10 @@ export function Hero() {
           </Link>
           <Link
             href="/work"
-            className="px-8 py-4 border border-border text-foreground font-medium rounded-full hover:bg-white/5 transition-all duration-300 tactile-btn"
+            className="group px-8 py-4 border border-border text-foreground font-medium rounded-full hover:bg-white/5 transition-all duration-300 tactile-btn flex items-center gap-2"
           >
-            Lihat Portofolio Pilihan
+            <span>Lihat Portofolio Pilihan</span>
+            <ArrowRight size={16} className="text-muted-dark group-hover:text-white group-hover:translate-x-1 transition-all duration-300" />
           </Link>
         </motion.div>
 

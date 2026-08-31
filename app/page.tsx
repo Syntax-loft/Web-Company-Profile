@@ -82,7 +82,7 @@ export default function Home() {
       <CapabilitiesBento />
 
       {/* 4. INTEREST / GSAP PINNING: SERVICES EDITORIAL CHAPTER */}
-      <section className="py-32 lg:py-48 border-b border-border/50 relative">
+      <section className="py-20 sm:py-32 lg:py-48 border-b border-border/50 relative">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] gap-12 lg:gap-20 items-start">
             <div className="lg:sticky lg:top-32">
@@ -121,7 +121,7 @@ export default function Home() {
       </div>
 
       {/* 6. DESIRE: FEATURED WORK WITH EDITORIAL STAGGER */}
-      <section className="py-32 lg:py-48 bg-[#0c0c0c] content-visibility-auto transform-gpu border-b border-border/50">
+      <section className="py-20 sm:py-32 lg:py-48 bg-[#0c0c0c] content-visibility-auto transform-gpu border-b border-border/50">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <ScrollReveal>
             <div className="flex items-end justify-between mb-16">
@@ -166,7 +166,7 @@ export default function Home() {
       </section>
 
       {/* 7. DESIRE: GSAP SCRUBBING & SCROLL SCALE APPROACH CHAPTER */}
-      <section className="py-32 lg:py-48 bg-[#0a0a0a] border-b border-border/50 content-visibility-auto transform-gpu relative overflow-hidden">
+      <section className="py-20 sm:py-32 lg:py-48 bg-[#0a0a0a] border-b border-border/50 content-visibility-auto transform-gpu relative overflow-hidden">
         {/* Ambient radial depth behind the chapter */}
         <div
           className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[60rem] h-[60rem] rounded-full bg-white/[0.02] blur-[160px] pointer-events-none"
