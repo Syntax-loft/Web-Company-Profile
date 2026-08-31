@@ -167,8 +167,134 @@ export function FounderSpotlight() {
           </div>
         </div>
 
-        {/* Expansive Full-Section Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+        {/* MOBILE VIEW (< lg): UNIFIED SINGLE FRAME (PHOTO + QUOTE IN ONE COMPACT SCREEN) */}
+        <div className="lg:hidden space-y-6">
+          <div className="space-y-3">
+            <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground leading-tight tracking-tight">
+              Membangun dengan presisi,{' '}
+              <span className="text-gradient">
+                tanpa birokrasi &amp; kompromi teknis.
+              </span>
+            </h2>
+            <p className="text-sm text-muted-dark font-light leading-relaxed">
+              Setiap sistem dirancang dan diawasi langsung oleh lead architect &amp; interface engineer.
+            </p>
+          </div>
+
+          {/* Unified Card Container with AnimatePresence */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={`mobile-${activeLeader.id}`}
+              initial={{ opacity: 0, y: 12, scale: 0.98 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -12, scale: 0.98 }}
+              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              className="rounded-[1.75rem] overflow-hidden bg-[#111114] border border-white/15 shadow-2xl shadow-black/80"
+            >
+              {/* 1. Upper Photo Frame (~240px) */}
+              <div className="relative w-full h-[240px] sm:h-[270px] overflow-hidden bg-[#141416]">
+                <img
+                  src={activeLeader.image}
+                  alt={`${activeLeader.name} - ${activeLeader.role}`}
+                  onError={() => {
+                    if (activeLeader.id === 'dava') setDavaSrc(activeLeader.fallback)
+                    else setArulSrc(activeLeader.fallback)
+                  }}
+                  className="w-full h-full object-cover object-center"
+                />
+
+                {/* Vignette Overlays */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#111114] via-black/30 to-transparent pointer-events-none" />
+
+                {/* Top Badge & Pulse */}
+                <div className="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between pointer-events-none z-10">
+                  <Badge className="bg-black/85 backdrop-blur-md border border-white/25 text-white font-mono text-[11px] px-3 py-1 rounded-full shadow-lg">
+                    {activeLeader.id === 'dava' ? (
+                      <Crown size={11} className="mr-1.5 text-amber-300 inline" />
+                    ) : (
+                      <Sparkles size={11} className="mr-1.5 text-blue-300 inline" />
+                    )}
+                    {activeLeader.badgeText}
+                  </Badge>
+                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_#34d399]" />
+                </div>
+
+                {/* Bottom Photo Metadata Bar */}
+                <div className="absolute bottom-3 left-3.5 right-3.5 flex items-center justify-between z-10">
+                  <div>
+                    <h3 className="text-base sm:text-lg font-display font-bold text-white tracking-tight">
+                      {activeLeader.name}
+                    </h3>
+                    <p className="text-[11px] font-mono text-muted-dark mt-0.5">
+                      {activeLeader.focus}
+                    </p>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <a
+                      href={activeLeader.github}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="w-7 h-7 rounded-lg bg-white/10 text-white flex items-center justify-center transition-colors"
+                      aria-label={`GitHub profile ${activeLeader.name}`}
+                    >
+                      <Github size={13} />
+                    </a>
+                    <a
+                      href={activeLeader.linkedin}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="w-7 h-7 rounded-lg bg-white/10 text-white flex items-center justify-center transition-colors"
+                      aria-label={`LinkedIn profile ${activeLeader.name}`}
+                    >
+                      <Linkedin size={13} />
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              {/* 2. Lower Quote Section (Directly Connected in Same Card) */}
+              <div className="p-5 sm:p-6 relative overflow-hidden bg-[#111114] border-t border-white/10">
+                {/* Accent Top Line */}
+                <div
+                  className={`absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r ${
+                    activeLeader.id === 'dava'
+                      ? 'from-amber-400 via-emerald-400 to-blue-500'
+                      : 'from-blue-400 via-teal-400 to-indigo-500'
+                  }`}
+                />
+
+                <Quote
+                  className="absolute -right-2 -bottom-4 w-24 h-24 text-white/[0.025] pointer-events-none"
+                  aria-hidden
+                />
+
+                <div className="relative z-10 space-y-4">
+                  <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white/[0.04] border border-white/10 text-[10px] font-mono text-white/80">
+                    <ShieldCheck size={11} className="text-emerald-400" />
+                    <span>Prinsip: {activeLeader.specialtyPill}</span>
+                  </div>
+
+                  <p className="text-sm sm:text-base text-foreground/95 italic font-light leading-relaxed">
+                    &ldquo;{activeLeader.quote}&rdquo;
+                  </p>
+
+                  <div className="pt-3 border-t border-white/10 flex items-center justify-between text-[11px] font-mono">
+                    <span className="text-white/90 font-medium flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                      {activeLeader.attribution.split('//')[0]?.trim()}
+                    </span>
+                    <span className="text-muted-dark hidden sm:inline">
+                      {activeLeader.tagline}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
+        {/* DESKTOP VIEW (>= lg): EXPANSIVE 2-COLUMN GRID */}
+        <div className="hidden lg:grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           
           {/* LEFT: Interactive Leadership Cards (5 Columns) */}
           <div className="lg:col-span-5 space-y-6">
