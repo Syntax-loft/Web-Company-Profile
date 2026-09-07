@@ -20,6 +20,7 @@ type ConfigKey =
   | 'mediaZoom'
   | 'scrollDistance'
   | 'holdDistance'
+  | 'startHold'
   | 'smoothing'
   | 'overlayScrim'
   | 'useWindowScroll'
@@ -39,6 +40,7 @@ export interface ScrollExpandProps {
   mediaZoom?: number
   scrollDistance?: number
   holdDistance?: number
+  startHold?: number
   smoothing?: number
   overlayScrim?: number
   useWindowScroll?: boolean
@@ -56,15 +58,16 @@ export const ScrollExpand: React.FC<ScrollExpandProps> = ({
   alt = '',
   title = '',
   scrollHint = '',
-  startWidth = 42,
-  startHeight = 58,
+  startWidth = 56,
+  startHeight = 64,
   startRadius = 24,
   endRadius = 0,
-  mediaZoom = 1.35,
-  scrollDistance = 1.2,
-  holdDistance = 0.35,
-  smoothing = 0.1,
-  overlayScrim = 0.45,
+  mediaZoom = 1.2,
+  scrollDistance = 1.6,
+  holdDistance = 0.5,
+  startHold = 0.35,
+  smoothing = 0.08,
+  overlayScrim = 0.6,
   useWindowScroll = false,
   enabled = true,
   children,
@@ -76,6 +79,7 @@ export const ScrollExpand: React.FC<ScrollExpandProps> = ({
   const trackRef = useRef<HTMLDivElement | null>(null)
   const stageRef = useRef<HTMLDivElement | null>(null)
   const frameRef = useRef<HTMLDivElement | null>(null)
+  const borderRef = useRef<HTMLDivElement | null>(null)
   const mediaRef = useRef<HTMLElement | null>(null)
   const titleRef = useRef<HTMLDivElement | null>(null)
   const overlayRef = useRef<HTMLDivElement | null>(null)
@@ -93,6 +97,7 @@ export const ScrollExpand: React.FC<ScrollExpandProps> = ({
     mediaZoom,
     scrollDistance,
     holdDistance,
+    startHold,
     smoothing,
     overlayScrim,
     useWindowScroll,
@@ -116,24 +121,34 @@ export const ScrollExpand: React.FC<ScrollExpandProps> = ({
 
     media.style.transform = `scale(${c.mediaZoom + (1 - c.mediaZoom) * e})`
 
-    if (scrimRef.current) scrimRef.current.style.opacity = `${c.overlayScrim * e}`
+    if (borderRef.current) {
+      const borderFade = smoothstep(0.4, 0.95, p)
+      borderRef.current.style.opacity = `${1 - borderFade}`
+      borderRef.current.style.borderRadius = `${r}px`
+    }
+
+    if (scrimRef.current) {
+      const targetScrim = 0.35 + (c.overlayScrim - 0.35) * e
+      scrimRef.current.style.opacity = `${targetScrim}`
+    }
 
     if (titleRef.current) {
-      const out = smoothstep(0.4, 0.88, p)
+      const out = smoothstep(0.2, 0.75, p)
       titleRef.current.style.opacity = `${1 - out}`
-      titleRef.current.style.transform = `translate3d(0, ${-28 * out}px, 0) scale(${1 + 0.06 * out})`
+      titleRef.current.style.transform = `translate3d(0, ${-24 * out}px, 0) scale(${1 + 0.05 * out})`
     }
 
     if (hintRef.current) {
-      const gone = smoothstep(0, 0.12, p)
+      const gone = smoothstep(0, 0.18, p)
       hintRef.current.style.opacity = `${1 - gone}`
-      hintRef.current.style.transform = `translate3d(0, ${8 * gone}px, 0)`
+      hintRef.current.style.transform = `translate3d(0, ${10 * gone}px, 0)`
     }
 
     if (overlayRef.current) {
-      const inn = smoothstep(0.68, 1, p)
+      const inn = smoothstep(0.65, 1, p)
       overlayRef.current.style.opacity = `${inn}`
-      overlayRef.current.style.transform = `translate3d(0, ${18 * (1 - inn)}px, 0)`
+      overlayRef.current.style.transform = `translate3d(0, ${20 * (1 - inn)}px, 0)`
+      overlayRef.current.style.pointerEvents = inn > 0.8 ? 'auto' : 'none'
     }
   }, [])
 
@@ -156,21 +171,24 @@ export const ScrollExpand: React.FC<ScrollExpandProps> = ({
       stageH = c.useWindowScroll ? window.innerHeight : root.clientHeight
       if (stageH <= 0) return
       stage.style.height = `${stageH}px`
-      track.style.height = `${stageH * (1 + Math.max(0, c.scrollDistance) + Math.max(0, c.holdDistance))}px`
+      const totalFactor = Math.max(0, c.startHold) + Math.max(0.01, c.scrollDistance) + Math.max(0, c.holdDistance)
+      track.style.height = `${stageH * (1 + totalFactor)}px`
 
       const w = root.clientWidth || stageH
-      stage.style.setProperty('--se-title-size', `${clamp(w * 0.065, 22, 72)}px`)
+      stage.style.setProperty('--se-title-size', `${clamp(w * 0.055, 22, 68)}px`)
     }
 
     const readProgress = () => {
       const c = propsRef.current
       if (!c.enabled) return 1
+      const startHoldPx = stageH * Math.max(0, c.startHold)
       const span = stageH * Math.max(0.01, c.scrollDistance)
       if (c.useWindowScroll) {
         const top = track.getBoundingClientRect().top
-        return clamp(-top / span, 0, 1)
+        // -top is scrolled distance past top of track
+        return clamp((-top - startHoldPx) / span, 0, 1)
       }
-      return clamp(root.scrollTop / span, 0, 1)
+      return clamp((root.scrollTop - startHoldPx) / span, 0, 1)
     }
 
     const tick = () => {
@@ -258,9 +276,11 @@ export const ScrollExpand: React.FC<ScrollExpandProps> = ({
     >
       <div ref={trackRef} className="scroll-expand__track">
         <div ref={stageRef} className="scroll-expand__stage">
+          <div className="scroll-expand__ambient-glow" aria-hidden="true" />
           <div ref={frameRef} className="scroll-expand__frame">
             {media}
             <div ref={scrimRef} className="scroll-expand__scrim" />
+            <div ref={borderRef} className="scroll-expand__border" />
             {children ? (
               <div ref={overlayRef} className="scroll-expand__overlay">
                 {children}
@@ -274,7 +294,8 @@ export const ScrollExpand: React.FC<ScrollExpandProps> = ({
           ) : null}
           {scrollHint ? (
             <div ref={hintRef} className="scroll-expand__hint">
-              {scrollHint}
+              <span className="scroll-expand__hint-dot" aria-hidden="true" />
+              <span>{scrollHint}</span>
             </div>
           ) : null}
         </div>

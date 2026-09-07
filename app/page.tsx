@@ -228,9 +228,13 @@ export default function Home() {
           title="Direkayasa Tanpa Kompromi"
           scrollHint="Gulir ke bawah untuk mengeksplorasi"
           useWindowScroll
-          mediaZoom={1.25}
-          scrollDistance={1.2}
-          holdDistance={0.4}
+          startWidth={56}
+          startHeight={64}
+          startRadius={24}
+          scrollDistance={1.6}
+          holdDistance={0.5}
+          startHold={0.35}
+          mediaZoom={1.2}
         >
           <div className="max-w-4xl mx-auto px-6 text-center space-y-6">
             <p className="font-mono text-xs tracking-[0.3em] uppercase text-white/80">
