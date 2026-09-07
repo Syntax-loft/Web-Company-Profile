@@ -24,6 +24,10 @@ const ProjectEstimator = dynamic(() => import('@/components/project-estimator').
   loading: () => <div className="py-24 text-center text-xs font-mono text-muted-dark">Memuat Estimasi Biaya...</div>
 })
 
+const ScrollExpand = dynamic(() => import('@/components/scroll-expand'), {
+  ssr: false,
+})
+
 const services = [
   {
     title: 'Pengembangan Web & Aplikasi Fullstack',
@@ -71,7 +75,7 @@ const featuredWorks = [
 
 export default function Home() {
   return (
-    <main className="overflow-x-hidden w-full max-w-full">
+    <main className="overflow-x-clip w-full max-w-full">
       {/* 1. ATTENTION: HERO CHAPTER */}
       <Hero />
 
@@ -216,7 +220,48 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 8. INTERACTIVE FOUNDER SPOTLIGHT & ESTIMATOR */}
+      {/* 8. CINEMATIC SCROLL-EXPAND SHOWCASE */}
+      <section className="relative w-full overflow-visible border-b border-border/50">
+        <ScrollExpand
+          src="/assets/studio-craft.jpg"
+          alt="WIRASA TECH Studio & Engineering Craft"
+          title="Direkayasa Tanpa Kompromi"
+          scrollHint="Gulir ke bawah untuk mengeksplorasi"
+          useWindowScroll
+          mediaZoom={1.25}
+          scrollDistance={1.2}
+          holdDistance={0.4}
+        >
+          <div className="max-w-4xl mx-auto px-6 text-center space-y-6">
+            <p className="font-mono text-xs tracking-[0.3em] uppercase text-white/80">
+              // Standar Rekayasa WIRASA TECH
+            </p>
+            <h2 className="font-display font-bold text-3xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-[1.1]">
+              Setiap Piksel, Setiap Baris Kode. <br />
+              <span className="text-gradient">Dibangun untuk Skala Besar.</span>
+            </h2>
+            <p className="text-white/85 text-base sm:text-lg lg:text-xl max-w-2xl mx-auto font-light leading-relaxed">
+              Kami memadukan arsitektur web modern Next.js dengan visual kelas dunia, menghadirkan produk digital yang cepat, tangguh, dan bernilai tinggi bagi bisnis Anda.
+            </p>
+            <div className="pt-2 flex flex-wrap items-center justify-center gap-4">
+              <Link
+                href="/project-brief"
+                className="px-8 py-3.5 bg-white text-black font-semibold rounded-full hover:bg-white/90 transition-all duration-300 tactile-btn shadow-lg"
+              >
+                Mulai Konsultasi Proyek
+              </Link>
+              <Link
+                href="/work"
+                className="px-8 py-3.5 border border-white/30 text-white font-medium rounded-full hover:bg-white/10 transition-all duration-300 backdrop-blur-sm"
+              >
+                Lihat Semua Karya
+              </Link>
+            </div>
+          </div>
+        </ScrollExpand>
+      </section>
+
+      {/* 9. INTERACTIVE FOUNDER SPOTLIGHT & ESTIMATOR */}
       <div className="content-visibility-auto transform-gpu">
         <FounderSpotlight />
       </div>
