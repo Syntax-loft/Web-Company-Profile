@@ -3,17 +3,20 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
+import Image from "next/image";
+// Ganti logo brand di sini: timpa file public/assets/logo2.webp
+import logo from '../public/assets/logo2.webp'
 import { Menu, X, ArrowUpRight, Mail, Phone, MapPin } from 'lucide-react'
 
+
 const navItems = [
-  { label: 'Home', href: '/' },
-  { label: 'Services', href: '/services' },
-  { label: 'Work', href: '/work' },
-  { label: 'AI Chat', href: '/ai-chat' },
-  { label: 'Clients', href: '/clients' },
-  { label: 'About', href: '/about' },
-  { label: 'Brief', href: '/project-brief' },
-  { label: 'Contact', href: '/contact' },
+  { label: 'Beranda', href: '/' },
+  { label: 'Layanan', href: '/services' },
+  { label: 'Portofolio', href: '/work' },
+  { label: 'Klien', href: '/clients' },
+  { label: 'Tentang Kami', href: '/about' },
+  { label: 'Brief Proyek', href: '/project-brief' },
+  { label: 'Kontak', href: '/contact' },
 ]
 
 export function Navigation() {
@@ -46,34 +49,31 @@ export function Navigation() {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          isScrolled
-            ? 'bg-background/90 backdrop-blur-xl border-b border-border'
-            : 'bg-transparent'
-        }`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
+          ? 'liquid-glass border-b border-white/10'
+          : 'bg-transparent'
+          }`}
       >
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 sm:h-20">
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-2 group z-50">
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="text-lg sm:text-xl font-display font-bold tracking-tight"
-              >
-                <span className="text-foreground">SYNTAX</span>
-                <span className="text-muted-dark">/</span>
-                <span className="text-foreground">LOFT</span>
-              </motion.div>
+            <Link href="/" aria-label="WIRASA TECH — Home" className="flex shrink-0 items-center">
+              <Image
+                src={logo}
+                alt="WIRASA TECH"
+                width={132}
+                height={44}
+                priority
+                className="h-9 sm:h-11 w-auto object-contain"
+              />
             </Link>
-
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center gap-8">
               {navItems.map((item) => (
                 <Link
                   key={item.label}
                   href={item.href}
-                  className="text-sm text-muted hover:text-foreground transition-colors duration-300 line-reveal py-1"
+                  className="text-sm font-medium text-muted hover:text-foreground transition-colors duration-300 line-reveal py-1"
                 >
                   {item.label}
                 </Link>
@@ -84,9 +84,9 @@ export function Navigation() {
             <div className="hidden md:block">
               <Link
                 href="/project-brief"
-                className="px-5 py-2.5 bg-foreground text-background text-sm font-medium rounded-full hover:bg-muted transition-colors duration-300"
+                className="px-5 py-2.5 bg-foreground text-background text-sm font-semibold rounded-full hover:bg-muted transition-all duration-300 tactile-btn shadow-lg shadow-white/5"
               >
-                Start Project
+                Mulai Proyek
               </Link>
             </div>
 
@@ -94,7 +94,7 @@ export function Navigation() {
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="md:hidden relative z-50 p-2 text-foreground rounded-lg hover:bg-white/5 transition-colors"
-              aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+              aria-label={isMobileMenuOpen ? 'Tutup menu' : 'Buka menu'}
             >
               <AnimatePresence mode="wait">
                 {isMobileMenuOpen ? (
@@ -137,7 +137,7 @@ export function Navigation() {
               onClick={() => setIsMobileMenuOpen(false)}
               className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm md:hidden"
             />
-            
+
             {/* Menu Panel */}
             <motion.div
               initial={{ x: '100%' }}
@@ -163,9 +163,9 @@ export function Navigation() {
                           className="group flex items-center justify-between py-4 text-lg font-medium text-foreground hover:text-muted transition-colors border-b border-border/50"
                         >
                           <span>{item.label}</span>
-                          <ArrowUpRight 
-                            size={20} 
-                            className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" 
+                          <ArrowUpRight
+                            size={20}
+                            className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"
                           />
                         </Link>
                       </motion.li>
@@ -185,7 +185,7 @@ export function Navigation() {
                     onClick={() => setIsMobileMenuOpen(false)}
                     className="flex items-center justify-center gap-2 w-full py-4 bg-foreground text-background font-medium rounded-xl hover:bg-muted transition-colors"
                   >
-                    Start Your Project
+                    Mulai Proyek Anda
                     <ArrowUpRight size={18} />
                   </Link>
                 </motion.div>
@@ -198,11 +198,11 @@ export function Navigation() {
                   className="space-y-3 pt-6 border-t border-border"
                 >
                   <a
-                    href="mailto:hello@syntaxloft.com"
+                    href="mailto:hello@wirasa.tech"
                     className="flex items-center gap-3 text-sm text-muted hover:text-foreground transition-colors"
                   >
                     <Mail size={16} />
-                    hello@syntaxloft.com
+                    hello@wirasa.tech
                   </a>
                   <a
                     href="tel:+6281234567890"

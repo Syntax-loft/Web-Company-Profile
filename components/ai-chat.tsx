@@ -10,14 +10,14 @@ interface Message {
   content: string
 }
 
-const SYSTEM_PROMPT = 'Lu adalah asisten digital dari Syntax Loft. Syntax Loft adalah software house yang menyediakan jasa pembuatan website dan aplikasi. Tugas lu promosiin jasanya. Jawab dengan santai tapi pro.'
+const SYSTEM_PROMPT = 'Lu adalah asisten digital dari WIRASA TECH. WIRASA TECH adalah software house yang menyediakan jasa pembuatan website dan aplikasi. Tugas lu promosiin jasanya. Jawab dengan santai tapi pro.'
 
 export function AIChat() {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
       role: 'assistant',
-      content: 'Halo! Saya asisten digital dari Syntax Loft. Ada yang bisa saya bantu tentang layanan pembuatan website atau aplikasi? Tanya aja! 😊',
+      content: 'Halo! Saya asisten digital dari WIRASA TECH. Ada yang bisa saya bantu tentang layanan pembuatan website atau aplikasi? Tanya aja! 😊',
     },
   ])
   const [input, setInput] = useState('')
@@ -88,7 +88,7 @@ export function AIChat() {
           AI Chat Assistant
         </h1>
         <p className="text-sm text-muted">
-          Tanya tentang layanan pembuatan website dan aplikasi Syntax Loft
+          Tanya tentang layanan pembuatan website dan aplikasi WIRASA TECH
         </p>
       </div>
 
