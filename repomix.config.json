@@ -19,11 +19,7 @@
     "truncateBase64": false,
     "copyToClipboard": false,
     "includeFullDirectoryStructure": false,
-<<<<<<< HEAD
-    "tokenCountTree": true,
-=======
     "tokenCountTree": false,
->>>>>>> 75cb26d1dfec24399f916c4a7a3d71a791bcb7a2
     "git": {
       "sortByChanges": true,
       "sortByChangesMaxCommits": 100,

@@ -1,4 +1,4 @@
-﻿'use client'
+'use client'
 
 import { useRef } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
@@ -6,68 +6,14 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
 import Link from 'next/link'
-<<<<<<< HEAD
-import { ArrowDownRight } from 'lucide-react'
-=======
 import { ArrowDownRight, ArrowRight } from 'lucide-react'
 import { MagneticButton } from './magnetic-button'
 import heroLogo from '../public/assets/hero-logo.webp'
 import Image from "next/image";
->>>>>>> 75cb26d1dfec24399f916c4a7a3d71a791bcb7a2
 
 gsap.registerPlugin(ScrollTrigger)
 
-const ease = [0.22, 1, 0.36, 1] as const
-
 export function Hero() {
-<<<<<<< HEAD
-  const heroRef = useRef<HTMLElement>(null)
-
-  useGSAP(() => {
-    const mm = gsap.matchMedia()
-
-    mm.add('(prefers-reduced-motion: no-preference)', () => {
-      gsap.to('.parallax-slow', {
-        yPercent: 12,
-        ease: 'none',
-        scrollTrigger: { trigger: heroRef.current, start: 'top top', end: 'bottom top', scrub: 1.5 },
-      })
-
-      gsap.to('.parallax-medium', {
-        yPercent: 28,
-        ease: 'none',
-        scrollTrigger: { trigger: heroRef.current, start: 'top top', end: 'bottom top', scrub: 1 },
-      })
-
-      gsap.to('.hero-content', {
-        yPercent: -8,
-        opacity: 0,
-        ease: 'none',
-        scrollTrigger: { trigger: heroRef.current, start: 'center top', end: 'bottom top', scrub: true },
-      })
-    })
-
-    return () => mm.revert()
-  }, { scope: heroRef })
-
-  return (
-    <section ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Full-bleed photographic backdrop */}
-      <div
-        className="parallax-slow absolute inset-[-10%] bg-cover bg-center grayscale contrast-125 opacity-50"
-        style={{ backgroundImage: 'url(https://picsum.photos/seed/dark-workspace/1920/1080)' }}
-      />
-      {/* Radial cinematic wash */}
-      <div className="parallax-medium absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(10,10,10,0.35)_0%,rgba(10,10,10,0.92)_78%)]" />
-      <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-b from-transparent to-background" />
-      {/* Ambient orbs for depth */}
-      <div className="parallax-medium absolute top-1/4 left-[15%] w-[26rem] h-[26rem] bg-white/[0.03] rounded-full blur-3xl" />
-      <div className="parallax-medium absolute bottom-1/4 right-[12%] w-80 h-80 bg-white/[0.03] rounded-full blur-3xl" />
-
-      {/* Content */}
-      <div className="hero-content relative z-10 w-full max-w-6xl mx-auto px-6 text-center pt-36 pb-44">
-        <motion.h1
-=======
   const heroRef = useRef<HTMLDivElement>(null)
   const textRef = useRef<HTMLDivElement>(null)
   const shouldReduceMotion = useReducedMotion()
@@ -163,17 +109,10 @@ export function Hero() {
       {/* Content with parallax */}
       <div ref={textRef} className="hero-content relative z-10 max-w-7xl mt-28 mx-auto px-6 lg:px-8 text-center">
         <motion.div
->>>>>>> 75cb26d1dfec24399f916c4a7a3d71a791bcb7a2
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.1, ease }}
-          className="font-display font-bold tracking-tight leading-[1.04] text-[clamp(2.75rem,6vw,5.5rem)] text-foreground"
+          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
         >
-<<<<<<< HEAD
-          We engineer digital products that move{' '}
-          <span className="text-gradient">ambitious brands</span> forward.
-        </motion.h1>
-=======
           <p className="text-muted-dark text-xs tracking-[0.3em] uppercase mb-2 font-mono">
             Studio Rekayasa Perangkat Lunak &amp; Web Modern
           </p>
@@ -192,37 +131,25 @@ export function Hero() {
             className='mx-auto h-auto w-[clamp(260px,72vw,630px)]'
           ></Image>
         </motion.div>
->>>>>>> 75cb26d1dfec24399f916c4a7a3d71a791bcb7a2
 
         <motion.p
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-<<<<<<< HEAD
-          transition={{ duration: 1, delay: 0.3, ease }}
-          className="mt-8 text-lg md:text-xl text-muted-dark max-w-2xl mx-auto leading-relaxed"
-        >
-          Syntax Loft designs and builds high-performance websites and applications for companies that refuse to blend in.
-=======
           transition={{ duration: 1, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
           className="text-muted text-lg md:text-xl max-w-2xl mx-auto mb-12 leading-relaxed font-light"
         >
           Kami membangun website modern, aplikasi web kustom berkinerja tinggi, dan infrastruktur digital yang scalable untuk mempercepat pertumbuhan bisnis Anda.
->>>>>>> 75cb26d1dfec24399f916c4a7a3d71a791bcb7a2
         </motion.p>
 
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.5, ease }}
-          className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
+          transition={{ duration: 1, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
           <Link
             href="/project-brief"
-<<<<<<< HEAD
-            className="group inline-flex items-center gap-2 px-8 py-4 bg-foreground text-background font-medium rounded-full hover:bg-muted transition-colors duration-300"
-=======
             className="group px-8 py-4 bg-foreground text-background font-semibold rounded-full hover:bg-muted transition-all duration-300 flex items-center gap-2 tactile-btn shadow-xl shadow-white/5"
->>>>>>> 75cb26d1dfec24399f916c4a7a3d71a791bcb7a2
           >
             Mulai Proyek Anda
             <ArrowDownRight size={18} className="group-hover:rotate-45 transition-transform duration-300" />
@@ -235,25 +162,6 @@ export function Hero() {
             <ArrowRight size={16} className="text-muted-dark group-hover:text-white group-hover:translate-x-1 transition-all duration-300" />
           </Link>
         </motion.div>
-<<<<<<< HEAD
-      </div>
-
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
-      >
-        <div className="w-6 h-10 border-2 border-border rounded-full flex justify-center p-2">
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-            className="w-1 h-2 bg-foreground rounded-full"
-          />
-        </div>
-      </motion.div>
-=======
 
         {/* Stats — data strip with hairlines, not a row of identical cards */}
         <motion.div
@@ -285,7 +193,6 @@ export function Hero() {
           </div>
         </motion.div>
       </div>
->>>>>>> 75cb26d1dfec24399f916c4a7a3d71a791bcb7a2
     </section>
   )
 }

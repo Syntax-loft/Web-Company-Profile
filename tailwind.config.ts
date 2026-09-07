@@ -1,4 +1,4 @@
-﻿import type { Config } from 'tailwindcss'
+import type { Config } from 'tailwindcss'
 
 const config: Config = {
   darkMode: ['class'],
@@ -37,19 +37,14 @@ const config: Config = {
         },
       },
       fontFamily: {
-<<<<<<< HEAD
-        sans: ['var(--font-outfit)', 'system-ui', 'sans-serif'],
-        display: ['var(--font-syne)', 'var(--font-outfit)', 'system-ui', 'sans-serif'],
-=======
-        sans: ['Outfit', 'system-ui', 'sans-serif'],
-        display: ['Syne', 'Outfit', 'system-ui', 'sans-serif'],
+        sans: ['var(--font-outfit)', 'Outfit', 'system-ui', 'sans-serif'],
+        display: ['var(--font-syne)', 'Syne', 'var(--font-outfit)', 'system-ui', 'sans-serif'],
         mono: ['JetBrains Mono', 'ui-monospace', 'monospace'],
       },
       borderRadius: {
         lg: '1rem',
         md: '0.75rem',
         sm: '0.5rem',
->>>>>>> 75cb26d1dfec24399f916c4a7a3d71a791bcb7a2
       },
       animation: {
         marquee: 'marquee 30s linear infinite',

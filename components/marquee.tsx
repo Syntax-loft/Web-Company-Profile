@@ -14,31 +14,6 @@ const repeatedClients = [...clients, ...clients, ...clients]
 
 export function Marquee() {
   return (
-<<<<<<< HEAD
-    <section aria-label="Trusted by industry leaders" className="py-16 border-y border-border overflow-hidden bg-[#0f0f0f]">
-      <div className="relative">
-        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[#0f0f0f] to-transparent z-10" />
-        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-[#0f0f0f] to-transparent z-10" />
-
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mb-8 text-muted-dark text-sm tracking-[0.2em] uppercase"
-        >
-          Trusted by Industry Leaders
-        </motion.p>
-
-        <div className="flex w-max animate-marquee">
-          {[false, true].map((isDuplicate) => (
-            <div key={String(isDuplicate)} aria-hidden={isDuplicate || undefined} className="flex">
-              {clients.map((client) => (
-                <div key={`${client}-${isDuplicate}`} className="flex-shrink-0 px-12 py-4">
-                  <span className="text-2xl md:text-3xl font-display font-semibold text-muted/30 hover:text-muted/60 transition-colors duration-300 whitespace-nowrap">
-                    {client}
-                  </span>
-=======
     <section className="py-16 border-b border-border overflow-hidden bg-[#0a0a0a]" aria-label="Klien yang telah kami dampingi">
       <div className="relative">
         {/* Left & Right Fade Gradients */}
@@ -79,7 +54,6 @@ export function Marquee() {
                     {client}
                   </span>
                   <span className="w-2 h-2 rounded-full bg-white/40 shadow-[0_0_8px_rgba(255,255,255,0.3)]" aria-hidden="true" />
->>>>>>> 75cb26d1dfec24399f916c4a7a3d71a791bcb7a2
                 </div>
               ))}
             </div>
