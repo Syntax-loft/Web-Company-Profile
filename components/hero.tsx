@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useRef } from 'react'
 import { motion } from 'framer-motion'
@@ -7,123 +7,85 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
 import Link from 'next/link'
 import { ArrowDownRight } from 'lucide-react'
-import { MagneticButton } from './magnetic-button'
 
 gsap.registerPlugin(ScrollTrigger)
 
+const ease = [0.22, 1, 0.36, 1] as const
+
 export function Hero() {
-  const heroRef = useRef<HTMLDivElement>(null)
-  const textRef = useRef<HTMLDivElement>(null)
+  const heroRef = useRef<HTMLElement>(null)
 
   useGSAP(() => {
-    gsap.from('.syntax-loft-text', {
-      y: 60,
-      opacity: 0,
-      duration: 1.2,
-      ease: 'power3.out',
+    const mm = gsap.matchMedia()
+
+    mm.add('(prefers-reduced-motion: no-preference)', () => {
+      gsap.to('.parallax-slow', {
+        yPercent: 12,
+        ease: 'none',
+        scrollTrigger: { trigger: heroRef.current, start: 'top top', end: 'bottom top', scrub: 1.5 },
+      })
+
+      gsap.to('.parallax-medium', {
+        yPercent: 28,
+        ease: 'none',
+        scrollTrigger: { trigger: heroRef.current, start: 'top top', end: 'bottom top', scrub: 1 },
+      })
+
+      gsap.to('.hero-content', {
+        yPercent: -8,
+        opacity: 0,
+        ease: 'none',
+        scrollTrigger: { trigger: heroRef.current, start: 'center top', end: 'bottom top', scrub: true },
+      })
     })
 
-    gsap.to('.parallax-slow', {
-      yPercent: 15,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: heroRef.current,
-        start: 'top top',
-        end: 'bottom top',
-        scrub: 1.5,
-      },
-    })
-
-    gsap.to('.parallax-medium', {
-      yPercent: 35,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: heroRef.current,
-        start: 'top top',
-        end: 'bottom top',
-        scrub: 1,
-      },
-    })
-
-    gsap.to('.parallax-fast', {
-      yPercent: 55,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: heroRef.current,
-        start: 'top top',
-        end: 'bottom top',
-        scrub: 0.5,
-      },
-    })
-
-    gsap.to('.hero-content', {
-      yPercent: -10,
-      opacity: 0,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: heroRef.current,
-        start: 'center top',
-        end: 'bottom top',
-        scrub: true,
-      },
-    })
-  }, heroRef)
+    return () => mm.revert()
+  }, { scope: heroRef })
 
   return (
-    <section
-      ref={heroRef}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
-    >
-      {/* Background gradient - slowest layer */}
-      <div className="parallax-slow absolute inset-0 bg-gradient-to-b from-background via-background to-[#0f0f0f]" />
-      
-      {/* Grid pattern overlay - medium layer */}
-      <div className="parallax-medium absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:100px_100px]" />
-      
-      {/* Animated circles - medium layer */}
-      <div className="parallax-medium absolute top-1/4 left-1/4 w-96 h-96 bg-white/[0.02] rounded-full blur-3xl animate-pulse" />
-      <div className="parallax-medium absolute bottom-1/4 right-1/4 w-64 h-64 bg-white/[0.02] rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
-      
-      {/* Floating accent shapes - fast layer */}
-      <div className="parallax-fast absolute top-1/3 right-1/5 w-32 h-32 border border-white/5 rounded-full" />
-      <div className="parallax-fast absolute bottom-1/3 left-1/5 w-24 h-24 border border-white/5 rounded-full" />
+    <section ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Full-bleed photographic backdrop */}
+      <div
+        className="parallax-slow absolute inset-[-10%] bg-cover bg-center grayscale contrast-125 opacity-50"
+        style={{ backgroundImage: 'url(https://picsum.photos/seed/dark-workspace/1920/1080)' }}
+      />
+      {/* Radial cinematic wash */}
+      <div className="parallax-medium absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(10,10,10,0.35)_0%,rgba(10,10,10,0.92)_78%)]" />
+      <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-b from-transparent to-background" />
+      {/* Ambient orbs for depth */}
+      <div className="parallax-medium absolute top-1/4 left-[15%] w-[26rem] h-[26rem] bg-white/[0.03] rounded-full blur-3xl" />
+      <div className="parallax-medium absolute bottom-1/4 right-[12%] w-80 h-80 bg-white/[0.03] rounded-full blur-3xl" />
 
-      {/* Content with parallax */}
-      <div ref={textRef} className="hero-content relative z-10 max-w-7xl mx-auto px-6 lg:px-8 text-center">
-        <motion.div
+      {/* Content */}
+      <div className="hero-content relative z-10 w-full max-w-6xl mx-auto px-6 text-center pt-36 pb-44">
+        <motion.h1
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 1, delay: 0.1, ease }}
+          className="font-display font-bold tracking-tight leading-[1.04] text-[clamp(2.75rem,6vw,5.5rem)] text-foreground"
         >
-          <p className="text-muted-dark text-sm tracking-[0.3em] uppercase mb-6">
-            Premium Software House
-          </p>
-        </motion.div>
-
-        <h1 className="syntax-loft-text text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-display font-bold tracking-tight leading-[0.9] mb-8">
-          <span className="block text-foreground">SYNTAX</span>
-          <span className="block text-gradient">LOFT</span>
-        </h1>
+          We engineer digital products that move{' '}
+          <span className="text-gradient">ambitious brands</span> forward.
+        </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-          className="text-muted text-lg md:text-xl max-w-2xl mx-auto mb-12 leading-relaxed"
+          transition={{ duration: 1, delay: 0.3, ease }}
+          className="mt-8 text-lg md:text-xl text-muted-dark max-w-2xl mx-auto leading-relaxed"
         >
-          Transforming bold ideas into high-performance digital experiences. 
-          We build premium websites and applications that drive business growth.
+          Syntax Loft designs and builds high-performance websites and applications for companies that refuse to blend in.
         </motion.p>
 
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
+          transition={{ duration: 1, delay: 0.5, ease }}
+          className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
         >
           <Link
             href="/project-brief"
-            className="group px-8 py-4 bg-foreground text-background font-medium rounded-full hover:bg-muted transition-colors duration-300 flex items-center gap-2"
+            className="group inline-flex items-center gap-2 px-8 py-4 bg-foreground text-background font-medium rounded-full hover:bg-muted transition-colors duration-300"
           >
             Start Your Project
             <ArrowDownRight size={18} className="group-hover:rotate-45 transition-transform duration-300" />
@@ -135,52 +97,6 @@ export function Hero() {
             View Our Work
           </Link>
         </motion.div>
-
-        {/* Stats with stagger */}
-        <motion.div
-          initial="hidden"
-          animate="visible"
-          variants={{
-            hidden: { opacity: 0 },
-            visible: {
-              opacity: 1,
-              transition: {
-                staggerChildren: 0.1,
-                delayChildren: 0.8,
-              },
-            },
-          }}
-          className="mt-16 md:mt-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 max-w-3xl mx-auto px-4"
-        >
-          {[
-            { value: 'Modern Tech Stack', label: 'Built with the latest and most secure technologies.' },
-            { value: '100% Client Focus', label: 'Dedicated attention for your unique business needs.' },
-            { value: 'Scalable Architecture', label: 'Designed to grow seamlessly with your business.' },
-            { value: 'Agile Development', label: 'Fast, transparent, and adaptive workflow.' },
-          ].map((stat, index) => (
-            <motion.div 
-              key={index} 
-              className="text-center"
-              variants={{
-                hidden: { opacity: 0, y: 20 },
-                visible: { 
-                  opacity: 1, 
-                  y: 0,
-                  transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
-                },
-              }}
-            >
-              <motion.div 
-                className="text-lg md:text-xl font-display font-bold text-foreground mb-2 leading-tight"
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.2 }}
-              >
-                {stat.value}
-              </motion.div>
-              <div className="text-sm text-muted-dark leading-relaxed">{stat.label}</div>
-            </motion.div>
-          ))}
-        </motion.div>
       </div>
 
       {/* Scroll indicator */}
@@ -188,7 +104,7 @@ export function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
       >
         <div className="w-6 h-10 border-2 border-border rounded-full flex justify-center p-2">
           <motion.div

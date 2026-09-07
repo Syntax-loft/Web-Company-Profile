@@ -1,0 +1,19 @@
+
+> syntax-loft@1.0.0 dev
+> next dev
+
+▲ Next.js 16.2.4 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.8.130:3000
+✓ Ready in 5.6s
+
+ GET / 200 in 1779ms (next.js: 905ms, application-code: 874ms)
+ GET /about 200 in 1554ms (next.js: 1403ms, application-code: 151ms)
+ GET /services 200 in 190ms (next.js: 63ms, application-code: 127ms)
+ GET /work 200 in 1299ms (next.js: 1123ms, application-code: 176ms)
+ GET /clients 200 in 1426ms (next.js: 1053ms, application-code: 374ms)
+ GET /contact 200 in 1295ms (next.js: 1078ms, application-code: 217ms)
+ GET /project-brief 200 in 1187ms (next.js: 981ms, application-code: 206ms)
+ GET /ai-chat 200 in 1205ms (next.js: 1087ms, application-code: 118ms)
+ GET / 200 in 178ms (next.js: 7ms, application-code: 171ms)
+[?25h

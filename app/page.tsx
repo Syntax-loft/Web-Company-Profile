@@ -1,176 +1,156 @@
-import { Hero } from '@/components/hero'
-import { ServiceCard } from '@/components/service-card'
-import { PortfolioCard } from '@/components/portfolio-card'
-import { SectionHeader } from '@/components/section-header'
+﻿import { Hero } from '@/components/hero'
+import { Marquee } from '@/components/marquee'
+import { ScrubReveal } from '@/components/scrub-reveal'
+import { HorizontalAccordion } from '@/components/horizontal-accordion'
+import { WorkGallery } from '@/components/work-gallery'
 import { CTASection } from '@/components/cta-section'
-import { ScrollReveal, StaggerContainer, StaggerItem } from '@/components/scroll-reveal'
-import { Code2, Palette, Layers, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
+import { ArrowRight, Code2, Layers, Palette, Zap } from 'lucide-react'
 
-const services = [
-  {
-    title: 'Web Development',
-    description: 'High-performance websites and web applications built with modern technologies like Next.js, React, and TypeScript.',
-    icon: <Code2 size={24} />,
-    href: '/services',
-  },
-  {
-    title: 'UI/UX Design',
-    description: 'Beautiful, intuitive interfaces that delight users and drive conversions through thoughtful design systems.',
-    icon: <Palette size={24} />,
-    href: '/services',
-  },
-  {
-    title: 'System Integration',
-    description: 'Seamless integration of third-party services, APIs, and legacy systems for unified digital ecosystems.',
-    icon: <Layers size={24} />,
-    href: '/services',
-  },
-]
-
-const featuredWorks = [
-  {
-    title: 'E-Commerce Platform',
-    category: 'Web Development',
-    description: 'A modern e-commerce platform with seamless checkout experience and real-time inventory management.',
-    image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop',
-    href: '/work',
-  },
-  {
-    title: 'SaaS Dashboard',
-    category: 'UI/UX Design',
-    description: 'Analytics dashboard with intuitive data visualization and customizable reporting features.',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop',
-    href: '/work',
-  },
-  {
-    title: 'Corporate Website',
-    category: 'Web Development',
-    description: 'Premium corporate website with dynamic content management and multi-language support.',
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop',
-    href: '/work',
-  },
-]
+const pillA = 'https://picsum.photos/seed/team-collab/400/200'
+const pillB = 'https://picsum.photos/seed/sketch-wireframe/400/200'
 
 export default function Home() {
   return (
     <>
       <Hero />
-      
-      {/* Services Section */}
-      <section className="py-24 lg:py-32">
+
+      {/* Client / tech ticker */}
+      <Marquee />
+
+      {/* Interest: gapless bento grid */}
+      <section className="py-32 md:py-48">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <ScrollReveal>
-            <SectionHeader
-              label="Our Services"
-              title="We build digital experiences that matter"
-              description="From concept to deployment, we deliver comprehensive solutions that drive business growth and user engagement."
-            />
-          </ScrollReveal>
-          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-12" staggerDelay={0.12}>
-            {services.map((service) => (
-              <StaggerItem key={service.title}>
-                <ServiceCard {...service} />
-              </StaggerItem>
-            ))}
-          </StaggerContainer>
+          <h2 className="max-w-5xl font-display font-bold tracking-tight leading-[1.1] text-4xl md:text-6xl text-foreground">
+            We build{' '}
+            <span
+              aria-hidden
+              className="inline-block align-middle w-20 h-10 md:w-28 md:h-14 rounded-full bg-cover bg-center mx-2 border border-border"
+              style={{ backgroundImage: `url(${pillA})` }}
+            />{' '}
+            digital products people rely on every single day.
+          </h2>
+          <p className="mt-6 max-w-2xl text-lg text-muted-dark leading-relaxed">
+            Strategy, design, and engineering under one roof, so nothing gets lost between the people who imagine the product and the people who ship it.
+          </p>
+
+          {/* 4 cols x 3 rows = 12 cells. Spans: 4 + 2 + 1 + 1 + 2 + 2 = 12. Zero voids. */}
+          <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 auto-rows-[240px] grid-flow-dense gap-px bg-border rounded-3xl overflow-hidden border border-border">
+            {/* A: Web Development (2x2) */}
+            <Link
+              href="/services"
+              className="group relative sm:col-span-2 sm:row-span-2 overflow-hidden bg-background"
+            >
+              <div
+                className="absolute inset-0 bg-cover bg-center grayscale-[40%] scale-105 group-hover:scale-100 group-hover:grayscale-0 transition-all duration-700 ease-out"
+                style={{ backgroundImage: 'url(https://picsum.photos/seed/code-dark/1200/1200)' }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-black/40" />
+              <div className="relative h-full flex flex-col justify-end p-8">
+                <Code2 size={28} className="text-white mb-4" />
+                <h3 className="font-display font-bold text-2xl md:text-3xl text-white">Web Development</h3>
+                <p className="mt-2 text-sm text-neutral-300 max-w-md leading-relaxed">
+                  High-performance websites and applications built on Next.js, React, and TypeScript.
+                </p>
+              </div>
+            </Link>
+
+            {/* B: UI/UX Design (2x1) with inline typography image */}
+            <Link
+              href="/services"
+              className="group relative sm:col-span-2 overflow-hidden bg-[#0d0d0d] p-8 flex flex-col justify-between hover:bg-[#111111] transition-colors duration-300"
+            >
+              <Palette size={24} className="text-muted-dark" />
+              <div>
+                <h3 className="font-display font-bold text-2xl md:text-3xl leading-[1.15] text-foreground">
+                  Interfaces that feel{' '}
+                  <span
+                    aria-hidden
+                    className="inline-block align-middle w-16 h-8 md:w-24 md:h-11 rounded-full bg-cover bg-center mx-1 border border-border group-hover:scale-110 transition-transform duration-500"
+                    style={{ backgroundImage: `url(${pillB})` }}
+                  />{' '}
+                  effortless.
+                </h3>
+                <p className="mt-3 text-sm text-muted-dark">Research-driven design systems that scale.</p>
+              </div>
+            </Link>
+
+            {/* C: System Integration (1x1) */}
+            <Link href="/services" className="group relative overflow-hidden bg-background p-7 flex flex-col justify-between">
+              <Layers size={24} className="text-muted-dark" />
+              <div>
+                <h3 className="font-display font-bold text-xl text-foreground">System Integration</h3>
+                <p className="mt-2 text-xs text-muted-dark leading-relaxed">APIs, legacy systems, and third-party services, unified.</p>
+              </div>
+            </Link>
+
+            {/* D: Performance (1x1) */}
+            <Link href="/services" className="group relative overflow-hidden bg-background p-7 flex flex-col justify-between">
+              <Zap size={24} className="text-muted-dark" />
+              <div>
+                <h3 className="font-display font-bold text-xl text-foreground">Performance First</h3>
+                <p className="mt-2 text-xs text-muted-dark leading-relaxed">Sub-second loads and green Core Web Vitals, always.</p>
+              </div>
+            </Link>
+
+            {/* F: Process teaser (2x1) */}
+            <Link
+              href="#process"
+              className="group relative overflow-hidden bg-[#0d0d0d] p-8 flex items-end justify-between hover:bg-[#111111] transition-colors duration-300"
+            >
+              <div>
+                <h3 className="font-display font-bold text-2xl text-foreground">From first sketch to production deploy</h3>
+                <p className="mt-2 text-sm text-muted-dark">See exactly how a project moves through our studio.</p>
+              </div>
+              <div className="shrink-0 w-11 h-11 rounded-full border border-border flex items-center justify-center text-foreground group-hover:bg-foreground group-hover:text-background transition-colors duration-300">
+                <ArrowRight size={18} />
+              </div>
+            </Link>
+
+            {/* E: Client words (2x1) */}
+            <figure className="relative overflow-hidden bg-background p-8 flex flex-col justify-between">
+              <blockquote className="font-display font-semibold text-xl md:text-2xl leading-snug text-foreground">
+                They shipped in six weeks what our previous vendor could not ship in six months.
+              </blockquote>
+              <figcaption className="text-sm text-muted-dark">Product Lead, logistics platform client</figcaption>
+            </figure>
+          </div>
         </div>
       </section>
 
-      {/* Featured Work Section */}
-      <section className="py-24 lg:py-32 bg-[#0f0f0f]">
+      {/* Desire 1: process accordion */}
+      <HorizontalAccordion />
+
+      {/* Desire 2: scrubbing manifesto */}
+      <section className="py-32 md:py-48">
+        <div className="max-w-6xl mx-auto px-6 lg:px-8">
+          <ScrubReveal
+            className="font-display font-semibold tracking-tight leading-[1.18] text-3xl md:text-5xl text-foreground"
+            text="Great software is invisible. It loads before you blink, reads like conversation, and gets out of the way so the work itself shines."
+          />
+        </div>
+      </section>
+
+      {/* Desire 3: selected work with scroll-driven media */}
+      <section className="py-32 md:py-48 pt-0">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <ScrollReveal>
-            <div className="flex items-end justify-between mb-16">
-              <div>
-                <p className="text-muted-dark text-sm tracking-[0.2em] uppercase mb-4">Featured Work</p>
-                <h2 className="text-3xl md:text-5xl font-display font-bold text-foreground">
-                  Selected projects
-                </h2>
-              </div>
-              <Link
-                href="/work"
-                className="hidden md:flex items-center gap-2 text-foreground hover:text-muted transition-colors group"
-              >
-                View all work
-                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-              </Link>
-            </div>
-          </ScrollReveal>
-          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" staggerDelay={0.1}>
-            {featuredWorks.map((work) => (
-              <StaggerItem key={work.title}>
-                <PortfolioCard {...work} />
-              </StaggerItem>
-            ))}
-          </StaggerContainer>
-          <div className="mt-12 text-center md:hidden">
+          <div className="flex flex-wrap items-end justify-between gap-8">
+            <h2 className="max-w-3xl font-display font-bold tracking-tight leading-[1.08] text-4xl md:text-6xl text-foreground">
+              Selected work, built to last.
+            </h2>
             <Link
               href="/work"
-              className="inline-flex items-center gap-2 px-6 py-3 border border-border rounded-full text-foreground"
+              className="inline-flex items-center gap-2 px-7 py-3.5 border border-border text-foreground font-medium rounded-full hover:bg-white/5 transition-colors duration-300"
             >
               View all work
               <ArrowRight size={18} />
             </Link>
           </div>
+          <WorkGallery />
         </div>
       </section>
 
-      {/* Shape Divider Section */}
-      <section className="relative py-24 lg:py-32 overflow-hidden">
-        {/* Top wave divider */}
-        <div className="absolute top-0 left-0 w-full overflow-hidden leading-none rotate-180">
-          <svg className="relative block w-full h-16 md:h-24" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" className="fill-[#0f0f0f]"></path>
-          </svg>
-        </div>
-
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            <ScrollReveal direction="left">
-              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
-                <img
-                  src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=600&fit=crop"
-                  alt="Code editor dark theme"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-tr from-[#0A0A0A]/60 to-transparent" />
-              </div>
-            </ScrollReveal>
-            <ScrollReveal direction="right">
-              <div>
-                <p className="text-muted-dark text-sm tracking-[0.2em] uppercase mb-4">Our Approach</p>
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-foreground leading-tight mb-6">
-                  Built with precision.<br />
-                  <span className="text-gradient">Powered by passion.</span>
-                </h2>
-                <p className="text-muted-dark text-lg leading-relaxed mb-8">
-                  Every line of code is crafted with intention. We combine cutting-edge technology 
-                  with thoughtful design to create digital experiences that leave lasting impressions.
-                </p>
-                <div className="flex flex-wrap gap-4">
-                  {['Next.js', 'TypeScript', 'Tailwind CSS', 'Node.js'].map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-4 py-2 border border-border rounded-full text-sm text-muted hover:border-foreground/50 hover:text-foreground transition-colors"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </ScrollReveal>
-          </div>
-        </div>
-
-        {/* Bottom wave divider */}
-        <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
-          <svg className="relative block w-full h-16 md:h-24" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" className="fill-[#0f0f0f]"></path>
-          </svg>
-        </div>
-      </section>
-
+      {/* Action */}
       <CTASection />
     </>
   )

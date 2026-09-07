@@ -1,6 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap');
-
-@tailwind base;
+﻿@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
@@ -17,8 +15,32 @@ html {
 body {
   background-color: #0A0A0A;
   color: #FFFFFF;
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: var(--font-outfit), system-ui, sans-serif;
   overflow-x: hidden;
+}
+
+/* Visible keyboard focus â€” never remove outlines entirely */
+:focus-visible {
+  outline: 2px solid #FFFFFF;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Respect user motion preference globally (PRD: heavy anims off for
+   low-power / motion-sensitive users). Component-level gates in
+   hero.tsx (GSAP) and loading-screen.tsx handle JS-driven motion. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 ::selection {
@@ -183,3 +205,4 @@ body {
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
 }
+

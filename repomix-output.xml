@@ -1,0 +1,3691 @@
+This file is a merged representation of the entire codebase, combined into a single document by Repomix.
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of the entire repository's contents.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+</file_summary>
+
+<directory_structure>
+app/
+  (chat)/
+    ai-chat/
+      page.tsx
+    layout.tsx
+  about/
+    page.tsx
+  clients/
+    page.tsx
+  contact/
+    page.tsx
+  project-brief/
+    page.tsx
+  services/
+    page.tsx
+  work/
+    page.tsx
+  globals.css
+  layout.tsx
+  page.tsx
+  template.tsx
+components/
+  ai-chat.tsx
+  cta-section.tsx
+  footer.tsx
+  google-form-embed.tsx
+  hero.tsx
+  loading-screen.tsx
+  magnetic-button.tsx
+  marquee.tsx
+  navigation.tsx
+  page-transition.tsx
+  portfolio-card.tsx
+  project-brief-faq.tsx
+  reading-progress.tsx
+  scroll-reveal.tsx
+  section-header.tsx
+  service-card.tsx
+  text-reveal.tsx
+types/
+  puter.d.ts
+.gitignore
+.repomixignore
+next.config.js
+package.json
+postcss.config.js
+repomix.config.json
+tailwind.config.ts
+tsconfig.json
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path=".repomixignore">
+# Lock files (large, not useful for AI context)
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Documentation (not source code)
+prd.md
+section.md
+README.md
+
+# Empty / typo files
+pertamna
+
+# Environment files
+.env
+.env.*
+</file>
+
+<file path="repomix.config.json">
+{
+  "$schema": "https://repomix.com/schemas/latest/schema.json",
+  "input": {
+    "maxFileSize": 52428800
+  },
+  "output": {
+    "filePath": "repomix-output.xml",
+    "style": "xml",
+    "filePathStyle": "target-relative",
+    "parsableStyle": false,
+    "fileSummary": true,
+    "directoryStructure": true,
+    "files": true,
+    "removeComments": false,
+    "removeEmptyLines": false,
+    "compress": false,
+    "topFilesLength": 5,
+    "showLineNumbers": false,
+    "truncateBase64": false,
+    "copyToClipboard": false,
+    "includeFullDirectoryStructure": false,
+    "tokenCountTree": true,
+    "git": {
+      "sortByChanges": true,
+      "sortByChangesMaxCommits": 100,
+      "includeDiffs": false,
+      "includeLogs": false,
+      "includeLogsCount": 50
+    }
+  },
+  "include": [],
+  "ignore": {
+    "useGitignore": true,
+    "useDotIgnore": true,
+    "useDefaultPatterns": true,
+    "customPatterns": []
+  },
+  "security": {
+    "enableSecurityCheck": true
+  },
+  "tokenCount": {
+    "encoding": "o200k_base"
+  }
+}
+</file>
+
+<file path="app/(chat)/ai-chat/page.tsx">
+import { AIChat } from '@/components/ai-chat'
+
+export const metadata = {
+  title: 'AI Chat | Syntax Loft',
+  description: 'Chat dengan asisten digital Syntax Loft untuk info layanan pembuatan website dan aplikasi',
+}
+
+export default function AIChatPage() {
+  return (
+    <>
+      <script src="https://js.puter.com/v2/" async></script>
+      <div className="min-h-screen px-4">
+        <AIChat />
+      </div>
+    </>
+  )
+}
+</file>
+
+<file path="app/(chat)/layout.tsx">
+export default function ChatLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return <>{children}</>
+}
+</file>
+
+<file path="app/about/page.tsx">
+'use client'
+
+import { useState } from 'react'
+import { motion } from 'framer-motion'
+import { SectionHeader } from '@/components/section-header'
+import { CTASection } from '@/components/cta-section'
+import { Target, Lightbulb, Users, Zap } from 'lucide-react'
+
+const values = [
+  {
+    icon: <Target size={24} />,
+    title: 'Precision',
+    description: 'We pay attention to every detail, ensuring pixel-perfect implementation and flawless functionality.',
+  },
+  {
+    icon: <Lightbulb size={24} />,
+    title: 'Innovation',
+    description: 'We embrace new technologies and creative solutions to solve complex problems.',
+  },
+  {
+    icon: <Users size={24} />,
+    title: 'Collaboration',
+    description: 'We work closely with our clients, treating every project as a true partnership.',
+  },
+  {
+    icon: <Zap size={24} />,
+    title: 'Performance',
+    description: 'Speed and efficiency are at the core of everything we build.',
+  },
+]
+
+const teamMembers = [
+  {
+    id: 1,
+    name: 'Muhamad Dava Rayhan',
+    role: 'Founder & Lead Consultant',
+    bio: 'Bridging enterprise-level development with boutique consultancy. Specialized in Next.js, React, and modern web architecture.',
+    isFounder: true,
+  },
+  {
+    id: 2,
+    name: 'Nama Cofounder',
+    role: 'Co-founder & CTO',
+    bio: 'Ahli dalam arsitektur yang dapat diskalakan dan pengembangan full-stack.',
+    isFounder: false,
+  },
+  {
+    id: 3,
+    name: 'Nama Anggota Tim',
+    role: 'Lead Developer',
+    bio: 'Spesialisasi dalam performa frontend dan optimisasi React.',
+    isFounder: false,
+  },
+  {
+    id: 4,
+    name: 'Nama Anggota Tim',
+    role: 'UI/UX Designer',
+    bio: 'Membuat pengalaman pengguna yang intuitif dan desain interface yang menarik.',
+    isFounder: false,
+  },
+]
+
+export default function AboutPage() {
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
+
+  return (
+    <>
+      {/* Hero */}
+      <section className="pt-32 pb-20">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <SectionHeader
+            label="About Us"
+            title="We craft digital excellence"
+            description="Premium web development, personal touch. Founded in 2026, Syntax Loft is my boutique consultancy for businesses ready to elevate their digital presence with modern technology."
+            centered
+          />
+        </div>
+      </section>
+
+      {/* Philosophy */}
+      <section className="py-24 bg-[#0f0f0f]">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-6">
+                Our Philosophy
+              </h2>
+              <div className="space-y-4 text-muted-dark">
+                <p>
+                  Syntax Loft launched in 2026 with a simple mission: bring enterprise-level web 
+                  development to businesses of all sizes, without the enterprise-level bureaucracy.
+                </p>
+                <p>
+                  As a consultant, I bridge the gap between technical complexity and business goals. 
+                  You get senior-level expertise with the agility of a solo operator who genuinely 
+                  cares about outcomes.
+                </p>
+                <p>
+                  No cookie-cutter solutions. Every project starts with understanding your unique 
+                  challenges, then crafting tailored solutions using the latest tech stack.
+                </p>
+              </div>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="relative"
+            >
+              <div className="aspect-[4/3] lg:aspect-[4/5] rounded-2xl bg-border overflow-hidden max-h-[400px] lg:max-h-none">
+                <div className="w-full h-full bg-[#1a1a1a] flex items-center justify-center text-muted-dark">
+                  Founder Photo
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Values */}
+      <section className="py-24">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <SectionHeader
+            label="Our Values"
+            title="What drives us"
+            centered
+          />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {values.map((value, index) => (
+              <motion.div
+                key={value.title}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="p-8 border border-border rounded-2xl text-center hover:bg-white/[0.02] transition-colors"
+              >
+                <div className="w-14 h-14 mx-auto mb-4 bg-white/5 rounded-xl flex items-center justify-center text-foreground">
+                  {value.icon}
+                </div>
+                <h3 className="text-lg font-display font-semibold text-foreground mb-2">
+                  {value.title}
+                </h3>
+                <p className="text-sm text-muted-dark">
+                  {value.description}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+            {/* Team - Clean Grid Layout */}
+            <section className="py-24 bg-[#0f0f0f]">
+              <div className="max-w-7xl mx-auto px-6 lg:px-8">
+                <SectionHeader
+                  label="Meet the Team"
+                  title="Our Expert Team"
+                  centered
+                />
+                <div className="grid gap-6">
+                  {/* Founder Section - Magazine Editorial Layout */}
+                  <div className="lg:col-span-2 mb-12 relative group">
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/[0.05] to-transparent rounded-3xl -z-10" />
+                    
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center p-6 lg:p-12 rounded-3xl border border-border/50 bg-[#121212]/80 backdrop-blur-sm overflow-hidden">
+                      
+                      {/* Image Column */}
+                      <motion.div 
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                        viewport={{ once: true }}
+                        className="lg:col-span-5 relative overflow-hidden rounded-2xl aspect-[3/4]"
+                      >
+                        <div className="absolute inset-0 bg-border/20 transition-transform duration-700 ease-out group-hover:scale-105" />
+                        <div className="absolute inset-0 flex items-center justify-center text-muted-dark font-display text-sm tracking-widest uppercase grayscale group-hover:grayscale-0 transition-all duration-700 bg-[#1a1a1a]">
+                          Portrait Area
+                        </div>
+                        {/* Elegant overlay gradient */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60" />
+                      </motion.div>
+
+                      {/* Content Column */}
+                      <div className="lg:col-span-7 flex flex-col justify-center space-y-8">
+                        <div>
+                          <motion.p 
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6, delay: 0.2 }}
+                            viewport={{ once: true }}
+                            className="text-[10px] sm:text-xs tracking-[0.2em] md:tracking-[0.3em] uppercase text-foreground/50 mb-4 font-semibold"
+                          >
+                            Founder & Lead Consultant
+                          </motion.p>
+                          <motion.h3 
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6, delay: 0.3 }}
+                            viewport={{ once: true }}
+                            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold text-foreground leading-[1.1] tracking-tight"
+                          >
+                            Muhamad
+                            <br />
+                            <span className="text-foreground/40 italic font-light">Dava Rayhan</span>
+                          </motion.h3>
+                        </div>
+
+                        <motion.div 
+                          initial={{ opacity: 0, y: 20 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          transition={{ duration: 0.6, delay: 0.4 }}
+                          viewport={{ once: true }}
+                          className="relative pl-6 md:pl-8 border-l border-white/10"
+                        >
+                          <p className="text-lg md:text-xl text-muted-dark leading-relaxed font-light italic">
+                            "Bridging enterprise-level development with boutique consultancy. Specialized in Next.js, React, and modern web architecture to deliver unparalleled digital experiences."
+                          </p>
+                        </motion.div>
+
+                        <motion.div 
+                          initial={{ opacity: 0 }}
+                          whileInView={{ opacity: 1 }}
+                          transition={{ duration: 0.6, delay: 0.6 }}
+                          viewport={{ once: true }}
+                          className="flex gap-6 pt-4 border-t border-white/5"
+                        >
+                           <button className="text-sm font-medium text-foreground/60 hover:text-white transition-colors uppercase tracking-wider relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-px after:bg-white hover:after:w-full after:transition-all after:duration-300">
+                             LinkedIn
+                           </button>
+                           <button className="text-sm font-medium text-foreground/60 hover:text-white transition-colors uppercase tracking-wider relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-px after:bg-white hover:after:w-full after:transition-all after:duration-300">
+                             Twitter
+                           </button>
+                        </motion.div>
+                      </div>
+
+                    </div>
+                  </div>
+
+                   {/* Team Members Grid - Horizontal Mini-Cards */}
+                  <div className="grid gap-6 lg:gap-8 lg:grid-cols-2 mt-8">
+                    {teamMembers
+                      .filter(member => !member.isFounder)
+                      .map((member, index) => (
+                        <motion.div
+                          key={member.id}
+                          initial={{ opacity: 0, y: 30 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          transition={{ duration: 0.7, delay: 0.2 + (index * 0.15), ease: [0.16, 1, 0.3, 1] }}
+                          viewport={{ once: true }}
+                          className="group flex flex-col sm:flex-row gap-6 p-5 sm:p-6 rounded-3xl border border-border/50 bg-[#121212]/50 hover:bg-[#1a1a1a]/80 transition-all duration-500 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/40 hover:border-white/20"
+                        >
+                          {/* Left: Image Column */}
+                          <div className="w-full sm:w-1/3 shrink-0 relative overflow-hidden rounded-2xl aspect-[3/4] sm:h-full min-h-[200px]">
+                            <div className="absolute inset-0 bg-border/20 transition-transform duration-700 ease-out group-hover:scale-105" />
+                            <div className="absolute inset-0 bg-[#1a1a1a] flex items-center justify-center text-muted-dark font-display text-2xl tracking-widest uppercase grayscale group-hover:grayscale-0 transition-all duration-700">
+                              {member.name.split(' ').map(n => n[0]).join('')}
+                            </div>
+                            {/* Subtle vignette/gradient over image */}
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80" />
+                          </div>
+
+                          {/* Right: Content Column */}
+                          <div className="flex flex-col justify-center sm:w-2/3 py-2">
+                            <p className="text-[10px] tracking-[0.2em] uppercase text-foreground/50 mb-2 font-semibold transition-colors duration-500 group-hover:text-foreground/80">
+                              {member.role}
+                            </p>
+                            <h3 className="text-xl md:text-2xl font-display font-bold text-foreground mb-3 transition-colors duration-300 group-hover:text-white">
+                              {member.name}
+                            </h3>
+                            <p className="text-sm text-muted-dark leading-relaxed font-light mb-6 flex-1 transition-colors duration-500 group-hover:text-foreground/80">
+                              {member.bio}
+                            </p>
+                            
+                            {/* Links */}
+                            <div className="flex gap-4 mt-auto border-t border-white/5 pt-4 group-hover:border-white/10 transition-colors duration-500">
+                              <button className="text-[10px] font-medium text-foreground/50 hover:text-white transition-colors uppercase tracking-wider relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-px after:bg-white hover:after:w-full after:transition-all after:duration-300">
+                                LinkedIn
+                              </button>
+                              <button className="text-[10px] font-medium text-foreground/50 hover:text-white transition-colors uppercase tracking-wider relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-px after:bg-white hover:after:w-full after:transition-all after:duration-300">
+                                Twitter
+                              </button>
+                            </div>
+                          </div>
+                        </motion.div>
+                      ))}
+                  </div>
+                </div>
+              </div>
+            </section>
+      <CTASection />
+    </>
+  )
+}
+</file>
+
+<file path="app/clients/page.tsx">
+'use client'
+
+import { motion } from 'framer-motion'
+import { SectionHeader } from '@/components/section-header'
+import { CTASection } from '@/components/cta-section'
+import { ScrollReveal, StaggerContainer, StaggerItem } from '@/components/scroll-reveal'
+import { Code2, ShoppingBag, GraduationCap, Heart, Building2, Zap, BarChart3, Users } from 'lucide-react'
+
+const industries = [
+  { name: 'Technology', icon: <Code2 size={28} />, description: 'SaaS platforms, developer tools, and tech startups' },
+  { name: 'Finance', icon: <BarChart3 size={28} />, description: 'Fintech solutions, banking interfaces, and trading platforms' },
+  { name: 'Healthcare', icon: <Heart size={28} />, description: 'Patient portals, telemedicine, and health tracking apps' },
+  { name: 'Education', icon: <GraduationCap size={28} />, description: 'E-learning platforms, course management, and training portals' },
+  { name: 'E-Commerce', icon: <ShoppingBag size={28} />, description: 'Online stores, marketplaces, and retail solutions' },
+  { name: 'Real Estate', icon: <Building2 size={28} />, description: 'Property listings, virtual tours, and agent platforms' },
+  { name: 'Energy', icon: <Zap size={28} />, description: 'Utility dashboards, monitoring systems, and sustainability tools' },
+  { name: 'Professional Services', icon: <Users size={28} />, description: 'Agency websites, portfolios, and service platforms' },
+]
+
+const whyWorkWithUs = [
+  {
+    title: 'Technical Excellence',
+    description: 'We write clean, maintainable code using modern frameworks like Next.js, React, and TypeScript. Our solutions are built to scale.',
+  },
+  {
+    title: 'Design-First Approach',
+    description: 'Every project starts with understanding your users. We create intuitive interfaces that look beautiful and function flawlessly.',
+  },
+  {
+    title: 'Clear Communication',
+    description: 'No technical jargon or black boxes. We keep you informed at every stage with regular updates and transparent timelines.',
+  },
+]
+
+export default function ClientsPage() {
+  return (
+    <>
+      {/* Hero */}
+      <section className="pt-32 pb-20">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <ScrollReveal>
+            <SectionHeader
+              label="Expertise"
+              title="Industries we serve"
+              description="We bring domain knowledge and technical expertise across multiple sectors, helping businesses of all sizes build impactful digital products."
+              centered
+            />
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* Industries Grid with Stagger */}
+      <section className="pb-24">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" staggerDelay={0.08}>
+            {industries.map((industry) => (
+              <StaggerItem key={industry.name}>
+                <motion.div
+                  whileHover={{ y: -4, transition: { duration: 0.2 } }}
+                  className="p-6 border border-border rounded-2xl hover:bg-white/[0.02] transition-colors duration-300 h-full"
+                >
+                  <div className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center text-foreground mb-4">
+                    {industry.icon}
+                  </div>
+                  <h3 className="text-lg font-display font-semibold text-foreground mb-2">
+                    {industry.name}
+                  </h3>
+                  <p className="text-sm text-muted-dark">{industry.description}</p>
+                </motion.div>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
+        </div>
+      </section>
+
+      {/* Why Work With Us with Stagger */}
+      <section className="py-24 bg-[#0f0f0f]">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <ScrollReveal>
+            <SectionHeader
+              label="Our Approach"
+              title="Why work with us"
+              centered
+            />
+          </ScrollReveal>
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12" staggerDelay={0.15}>
+            {whyWorkWithUs.map((item, index) => (
+              <StaggerItem key={item.title}>
+                <div className="p-8 border border-border rounded-2xl h-full">
+                  <div className="w-10 h-10 bg-white/5 rounded-lg flex items-center justify-center text-foreground mb-6">
+                    <span className="text-lg font-display font-bold">{String(index + 1).padStart(2, '0')}</span>
+                  </div>
+                  <h3 className="text-xl font-display font-semibold text-foreground mb-4">
+                    {item.title}
+                  </h3>
+                  <p className="text-muted-dark leading-relaxed">
+                    {item.description}
+                  </p>
+                </div>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
+        </div>
+      </section>
+
+      <CTASection />
+    </>
+  )
+}
+</file>
+
+<file path="app/contact/page.tsx">
+'use client'
+
+import { useState } from 'react'
+import { motion } from 'framer-motion'
+import { SectionHeader } from '@/components/section-header'
+import { Mail, MapPin, Phone, Send, ArrowUpRight } from 'lucide-react'
+
+export default function ContactPage() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    company: '',
+    service: '',
+    message: '',
+  })
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    // Handle form submission
+    console.log(formData)
+  }
+
+  return (
+    <>
+      {/* Hero */}
+      <section className="pt-32 pb-20">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <SectionHeader
+            label="Contact"
+            title="Let&apos;s start a conversation"
+            description="Have a project in mind? We&apos;d love to hear about it. Get in touch and let&apos;s create something amazing together."
+            centered
+          />
+        </div>
+      </section>
+
+      {/* Contact Content */}
+      <section className="pb-24">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+            {/* Contact Info */}
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="text-2xl font-display font-semibold text-foreground mb-6">
+                Get in touch
+              </h2>
+              <p className="text-muted-dark mb-8">
+                Whether you have a question about our services, pricing, or just want to say hello, 
+                our team is ready to answer all your questions.
+              </p>
+
+              <div className="space-y-6 mb-8">
+                <a
+                  href="mailto:hello@syntaxloft.com"
+                  className="flex items-center gap-4 group"
+                >
+                  <div className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center text-foreground group-hover:bg-white/10 transition-colors">
+                    <Mail size={20} />
+                  </div>
+                  <div>
+                    <p className="text-sm text-muted-dark">Email</p>
+                    <p className="text-foreground group-hover:text-muted transition-colors">
+                      hello@syntaxloft.com
+                    </p>
+                  </div>
+                  <ArrowUpRight size={18} className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity" />
+                </a>
+
+                <a
+                  href="tel:+6281234567890"
+                  className="flex items-center gap-4 group"
+                >
+                  <div className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center text-foreground group-hover:bg-white/10 transition-colors">
+                    <Phone size={20} />
+                  </div>
+                  <div>
+                    <p className="text-sm text-muted-dark">Phone</p>
+                    <p className="text-foreground group-hover:text-muted transition-colors">
+                      +62 812 3456 7890
+                    </p>
+                  </div>
+                  <ArrowUpRight size={18} className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity" />
+                </a>
+
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center text-foreground">
+                    <MapPin size={20} />
+                  </div>
+                  <div>
+                    <p className="text-sm text-muted-dark">Address</p>
+                    <p className="text-foreground">
+                      Jakarta, Indonesia
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Calendly Link */}
+              <a
+                href="https://calendly.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-foreground text-background font-medium rounded-full hover:bg-muted transition-colors"
+              >
+                Schedule a Call
+                <ArrowUpRight size={18} />
+              </a>
+            </motion.div>
+
+            {/* Contact Form */}
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <form onSubmit={handleSubmit} className="p-8 border border-border rounded-2xl">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                  <div>
+                    <label className="block text-sm text-muted-dark mb-2">Name</label>
+                    <input
+                      type="text"
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      className="w-full px-4 py-3 bg-white/5 border border-border rounded-xl text-foreground placeholder-muted-dark focus:outline-none focus:border-foreground/50 transition-colors"
+                      placeholder="Your name"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm text-muted-dark mb-2">Email</label>
+                    <input
+                      type="email"
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      className="w-full px-4 py-3 bg-white/5 border border-border rounded-xl text-foreground placeholder-muted-dark focus:outline-none focus:border-foreground/50 transition-colors"
+                      placeholder="your@email.com"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                  <div>
+                    <label className="block text-sm text-muted-dark mb-2">Company</label>
+                    <input
+                      type="text"
+                      value={formData.company}
+                      onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                      className="w-full px-4 py-3 bg-white/5 border border-border rounded-xl text-foreground placeholder-muted-dark focus:outline-none focus:border-foreground/50 transition-colors"
+                      placeholder="Your company"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm text-muted-dark mb-2">Service</label>
+                    <select
+                      value={formData.service}
+                      onChange={(e) => setFormData({ ...formData, service: e.target.value })}
+                      className="w-full px-4 py-3 bg-white/5 border border-border rounded-xl text-foreground focus:outline-none focus:border-foreground/50 transition-colors"
+                    >
+                      <option value="">Select a service</option>
+                      <option value="web">Web Development</option>
+                      <option value="design">UI/UX Design</option>
+                      <option value="mobile">Mobile Development</option>
+                      <option value="consulting">Consulting</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div className="mb-6">
+                  <label className="block text-sm text-muted-dark mb-2">Message</label>
+                  <textarea
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    rows={5}
+                    className="w-full px-4 py-3 bg-white/5 border border-border rounded-xl text-foreground placeholder-muted-dark focus:outline-none focus:border-foreground/50 transition-colors resize-none"
+                    placeholder="Tell us about your project..."
+                    required
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  className="w-full flex items-center justify-center gap-2 px-8 py-4 bg-foreground text-background font-medium rounded-xl hover:bg-muted transition-colors"
+                >
+                  Send Message
+                  <Send size={18} />
+                </button>
+              </form>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+    </>
+  )
+}
+</file>
+
+<file path="app/project-brief/page.tsx">
+import { Metadata } from 'next'
+import { GoogleFormEmbed } from '@/components/google-form-embed'
+import { ProjectBriefFAQ } from '@/components/project-brief-faq'
+import { SectionHeader } from '@/components/section-header'
+import { CTASection } from '@/components/cta-section'
+import { Mail, Phone, ArrowRight, Clock, MessageSquare, FileText } from 'lucide-react'
+import Link from 'next/link'
+
+export const metadata: Metadata = {
+  title: 'Project Brief | Syntax Loft',
+  description: 'Submit your project brief to Syntax Loft. Tell us about your website or application project and we\'ll get back to you within 24-48 hours.',
+}
+
+// Tally form integration
+const TALLY_FORM_URL = 'https://tally.so/r/ODjpok'
+
+const steps = [
+  {
+    icon: <FileText size={24} />,
+    title: 'Fill the Brief',
+    description: 'Complete the form with your project details, requirements, and goals.',
+  },
+  {
+    icon: <Clock size={24} />,
+    title: 'We Review',
+    description: 'Our team reviews your submission and researches your industry.',
+  },
+  {
+    icon: <MessageSquare size={24} />,
+    title: 'Discovery Call',
+    description: 'We schedule a call to discuss your project in detail.',
+  },
+]
+
+export default function ProjectBriefPage() {
+  return (
+    <>
+      {/* Hero Section */}
+      <section className="pt-32 pb-16">
+        <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
+          <SectionHeader
+            label="Start Your Project"
+            title="Tell us about your project"
+            description="Complete this brief form to help us understand your vision. We review all submissions within 24-48 hours and will reach out to schedule a discovery call."
+            centered
+          />
+        </div>
+      </section>
+
+      {/* Process Steps */}
+      <section className="pb-16">
+        <div className="max-w-5xl mx-auto px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {steps.map((step, index) => (
+              <div
+                key={step.title}
+                className="flex flex-col items-center text-center p-6"
+              >
+                <div className="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center text-foreground mb-4">
+                  {step.icon}
+                </div>
+                <div className="text-sm text-muted-dark mb-2">Step {index + 1}</div>
+                <h3 className="text-lg font-semibold text-foreground mb-2">
+                  {step.title}
+                </h3>
+                <p className="text-muted-dark text-sm">
+                  {step.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Tally Form Embed */}
+      <section className="pb-24">
+        <div className="max-w-4xl mx-auto px-6 lg:px-8">
+          <div className="bg-[#0f0f0f] rounded-3xl border border-border p-8 md:p-12">
+            <GoogleFormEmbed 
+              formUrl={TALLY_FORM_URL}
+              height={900}
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Alternative Contact */}
+      <section className="py-16 bg-[#0f0f0f]">
+        <div className="max-w-4xl mx-auto px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-2xl md:text-3xl font-display font-bold text-foreground mb-4">
+              Prefer to talk directly?
+            </h2>
+            <p className="text-muted-dark">
+              We understand some projects are better discussed in person. Reach out to us directly.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <Link
+              href="mailto:hello@syntaxloft.com"
+              className="group flex items-center gap-4 p-6 border border-border rounded-2xl hover:bg-white/[0.02] transition-colors"
+            >
+              <div className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center text-foreground group-hover:bg-white/10 transition-colors">
+                <Mail size={20} />
+              </div>
+              <div className="flex-1">
+                <div className="text-sm text-muted-dark">Email us</div>
+                <div className="text-foreground font-medium">hello@syntaxloft.com</div>
+              </div>
+              <ArrowRight size={18} className="text-muted group-hover:text-foreground group-hover:translate-x-1 transition-all" />
+            </Link>
+
+            <Link
+              href="/contact"
+              className="group flex items-center gap-4 p-6 border border-border rounded-2xl hover:bg-white/[0.02] transition-colors"
+            >
+              <div className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center text-foreground group-hover:bg-white/10 transition-colors">
+                <Phone size={20} />
+              </div>
+              <div className="flex-1">
+                <div className="text-sm text-muted-dark">Schedule a call</div>
+                <div className="text-foreground font-medium">Book a consultation</div>
+              </div>
+              <ArrowRight size={18} className="text-muted group-hover:text-foreground group-hover:translate-x-1 transition-all" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-24">
+        <div className="max-w-3xl mx-auto px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <p className="text-muted-dark text-sm tracking-[0.2em] uppercase mb-4">
+              FAQ
+            </p>
+            <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground">
+              Common questions
+            </h2>
+          </div>
+          <ProjectBriefFAQ />
+        </div>
+      </section>
+
+      <CTASection />
+    </>
+  )
+}
+</file>
+
+<file path="app/services/page.tsx">
+'use client'
+
+import { motion } from 'framer-motion'
+import { SectionHeader } from '@/components/section-header'
+import { CTASection } from '@/components/cta-section'
+import { ScrollReveal, StaggerContainer, StaggerItem } from '@/components/scroll-reveal'
+import { Code2, Palette, Layers, Smartphone, Globe, Database, Check } from 'lucide-react'
+
+const services = [
+  {
+    icon: <Code2 size={32} />,
+    title: 'Web Development',
+    description: 'We build fast, scalable, and secure web applications using cutting-edge technologies.',
+    features: [
+      'Next.js & React Applications',
+      'Headless CMS Integration',
+      'E-commerce Solutions',
+      'Custom Web Applications',
+      'API Development',
+      'Performance Optimization',
+    ],
+  },
+  {
+    icon: <Palette size={32} />,
+    title: 'UI/UX Design',
+    description: 'Human-centered design that creates meaningful connections between brands and users.',
+    features: [
+      'User Research & Testing',
+      'Wireframing & Prototyping',
+      'Design Systems',
+      'Responsive Design',
+      'Interaction Design',
+      'Visual Identity',
+    ],
+  },
+  {
+    icon: <Layers size={32} />,
+    title: 'System Integration',
+    description: 'Seamlessly connect your digital ecosystem for improved efficiency and data flow.',
+    features: [
+      'API Integration',
+      'Third-party Services',
+      'Legacy System Migration',
+      'Data Synchronization',
+      'Cloud Integration',
+      'Automation Workflows',
+    ],
+  },
+  {
+    icon: <Smartphone size={32} />,
+    title: 'Mobile Development',
+    description: 'Native and cross-platform mobile applications that deliver exceptional user experiences.',
+    features: [
+      'iOS & Android Apps',
+      'React Native Development',
+      'Progressive Web Apps',
+      'App Store Optimization',
+      'Push Notifications',
+      'Offline Functionality',
+    ],
+  },
+  {
+    icon: <Globe size={32} />,
+    title: 'SEO & Performance',
+    description: 'Optimize your digital presence for search engines and maximum performance.',
+    features: [
+      'Technical SEO Audit',
+      'Core Web Vitals',
+      'Page Speed Optimization',
+      'Structured Data',
+      'Content Strategy',
+      'Analytics Setup',
+    ],
+  },
+  {
+    icon: <Database size={32} />,
+    title: 'Consulting & Strategy',
+    description: 'Strategic guidance to help you navigate digital transformation and technology decisions.',
+    features: [
+      'Digital Strategy',
+      'Technology Consulting',
+      'Project Planning',
+      'Architecture Review',
+      'Team Augmentation',
+      'Training & Support',
+    ],
+  },
+]
+
+export default function ServicesPage() {
+  return (
+    <>
+      {/* Hero */}
+      <section className="pt-32 pb-20">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <ScrollReveal>
+            <SectionHeader
+              label="Our Services"
+              title="Comprehensive digital solutions"
+              description="From strategy to execution, we provide end-to-end services that transform your digital presence and drive measurable results."
+              centered
+            />
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* Services Grid */}
+      <section className="pb-24">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <StaggerContainer className="grid grid-cols-1 lg:grid-cols-2 gap-8" staggerDelay={0.15}>
+            {services.map((service) => (
+              <StaggerItem key={service.title}>
+                <div className="p-8 lg:p-10 border border-border rounded-2xl hover:bg-white/[0.02] transition-colors duration-500 h-full">
+                  <div className="flex items-start gap-6">
+                    <div className="p-4 bg-white/5 rounded-xl text-foreground shrink-0">
+                      {service.icon}
+                    </div>
+                    <div>
+                      <h3 className="text-2xl font-display font-semibold text-foreground mb-3">
+                        {service.title}
+                      </h3>
+                      <p className="text-muted-dark mb-6">
+                        {service.description}
+                      </p>
+                      <ul className="space-y-2">
+                        {service.features.map((feature) => (
+                          <li key={feature} className="flex items-center gap-3 text-sm text-muted">
+                            <Check size={16} className="text-foreground" />
+                            {feature}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
+        </div>
+      </section>
+
+      <CTASection />
+    </>
+  )
+}
+</file>
+
+<file path="app/work/page.tsx">
+'use client'
+
+import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { SectionHeader } from '@/components/section-header'
+import { PortfolioCard } from '@/components/portfolio-card'
+import { CTASection } from '@/components/cta-section'
+import { ScrollReveal } from '@/components/scroll-reveal'
+
+const categories = ['All', 'Web Development', 'UI/UX Design', 'Mobile App', 'E-Commerce']
+
+const projects = [
+  {
+    title: 'FinTech Analytics Dashboard',
+    category: 'Web Development',
+    description: 'Real-time financial data visualization platform with interactive charts, portfolio tracking, and automated reporting for investment professionals.',
+    image: 'https://images.unsplash.com/photo-1642790106117-e829e14a795f?w=800&h=600&fit=crop',
+    href: '#',
+  },
+  {
+    title: 'E-Learning Platform',
+    category: 'Web Development',
+    description: 'Comprehensive online education platform featuring video streaming, progress tracking, quizzes, and certificate generation for course completion.',
+    image: 'https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=800&h=600&fit=crop',
+    href: '#',
+  },
+  {
+    title: 'Restaurant Reservation System',
+    category: 'Web Development',
+    description: 'Table booking system with real-time availability, SMS notifications, menu integration, and staff management dashboard for hospitality businesses.',
+    image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&h=600&fit=crop',
+    href: '#',
+  },
+  {
+    title: 'Creative Agency Portfolio',
+    category: 'UI/UX Design',
+    description: 'Visually striking portfolio website with smooth animations, case study presentations, and contact form integration for creative professionals.',
+    image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=600&fit=crop',
+    href: '#',
+  },
+  {
+    title: 'SaaS Landing Page',
+    category: 'UI/UX Design',
+    description: 'Conversion-optimized landing page with A/B testing integration, pricing tables, feature showcases, and newsletter signup functionality.',
+    image: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&h=600&fit=crop',
+    href: '#',
+  },
+  {
+    title: 'Property Listing Platform',
+    category: 'Web Development',
+    description: 'Real estate search platform with advanced filtering, map integration, virtual tour support, and agent contact management.',
+    image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop',
+    href: '#',
+  },
+]
+
+export default function WorkPage() {
+  const [activeCategory, setActiveCategory] = useState('All')
+
+  const filteredProjects = activeCategory === 'All'
+    ? projects
+    : projects.filter((p) => p.category === activeCategory)
+
+  return (
+    <>
+      {/* Hero */}
+      <section className="pt-32 pb-20">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <ScrollReveal>
+            <SectionHeader
+              label="Portfolio"
+              title="Our recent work"
+              description="Explore our curated selection of projects that showcase our expertise in design and development."
+              centered
+            />
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* Filter */}
+      <section className="pb-12">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="flex flex-wrap gap-3 justify-center">
+            {categories.map((category) => (
+              <button
+                key={category}
+                onClick={() => setActiveCategory(category)}
+                className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                  activeCategory === category
+                    ? 'bg-foreground text-background'
+                    : 'bg-transparent border border-border text-muted hover:text-foreground hover:border-foreground/50'
+                }`}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Projects Grid */}
+      <section className="pb-24">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeCategory}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.3 }}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            >
+              {filteredProjects.map((project, index) => (
+                <PortfolioCard
+                  key={project.title}
+                  {...project}
+                  index={index}
+                />
+              ))}
+            </motion.div>
+          </AnimatePresence>
+        </div>
+      </section>
+
+      <CTASection />
+    </>
+  )
+}
+</file>
+
+<file path="app/globals.css">
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #0A0A0A;
+  color: #FFFFFF;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Visible keyboard focus — never remove outlines entirely */
+:focus-visible {
+  outline: 2px solid #FFFFFF;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Respect user motion preference globally (PRD: heavy anims off for
+   low-power / motion-sensitive users). Component-level gates in
+   hero.tsx (GSAP) and loading-screen.tsx handle JS-driven motion. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+::selection {
+  background-color: #FFFFFF;
+  color: #0A0A0A;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0A0A0A;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #262626;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #404040;
+}
+
+/* Utility classes */
+.text-gradient {
+  background: linear-gradient(135deg, #FFFFFF 0%, #E5E5E5 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Smooth transitions */
+.transition-smooth {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Hover lift effect */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(255, 255, 255, 0.05);
+}
+
+/* Line reveal animation */
+.line-reveal {
+  position: relative;
+  overflow: hidden;
+}
+
+.line-reveal::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: #FFFFFF;
+  transform: translateX(-100%);
+  transition: transform 0.5s ease;
+}
+
+.line-reveal:hover::after {
+  transform: translateX(0);
+}
+
+/* Smooth page entrance */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Stagger delay utilities */
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+
+/* Magnetic button hover */
+.magnetic-hover {
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Image zoom container */
+.image-zoom-container {
+  overflow: hidden;
+}
+
+.image-zoom-container img {
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.image-zoom-container:hover img {
+  transform: scale(1.05);
+}
+
+/* Text reveal clip */
+.text-clip-reveal {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+}
+
+/* Smooth will-change for animated elements */
+.will-change-transform {
+  will-change: transform;
+}
+
+.will-change-opacity {
+  will-change: opacity;
+}
+
+/* Mobile touch targets - minimum 44px for accessibility */
+.touch-target {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Safe area insets for notched devices */
+@supports (padding-top: env(safe-area-inset-top)) {
+  .safe-area-top {
+    padding-top: env(safe-area-inset-top);
+  }
+  
+  .safe-area-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  
+  .safe-area-x {
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+}
+
+/* Mobile-optimized spacing */
+@media (max-width: 640px) {
+  .mobile-px {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .mobile-py {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+}
+
+/* Prevent horizontal scroll on mobile */
+.no-horizontal-scroll {
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+</file>
+
+<file path="app/layout.tsx">
+import type { Metadata } from 'next'
+import { Inter, Syne } from 'next/font/google'
+import './globals.css'
+import { Navigation } from '@/components/navigation'
+import { Footer } from '@/components/footer'
+import { ReadingProgress } from '@/components/reading-progress'
+import { LoadingScreen } from '@/components/loading-screen'
+
+// Self-hosted fonts via next/font — no render-blocking external request,
+// automatic preload + font-display: swap (Lighthouse performance win).
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap',
+})
+
+const syne = Syne({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800'],
+  variable: '--font-syne',
+  display: 'swap',
+})
+
+export const metadata: Metadata = {
+  title: 'Syntax Loft | Premium Software Development',
+  description: 'Transforming ideas into high-performance digital experiences. Syntax Loft crafts premium websites and applications for ambitious businesses.',
+  keywords: ['software house', 'web development', 'UI/UX design', 'Next.js', 'React', 'TypeScript'],
+  openGraph: {
+    title: 'Syntax Loft | Premium Software Development',
+    description: 'Transforming ideas into high-performance digital experiences.',
+    type: 'website',
+  },
+}
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html lang="id">
+      <body className={`${inter.variable} ${syne.variable} antialiased`}>
+        {/* Skip link — first focusable element for keyboard users */}
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[300] focus:px-5 focus:py-2.5 focus:bg-foreground focus:text-background focus:text-sm focus:font-medium focus:rounded-full"
+        >
+          Skip to content
+        </a>
+        <LoadingScreen />
+        <ReadingProgress />
+        <Navigation />
+        <main id="main-content">{children}</main>
+        <Footer />
+      </body>
+    </html>
+  )
+}
+</file>
+
+<file path="app/page.tsx">
+import { Hero } from '@/components/hero'
+import { ServiceCard } from '@/components/service-card'
+import { PortfolioCard } from '@/components/portfolio-card'
+import { SectionHeader } from '@/components/section-header'
+import { CTASection } from '@/components/cta-section'
+import { ScrollReveal, StaggerContainer, StaggerItem } from '@/components/scroll-reveal'
+import { Marquee } from '@/components/marquee'
+import Image from 'next/image'
+import { Code2, Palette, Layers, ArrowRight } from 'lucide-react'
+import Link from 'next/link'
+
+const services = [
+  {
+    title: 'Web Development',
+    description: 'High-performance websites and web applications built with modern technologies like Next.js, React, and TypeScript.',
+    icon: <Code2 size={24} />,
+    href: '/services',
+  },
+  {
+    title: 'UI/UX Design',
+    description: 'Beautiful, intuitive interfaces that delight users and drive conversions through thoughtful design systems.',
+    icon: <Palette size={24} />,
+    href: '/services',
+  },
+  {
+    title: 'System Integration',
+    description: 'Seamless integration of third-party services, APIs, and legacy systems for unified digital ecosystems.',
+    icon: <Layers size={24} />,
+    href: '/services',
+  },
+]
+
+const featuredWorks = [
+  {
+    title: 'E-Commerce Platform',
+    category: 'Web Development',
+    description: 'A modern e-commerce platform with seamless checkout experience and real-time inventory management.',
+    image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop',
+    href: '/work',
+  },
+  {
+    title: 'SaaS Dashboard',
+    category: 'UI/UX Design',
+    description: 'Analytics dashboard with intuitive data visualization and customizable reporting features.',
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop',
+    href: '/work',
+  },
+  {
+    title: 'Corporate Website',
+    category: 'Web Development',
+    description: 'Premium corporate website with dynamic content management and multi-language support.',
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop',
+    href: '/work',
+  },
+]
+
+export default function Home() {
+  return (
+    <>
+      <Hero />
+
+      {/* Client / tech ticker — PRD requirement for the home page */}
+      <Marquee />
+
+      {/* Services Section */}
+      <section className="py-24 lg:py-32">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <ScrollReveal>
+            <SectionHeader
+              label="Our Services"
+              title="We build digital experiences that matter"
+              description="From concept to deployment, we deliver comprehensive solutions that drive business growth and user engagement."
+            />
+          </ScrollReveal>
+          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-12" staggerDelay={0.12}>
+            {services.map((service, index) => (
+              <StaggerItem key={service.title}>
+                <ServiceCard {...service} index={index} />
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
+        </div>
+      </section>
+
+      {/* Featured Work Section */}
+      <section className="py-24 lg:py-32 bg-[#0f0f0f]">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <ScrollReveal>
+            <div className="flex items-end justify-between mb-16">
+              <div>
+                <p className="text-muted-dark text-sm tracking-[0.2em] uppercase mb-4">Featured Work</p>
+                <h2 className="text-3xl md:text-5xl font-display font-bold text-foreground">
+                  Selected projects
+                </h2>
+              </div>
+              <Link
+                href="/work"
+                className="hidden md:flex items-center gap-2 text-foreground hover:text-muted transition-colors group"
+              >
+                View all work
+                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </div>
+          </ScrollReveal>
+          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" staggerDelay={0.1}>
+            {featuredWorks.map((work) => (
+              <StaggerItem key={work.title}>
+                <PortfolioCard {...work} />
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
+          <div className="mt-12 text-center md:hidden">
+            <Link
+              href="/work"
+              className="inline-flex items-center gap-2 px-6 py-3 border border-border rounded-full text-foreground"
+            >
+              View all work
+              <ArrowRight size={18} />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Shape Divider Section */}
+      <section className="relative py-24 lg:py-32 overflow-hidden">
+        {/* Top wave divider */}
+        <div className="absolute top-0 left-0 w-full overflow-hidden leading-none rotate-180">
+          <svg className="relative block w-full h-16 md:h-24" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" className="fill-[#0f0f0f]"></path>
+          </svg>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <ScrollReveal direction="left">
+              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
+                <Image
+                  src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=600&fit=crop"
+                  alt="Code editor dark theme"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-tr from-[#0A0A0A]/60 to-transparent" />
+              </div>
+            </ScrollReveal>
+            <ScrollReveal direction="right">
+              <div>
+                <p className="text-muted-dark text-sm tracking-[0.2em] uppercase mb-4">Our Approach</p>
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-foreground leading-tight mb-6">
+                  Built with precision.<br />
+                  <span className="text-gradient">Powered by passion.</span>
+                </h2>
+                <p className="text-muted-dark text-lg leading-relaxed mb-8">
+                  Every line of code is crafted with intention. We combine cutting-edge technology 
+                  with thoughtful design to create digital experiences that leave lasting impressions.
+                </p>
+                <div className="flex flex-wrap gap-4">
+                  {['Next.js', 'TypeScript', 'Tailwind CSS', 'Node.js'].map((tech) => (
+                    <span
+                      key={tech}
+                      className="px-4 py-2 border border-border rounded-full text-sm text-muted hover:border-foreground/50 hover:text-foreground transition-colors"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </ScrollReveal>
+          </div>
+        </div>
+
+        {/* Bottom wave divider */}
+        <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
+          <svg className="relative block w-full h-16 md:h-24" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" className="fill-[#0f0f0f]"></path>
+          </svg>
+        </div>
+      </section>
+
+      <CTASection />
+    </>
+  )
+}
+</file>
+
+<file path="app/template.tsx">
+'use client'
+
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
+import { usePathname } from 'next/navigation'
+import { useEffect, useState } from 'react'
+
+const contentVariants = {
+  initial: {
+    opacity: 0,
+    scale: 1.02,
+    y: 20,
+  },
+  animate: {
+    opacity: 1,
+    scale: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: [0.22, 1, 0.36, 1],
+      delay: 0.4,
+    },
+  },
+  exit: {
+    opacity: 0,
+    scale: 0.98,
+    y: -10,
+    transition: {
+      duration: 0.3,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+}
+
+const curtainVariants = {
+  initial: { scaleY: 1 },
+  animate: {
+    scaleY: 0,
+    transition: {
+      duration: 0.8,
+      ease: [0.76, 0, 0.24, 1],
+      delay: 0.1,
+    },
+  },
+  exit: {
+    scaleY: 1,
+    transition: {
+      duration: 0.5,
+      ease: [0.76, 0, 0.24, 1],
+    },
+  },
+}
+
+const logoVariants = {
+  initial: { opacity: 0, y: 10 },
+  animate: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.4, delay: 0.2 },
+  },
+  exit: {
+    opacity: 0,
+    transition: { duration: 0.2 },
+  },
+}
+
+export default function Template({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname()
+  const [isReady, setIsReady] = useState(false)
+  const shouldReduceMotion = useReducedMotion()
+
+  useEffect(() => {
+    setIsReady(true)
+  }, [])
+
+  if (!isReady || shouldReduceMotion) {
+    return <>{children}</>
+  }
+
+  return (
+    <AnimatePresence mode="wait">
+      <motion.div
+        key={pathname}
+        className="relative"
+      >
+        {/* Curtain wipe overlay */}
+        <motion.div
+          variants={curtainVariants}
+          initial="initial"
+          animate="animate"
+          exit="exit"
+          className="fixed inset-0 z-[100] bg-[#0A0A0A] origin-top pointer-events-none flex items-center justify-center"
+        >
+          <motion.span
+            variants={logoVariants}
+            className="text-foreground font-display font-bold text-xl tracking-tight"
+          >
+            SYNTAX/LOFT
+          </motion.span>
+        </motion.div>
+
+        {/* Page content */}
+        <motion.div
+          variants={contentVariants}
+          initial="initial"
+          animate="animate"
+          exit="exit"
+        >
+          {children}
+        </motion.div>
+      </motion.div>
+    </AnimatePresence>
+  )
+}
+</file>
+
+<file path="components/ai-chat.tsx">
+'use client'
+
+import { useState, useRef, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { Send, Bot, User, Loader2 } from 'lucide-react'
+
+interface Message {
+  id: string
+  role: 'user' | 'assistant'
+  content: string
+}
+
+const SYSTEM_PROMPT = 'Lu adalah asisten digital dari Syntax Loft. Syntax Loft adalah software house yang menyediakan jasa pembuatan website dan aplikasi. Tugas lu promosiin jasanya. Jawab dengan santai tapi pro.'
+
+export function AIChat() {
+  const [messages, setMessages] = useState<Message[]>([
+    {
+      id: '1',
+      role: 'assistant',
+      content: 'Halo! Saya asisten digital dari Syntax Loft. Ada yang bisa saya bantu tentang layanan pembuatan website atau aplikasi? Tanya aja! 😊',
+    },
+  ])
+  const [input, setInput] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
+  const messagesEndRef = useRef<HTMLDivElement>(null)
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
+  }
+
+  useEffect(() => {
+    scrollToBottom()
+  }, [messages])
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!input.trim() || isLoading) return
+
+    if (typeof window === 'undefined' || !window.puter) {
+      alert("Sistem AI sedang bersiap, tunggu sebentar ya!")
+      return
+    }
+
+    const userMessage: Message = {
+      id: Date.now().toString(),
+      role: 'user',
+      content: input.trim(),
+    }
+
+    setMessages((prev) => [...prev, userMessage])
+    const currentInput = input.trim()
+    setInput('')
+    setIsLoading(true)
+
+    try {
+      const apiMessages = [
+        { role: 'system', content: SYSTEM_PROMPT },
+        ...messages.map(msg => ({ role: msg.role, content: msg.content })),
+        { role: 'user', content: currentInput }
+      ]
+
+      const response = await window.puter.ai.chat(apiMessages, { model: 'gpt-5.4-nano' })
+
+      const assistantMessage: Message = {
+        id: (Date.now() + 1).toString(),
+        role: 'assistant',
+        content: response?.toString() || 'Maaf, ada masalah nih. Coba lagi ya!',
+      }
+
+      setMessages((prev) => [...prev, assistantMessage])
+    } catch (error) {
+      console.error("Puter Error:", error)
+      const errorMessage: Message = {
+        id: (Date.now() + 1).toString(),
+        role: 'assistant',
+        content: 'Oops, ada error nih. Coba lagi sebentar ya! 😅',
+      }
+      setMessages((prev) => [...prev, errorMessage])
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  return (
+    <div className="flex flex-col h-screen max-w-6xl mx-auto">
+      <div className="text-center py-6 border-b border-border bg-background/50 backdrop-blur">
+        <h1 className="text-2xl font-display font-bold text-foreground mb-1">
+          AI Chat Assistant
+        </h1>
+        <p className="text-sm text-muted">
+          Tanya tentang layanan pembuatan website dan aplikasi Syntax Loft
+        </p>
+      </div>
+
+      <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4 pb-24">
+        <AnimatePresence>
+          {messages.map((message) => (
+            <motion.div
+              key={message.id}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className={`flex gap-3 ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
+            >
+              {message.role === 'assistant' && (
+                <div className="w-8 h-8 rounded-full bg-foreground/10 flex items-center justify-center flex-shrink-0">
+                  <Bot size={18} className="text-foreground" />
+                </div>
+              )}
+              <div
+                className={`max-w-[80%] rounded-2xl px-4 py-3 ${
+                  message.role === 'user'
+                    ? 'bg-foreground text-background'
+                    : 'bg-muted/30 text-foreground'
+                }`}
+              >
+                <p className="text-sm sm:text-base whitespace-pre-wrap">{message.content}</p>
+              </div>
+              {message.role === 'user' && (
+                <div className="w-8 h-8 rounded-full bg-muted/30 flex items-center justify-center flex-shrink-0">
+                  <User size={18} className="text-foreground" />
+                </div>
+              )}
+            </motion.div>
+          ))}
+        </AnimatePresence>
+
+        {isLoading && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="flex gap-3 justify-start"
+          >
+            <div className="w-8 h-8 rounded-full bg-foreground/10 flex items-center justify-center">
+              <Bot size={18} className="text-foreground" />
+            </div>
+            <div className="bg-muted/30 rounded-2xl px-4 py-3">
+              <div className="flex items-center gap-2 text-muted">
+                <Loader2 size={16} className="animate-spin" />
+                <span className="text-sm">Ketik...</span>
+              </div>
+            </div>
+          </motion.div>
+        )}
+
+        <div ref={messagesEndRef} />
+      </div>
+
+      <div className="border-t border-border p-4">
+        <form onSubmit={handleSubmit} className="flex gap-3 max-w-3xl mx-auto">
+          <input
+            type="text"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            placeholder="Tulis pesan..."
+            disabled={isLoading}
+            className="flex-1 px-4 py-3 bg-muted/30 border border-border rounded-xl text-foreground placeholder:text-muted focus:outline-none focus:border-foreground/50 transition-colors"
+          />
+          <button
+            type="submit"
+            disabled={!input.trim() || isLoading}
+            className="px-5 py-3 bg-foreground text-background rounded-xl font-medium hover:bg-muted disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center gap-2"
+          >
+            <Send size={18} />
+            <span className="hidden sm:inline">Kirim</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  )
+}
+</file>
+
+<file path="components/cta-section.tsx">
+'use client'
+
+import { motion } from 'framer-motion'
+import Link from 'next/link'
+import { ArrowRight } from 'lucide-react'
+import { MagneticButton } from './magnetic-button'
+
+export function CTASection() {
+  return (
+    <section className="py-24 lg:py-32">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 60 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          viewport={{ once: true }}
+          className="relative rounded-3xl bg-[#0f0f0f] border border-border p-12 lg:p-20 overflow-hidden"
+        >
+          {/* Background decoration */}
+          <div className="absolute top-0 right-0 w-96 h-96 bg-white/[0.02] rounded-full blur-3xl" />
+          <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/[0.02] rounded-full blur-3xl" />
+          
+          <div className="relative z-10 max-w-3xl">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground leading-tight mb-6">
+              Ready to build something amazing?
+            </h2>
+            <p className="text-muted text-lg mb-10 max-w-xl">
+              Let&apos;s discuss how we can help transform your digital presence and drive measurable results for your business.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <MagneticButton>
+                <Link
+                  href="/project-brief"
+                  className="group inline-flex items-center gap-2 px-8 py-4 bg-foreground text-background font-medium rounded-full hover:bg-muted transition-colors duration-300"
+                >
+                  Start Your Project
+                  <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </MagneticButton>
+              <Link
+                href="/work"
+                className="inline-flex items-center gap-2 px-8 py-4 border border-border text-foreground font-medium rounded-full hover:bg-white/5 transition-colors duration-300"
+              >
+                View Our Work
+              </Link>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  )
+}
+</file>
+
+<file path="components/footer.tsx">
+'use client'
+
+import Link from 'next/link'
+import { motion } from 'framer-motion'
+import { ArrowUpRight, Mail, MapPin, Phone } from 'lucide-react'
+
+const footerLinks = {
+  company: [
+    { label: 'About', href: '/about' },
+    { label: 'Services', href: '/services' },
+    { label: 'Work', href: '/work' },
+    { label: 'Clients', href: '/clients' },
+  ],
+  resources: [
+    { label: 'Project Brief', href: '/project-brief' },
+    { label: 'Contact', href: '/contact' },
+    { label: 'Privacy Policy', href: '#' },
+    { label: 'Terms of Service', href: '#' },
+  ],
+}
+
+export function Footer() {
+  return (
+    <footer className="border-t border-border bg-background">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16 lg:py-24">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8">
+          {/* Brand & Contact */}
+          <div className="lg:col-span-5 space-y-8">
+            <Link href="/" className="inline-block">
+              <span className="text-2xl font-display font-bold tracking-tight">
+                <span className="text-foreground">SYNTAX</span>
+                <span className="text-muted-dark">/</span>
+                <span className="text-foreground">LOFT</span>
+              </span>
+            </Link>
+            <p className="text-muted-dark text-sm max-w-sm leading-relaxed">
+              Transforming ideas into high-performance digital experiences. 
+              We craft premium websites and applications for ambitious businesses.
+            </p>
+            <div className="space-y-2">
+              <a
+                href="mailto:hello@syntaxloft.com"
+                className="flex items-center gap-3 py-2 text-sm text-muted hover:text-foreground transition-colors group min-h-[44px]"
+              >
+                <Mail size={16} />
+                <span>hello@syntaxloft.com</span>
+                <ArrowUpRight size={14} className="opacity-0 group-hover:opacity-100 transition-opacity" />
+              </a>
+              <a
+                href="tel:+6281234567890"
+                className="flex items-center gap-3 py-2 text-sm text-muted hover:text-foreground transition-colors group min-h-[44px]"
+              >
+                <Phone size={16} />
+                <span>+62 812 3456 7890</span>
+                <ArrowUpRight size={14} className="opacity-0 group-hover:opacity-100 transition-opacity" />
+              </a>
+              <div className="flex items-center gap-3 py-2 text-sm text-muted min-h-[44px]">
+                <MapPin size={16} />
+                <span>Sukabumi, Indonesia</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Links */}
+          <div className="lg:col-span-7">
+            <div className="grid grid-cols-2 gap-8">
+              <div>
+                <h4 className="text-sm font-semibold text-foreground mb-4">Company</h4>
+                <ul className="space-y-3">
+                  {footerLinks.company.map((link) => (
+                    <li key={link.label}>
+                      <Link
+                        href={link.href}
+                        className="text-sm text-muted hover:text-foreground transition-colors line-reveal inline-block"
+                      >
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <h4 className="text-sm font-semibold text-foreground mb-4">Resources</h4>
+                <ul className="space-y-3">
+                  {footerLinks.resources.map((link) => (
+                    <li key={link.label}>
+                      <Link
+                        href={link.href}
+                        className="text-sm text-muted hover:text-foreground transition-colors line-reveal inline-block"
+                      >
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom */}
+        <div className="mt-16 pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-sm text-muted-dark">
+            © {new Date().getFullYear()} Syntax Loft. All rights reserved.
+          </p>
+          <motion.button
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            whileHover={{ y: -2 }}
+            className="text-sm text-muted hover:text-foreground transition-colors flex items-center gap-2"
+          >
+            Back to top
+            <ArrowUpRight size={14} />
+          </motion.button>
+        </div>
+      </div>
+    </footer>
+  )
+}
+</file>
+
+<file path="components/google-form-embed.tsx">
+'use client'
+
+import { useState } from 'react'
+import { motion } from 'framer-motion'
+
+interface GoogleFormEmbedProps {
+  formUrl: string
+  height?: number
+}
+
+export function GoogleFormEmbed({ formUrl, height = 800 }: GoogleFormEmbedProps) {
+  const [isLoading, setIsLoading] = useState(true)
+
+  // Ensure the URL uses embedded form format
+  const embedUrl = formUrl.includes('embedded=true') 
+    ? formUrl 
+    : `${formUrl}${formUrl.includes('?') ? '&' : '?'}embedded=true`
+
+  return (
+    <div className="relative w-full">
+      {/* Loading Skeleton */}
+      {isLoading && (
+        <motion.div
+          initial={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="absolute inset-0 z-10 bg-[#0f0f0f] rounded-2xl border border-border flex flex-col items-center justify-center"
+        >
+          <div className="w-12 h-12 border-2 border-border border-t-foreground rounded-full animate-spin mb-4" />
+          <p className="text-muted text-sm">Loading form...</p>
+        </motion.div>
+      )}
+
+      {/* Form Iframe */}
+      <div className="relative rounded-2xl overflow-hidden border border-border bg-[#0f0f0f]">
+        <iframe
+          src={embedUrl}
+          width="100%"
+          height={height}
+          frameBorder="0"
+          marginHeight={0}
+          marginWidth={0}
+          onLoad={() => setIsLoading(false)}
+          className="w-full"
+          title="Project Brief Form"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        >
+          Loading…
+        </iframe>
+      </div>
+
+      {/* Note about Tally form */}
+      <p className="text-muted-dark text-xs mt-4 text-center">
+        Powered by Tally. Your submission will be securely stored and reviewed within 24 hours.
+      </p>
+    </div>
+  )
+}
+</file>
+
+<file path="components/hero.tsx">
+'use client'
+
+import { useRef } from 'react'
+import { motion } from 'framer-motion'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useGSAP } from '@gsap/react'
+import Link from 'next/link'
+import { ArrowDownRight } from 'lucide-react'
+import { MagneticButton } from './magnetic-button'
+
+gsap.registerPlugin(ScrollTrigger)
+
+export function Hero() {
+  const heroRef = useRef<HTMLDivElement>(null)
+  const textRef = useRef<HTMLDivElement>(null)
+
+  useGSAP(() => {
+    // Gate all motion behind the user's motion preference.
+    // On `prefers-reduced-motion: reduce`, content renders fully
+    // visible with zero parallax/entrance animation.
+    const mm = gsap.matchMedia()
+
+    mm.add('(prefers-reduced-motion: no-preference)', () => {
+      gsap.from('.syntax-loft-text', {
+        y: 60,
+        opacity: 0,
+        duration: 1.2,
+        ease: 'power3.out',
+      })
+
+      gsap.to('.parallax-slow', {
+        yPercent: 15,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: heroRef.current,
+          start: 'top top',
+          end: 'bottom top',
+          scrub: 1.5,
+        },
+      })
+
+      gsap.to('.parallax-medium', {
+        yPercent: 35,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: heroRef.current,
+          start: 'top top',
+          end: 'bottom top',
+          scrub: 1,
+        },
+      })
+
+      gsap.to('.parallax-fast', {
+        yPercent: 55,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: heroRef.current,
+          start: 'top top',
+          end: 'bottom top',
+          scrub: 0.5,
+        },
+      })
+
+      gsap.to('.hero-content', {
+        yPercent: -10,
+        opacity: 0,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: heroRef.current,
+          start: 'center top',
+          end: 'bottom top',
+          scrub: true,
+        },
+      })
+    })
+
+    return () => mm.revert()
+  }, { scope: heroRef })
+
+  return (
+    <section
+      ref={heroRef}
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+    >
+      {/* Background gradient - slowest layer */}
+      <div className="parallax-slow absolute inset-0 bg-gradient-to-b from-background via-background to-[#0f0f0f]" />
+      
+      {/* Grid pattern overlay - medium layer */}
+      <div className="parallax-medium absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:100px_100px]" />
+      
+      {/* Animated circles - medium layer */}
+      <div className="parallax-medium absolute top-1/4 left-1/4 w-96 h-96 bg-white/[0.02] rounded-full blur-3xl animate-pulse" />
+      <div className="parallax-medium absolute bottom-1/4 right-1/4 w-64 h-64 bg-white/[0.02] rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+      
+      {/* Floating accent shapes - fast layer */}
+      <div className="parallax-fast absolute top-1/3 right-1/5 w-32 h-32 border border-white/5 rounded-full" />
+      <div className="parallax-fast absolute bottom-1/3 left-1/5 w-24 h-24 border border-white/5 rounded-full" />
+
+      {/* Content with parallax */}
+      <div ref={textRef} className="hero-content relative z-10 max-w-7xl mx-auto px-6 lg:px-8 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <p className="text-muted-dark text-sm tracking-[0.3em] uppercase mb-6">
+            Premium Software House
+          </p>
+        </motion.div>
+
+        <h1 className="syntax-loft-text text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-display font-bold tracking-tight leading-[0.9] mb-8">
+          <span className="block text-foreground">SYNTAX</span>
+          <span className="block text-gradient">LOFT</span>
+        </h1>
+
+        <motion.p
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+          className="text-muted text-lg md:text-xl max-w-2xl mx-auto mb-12 leading-relaxed"
+        >
+          Transforming bold ideas into high-performance digital experiences. 
+          We build premium websites and applications that drive business growth.
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="flex flex-col sm:flex-row items-center justify-center gap-4"
+        >
+          <Link
+            href="/project-brief"
+            className="group px-8 py-4 bg-foreground text-background font-medium rounded-full hover:bg-muted transition-colors duration-300 flex items-center gap-2"
+          >
+            Start Your Project
+            <ArrowDownRight size={18} className="group-hover:rotate-45 transition-transform duration-300" />
+          </Link>
+          <Link
+            href="/work"
+            className="px-8 py-4 border border-border text-foreground font-medium rounded-full hover:bg-white/5 transition-colors duration-300"
+          >
+            View Our Work
+          </Link>
+        </motion.div>
+
+        {/* Stats with stagger */}
+        <motion.div
+          initial="hidden"
+          animate="visible"
+          variants={{
+            hidden: { opacity: 0 },
+            visible: {
+              opacity: 1,
+              transition: {
+                staggerChildren: 0.1,
+                delayChildren: 0.8,
+              },
+            },
+          }}
+          className="mt-16 md:mt-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 max-w-3xl mx-auto px-4"
+        >
+          {[
+            { value: 'Modern Tech Stack', label: 'Built with the latest and most secure technologies.' },
+            { value: '100% Client Focus', label: 'Dedicated attention for your unique business needs.' },
+            { value: 'Scalable Architecture', label: 'Designed to grow seamlessly with your business.' },
+            { value: 'Agile Development', label: 'Fast, transparent, and adaptive workflow.' },
+          ].map((stat, index) => (
+            <motion.div 
+              key={index} 
+              className="text-center"
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { 
+                  opacity: 1, 
+                  y: 0,
+                  transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
+                },
+              }}
+            >
+              <motion.div 
+                className="text-lg md:text-xl font-display font-bold text-foreground mb-2 leading-tight"
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.2 }}
+              >
+                {stat.value}
+              </motion.div>
+              <div className="text-sm text-muted-dark leading-relaxed">{stat.label}</div>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+
+      {/* Scroll indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.2 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+      >
+        <div className="w-6 h-10 border-2 border-border rounded-full flex justify-center p-2">
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity }}
+            className="w-1 h-2 bg-foreground rounded-full"
+          />
+        </div>
+      </motion.div>
+    </section>
+  )
+}
+</file>
+
+<file path="components/loading-screen.tsx">
+'use client'
+
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
+import { useEffect, useState } from 'react'
+
+const logoVariants = {
+  initial: { opacity: 0, scale: 0.8 },
+  animate: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      duration: 0.8,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+  exit: {
+    opacity: 0,
+    scale: 1.1,
+    transition: {
+      duration: 0.5,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+}
+
+const glowVariants = {
+  initial: { opacity: 0, scale: 0.5 },
+  animate: {
+    opacity: 0.3,
+    scale: 1.2,
+    transition: {
+      duration: 1,
+      ease: [0.22, 1, 0.36, 1],
+      delay: 0.3,
+    },
+  },
+  exit: {
+    opacity: 0,
+    scale: 0.8,
+    transition: {
+      duration: 0.4,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+}
+
+const curtainVariants = {
+  initial: { scaleY: 0 },
+  animate: {
+    scaleY: 0,
+    transition: {
+      duration: 0,
+    },
+  },
+  exit: {
+    scaleY: 1,
+    transition: {
+      duration: 0.8,
+      ease: [0.76, 0, 0.24, 1],
+    },
+  },
+}
+
+export function LoadingScreen() {
+  const [isLoading, setIsLoading] = useState(true)
+  const [isExiting, setIsExiting] = useState(false)
+  const [isMounted, setIsMounted] = useState(false)
+  const shouldReduceMotion = useReducedMotion()
+
+  useEffect(() => {
+    setIsMounted(true)
+
+    // Check if window is defined (client-side only)
+    if (typeof window === 'undefined') return
+
+    // Check if this is a fresh load (not a navigation)
+    const hasLoaded = sessionStorage.getItem('hasLoaded')
+
+    if (hasLoaded && !shouldReduceMotion) {
+      // Skip loading screen on subsequent loads
+      setIsLoading(false)
+      return
+    }
+
+    // Mark as loaded
+    sessionStorage.setItem('hasLoaded', 'true')
+
+    // Start exit animation after 2 seconds
+    const timer = setTimeout(() => {
+      setIsExiting(true)
+    }, 2000)
+
+    // Remove loading screen after exit animation
+    const exitTimer = setTimeout(() => {
+      setIsLoading(false)
+    }, 2800)
+
+    return () => {
+      clearTimeout(timer)
+      clearTimeout(exitTimer)
+    }
+  }, [shouldReduceMotion])
+
+  // Don't render until mounted (prevents hydration mismatch)
+  if (!isMounted) return null
+
+  if (!isLoading || shouldReduceMotion) {
+    return null
+  }
+
+  return (
+    <AnimatePresence mode="wait">
+      {isLoading && (
+        <motion.div
+          className="fixed inset-0 z-[200] bg-[#0A0A0A] flex items-center justify-center"
+          initial={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
+        >
+          {/* Glow effect */}
+          <motion.div
+            variants={glowVariants}
+            initial="initial"
+            animate={isExiting ? "exit" : "animate"}
+            className="absolute w-64 h-64 bg-foreground rounded-full blur-3xl"
+          />
+
+          {/* Logo */}
+          <motion.div
+            variants={logoVariants}
+            initial="initial"
+            animate={isExiting ? "exit" : "animate"}
+            className="relative z-10 text-center"
+          >
+            <h1 className="text-4xl md:text-5xl font-display font-bold text-foreground tracking-tight">
+              SYNTAX/LOFT
+            </h1>
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={isExiting ? { opacity: 0 } : { opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              className="text-muted text-sm tracking-[0.3em] uppercase mt-4"
+            >
+              Premium Software Development
+            </motion.p>
+          </motion.div>
+
+          {/* Curtain wipe on exit */}
+          <motion.div
+            variants={curtainVariants}
+            initial="initial"
+            animate={isExiting ? "exit" : "animate"}
+            className="absolute inset-0 bg-[#0A0A0A] origin-top"
+          />
+        </motion.div>
+      )}
+    </AnimatePresence>
+  )
+}
+</file>
+
+<file path="components/magnetic-button.tsx">
+'use client'
+
+import { motion } from 'framer-motion'
+import { useState, useRef, ReactNode } from 'react'
+
+interface MagneticButtonProps {
+  children: ReactNode
+  className?: string
+}
+
+export function MagneticButton({ children, className = '' }: MagneticButtonProps) {
+  const ref = useRef<HTMLDivElement>(null)
+  const [position, setPosition] = useState({ x: 0, y: 0 })
+
+  const handleMouse = (e: React.MouseEvent<HTMLDivElement>) => {
+    const { clientX, clientY } = e
+    const { left, top, width, height } = ref.current!.getBoundingClientRect()
+    const x = (clientX - left - width / 2) * 0.3
+    const y = (clientY - top - height / 2) * 0.3
+    setPosition({ x, y })
+  }
+
+  const reset = () => setPosition({ x: 0, y: 0 })
+
+  return (
+    <motion.div
+      ref={ref}
+      onMouseMove={handleMouse}
+      onMouseLeave={reset}
+      animate={{ x: position.x, y: position.y }}
+      transition={{ type: 'spring', stiffness: 150, damping: 15, mass: 0.1 }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  )
+}
+</file>
+
+<file path="components/marquee.tsx">
+'use client'
+
+import { motion } from 'framer-motion'
+
+const clients = [
+  'TechCorp',
+  'InnovateLabs',
+  'DigitalFirst',
+  'CloudNine',
+  'DataFlow',
+  'NextGen',
+  'SmartSystems',
+  'FutureTech',
+]
+
+export function Marquee() {
+  return (
+    <section aria-label="Trusted by industry leaders" className="py-16 border-y border-border overflow-hidden bg-[#0f0f0f]">
+      <div className="relative">
+        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[#0f0f0f] to-transparent z-10" />
+        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-[#0f0f0f] to-transparent z-10" />
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center mb-8 text-muted-dark text-sm tracking-[0.2em] uppercase"
+        >
+          Trusted by Industry Leaders
+        </motion.p>
+
+        <div className="flex w-max animate-marquee">
+          {[false, true].map((isDuplicate) => (
+            <div key={String(isDuplicate)} aria-hidden={isDuplicate || undefined} className="flex">
+              {clients.map((client) => (
+                <div key={`${client}-${isDuplicate}`} className="flex-shrink-0 px-12 py-4">
+                  <span className="text-2xl md:text-3xl font-display font-semibold text-muted/30 hover:text-muted/60 transition-colors duration-300 whitespace-nowrap">
+                    {client}
+                  </span>
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+</file>
+
+<file path="components/navigation.tsx">
+'use client'
+
+import { useState, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import Link from 'next/link'
+import { Menu, X, ArrowUpRight, Mail, Phone, MapPin } from 'lucide-react'
+
+const navItems = [
+  { label: 'Home', href: '/' },
+  { label: 'Services', href: '/services' },
+  { label: 'Work', href: '/work' },
+  { label: 'AI Chat', href: '/ai-chat' },
+  { label: 'Clients', href: '/clients' },
+  { label: 'About', href: '/about' },
+  { label: 'Brief', href: '/project-brief' },
+  { label: 'Contact', href: '/contact' },
+]
+
+export function Navigation() {
+  const [isScrolled, setIsScrolled] = useState(false)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50)
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'unset'
+    }
+    return () => {
+      document.body.style.overflow = 'unset'
+    }
+  }, [isMobileMenuOpen])
+
+  return (
+    <>
+      <motion.header
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+          isScrolled
+            ? 'bg-background/90 backdrop-blur-xl border-b border-border'
+            : 'bg-transparent'
+        }`}
+      >
+        <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16 sm:h-20">
+            {/* Logo */}
+            <Link href="/" className="flex items-center gap-2 group z-50">
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="text-lg sm:text-xl font-display font-bold tracking-tight"
+              >
+                <span className="text-foreground">SYNTAX</span>
+                <span className="text-muted-dark">/</span>
+                <span className="text-foreground">LOFT</span>
+              </motion.div>
+            </Link>
+
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex items-center gap-8">
+              {navItems.map((item) => (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  className="text-sm text-muted hover:text-foreground transition-colors duration-300 line-reveal py-1"
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </div>
+
+            {/* Desktop CTA Button */}
+            <div className="hidden md:block">
+              <Link
+                href="/project-brief"
+                className="px-5 py-2.5 bg-foreground text-background text-sm font-medium rounded-full hover:bg-muted transition-colors duration-300"
+              >
+                Start Project
+              </Link>
+            </div>
+
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="md:hidden relative z-50 p-2 text-foreground rounded-lg hover:bg-white/5 transition-colors"
+              aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+            >
+              <AnimatePresence mode="wait">
+                {isMobileMenuOpen ? (
+                  <motion.div
+                    key="close"
+                    initial={{ rotate: -90, opacity: 0 }}
+                    animate={{ rotate: 0, opacity: 1 }}
+                    exit={{ rotate: 90, opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <X size={24} />
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key="menu"
+                    initial={{ rotate: 90, opacity: 0 }}
+                    animate={{ rotate: 0, opacity: 1 }}
+                    exit={{ rotate: -90, opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <Menu size={24} />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </button>
+          </div>
+        </nav>
+      </motion.header>
+
+      {/* Mobile Menu - Slide from right */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm md:hidden"
+            />
+            
+            {/* Menu Panel */}
+            <motion.div
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              className="fixed top-0 right-0 bottom-0 z-40 w-full max-w-sm bg-background border-l border-border md:hidden"
+            >
+              <div className="flex flex-col h-full pt-20 pb-8 px-6">
+                {/* Navigation Links */}
+                <nav className="flex-1">
+                  <ul className="space-y-1">
+                    {navItems.map((item, index) => (
+                      <motion.li
+                        key={item.label}
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.1 + index * 0.05, duration: 0.3 }}
+                      >
+                        <Link
+                          href={item.href}
+                          onClick={() => setIsMobileMenuOpen(false)}
+                          className="group flex items-center justify-between py-4 text-lg font-medium text-foreground hover:text-muted transition-colors border-b border-border/50"
+                        >
+                          <span>{item.label}</span>
+                          <ArrowUpRight 
+                            size={20} 
+                            className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" 
+                          />
+                        </Link>
+                      </motion.li>
+                    ))}
+                  </ul>
+                </nav>
+
+                {/* CTA Button */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4, duration: 0.3 }}
+                  className="mt-6 mb-8"
+                >
+                  <Link
+                    href="/project-brief"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="flex items-center justify-center gap-2 w-full py-4 bg-foreground text-background font-medium rounded-xl hover:bg-muted transition-colors"
+                  >
+                    Start Your Project
+                    <ArrowUpRight size={18} />
+                  </Link>
+                </motion.div>
+
+                {/* Contact Info */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.5, duration: 0.3 }}
+                  className="space-y-3 pt-6 border-t border-border"
+                >
+                  <a
+                    href="mailto:hello@syntaxloft.com"
+                    className="flex items-center gap-3 text-sm text-muted hover:text-foreground transition-colors"
+                  >
+                    <Mail size={16} />
+                    hello@syntaxloft.com
+                  </a>
+                  <a
+                    href="tel:+6281234567890"
+                    className="flex items-center gap-3 text-sm text-muted hover:text-foreground transition-colors"
+                  >
+                    <Phone size={16} />
+                    +62 812 3456 7890
+                  </a>
+                  <div className="flex items-center gap-3 text-sm text-muted">
+                    <MapPin size={16} />
+                    Jakarta, Indonesia
+                  </div>
+                </motion.div>
+
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+    </>
+  )
+}
+</file>
+
+<file path="components/page-transition.tsx">
+'use client'
+
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
+import { usePathname } from 'next/navigation'
+import { useEffect, useState } from 'react'
+
+const variants = {
+  initial: {
+    opacity: 0,
+    scale: 1.05,
+    filter: 'blur(10px)',
+  },
+  animate: {
+    opacity: 1,
+    scale: 1,
+    filter: 'blur(0px)',
+    transition: {
+      duration: 0.6,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+  exit: {
+    opacity: 0,
+    scale: 0.98,
+    filter: 'blur(8px)',
+    transition: {
+      duration: 0.4,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+}
+
+const overlayVariants = {
+  initial: { scaleY: 1 },
+  animate: {
+    scaleY: 0,
+    transition: {
+      duration: 0.8,
+      ease: [0.22, 1, 0.36, 1],
+      delay: 0.2,
+    },
+  },
+  exit: {
+    scaleY: 1,
+    transition: {
+      duration: 0.5,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+}
+
+export function PageTransition({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname()
+  const [isReady, setIsReady] = useState(false)
+  const shouldReduceMotion = useReducedMotion()
+
+  useEffect(() => {
+    setIsReady(true)
+  }, [])
+
+  if (!isReady || shouldReduceMotion) {
+    return <>{children}</>
+  }
+
+  return (
+    <AnimatePresence mode="wait">
+      <motion.div
+        key={pathname}
+        initial="initial"
+        animate="animate"
+        exit="exit"
+        variants={variants}
+        className="relative"
+      >
+        {/* Wipe overlay */}
+        <motion.div
+          variants={overlayVariants}
+          className="fixed inset-0 z-[100] bg-[#0A0A0A] origin-top pointer-events-none"
+        />
+        
+        {/* Content */}
+        <div>{children}</div>
+      </motion.div>
+    </AnimatePresence>
+  )
+}
+</file>
+
+<file path="components/portfolio-card.tsx">
+'use client'
+
+import { motion, useScroll, useTransform } from 'framer-motion'
+import { ArrowUpRight } from 'lucide-react'
+import Link from 'next/link'
+import Image from 'next/image'
+import { useRef } from 'react'
+
+interface PortfolioCardProps {
+  title: string
+  category: string
+  description: string
+  image: string
+  href: string
+  index?: number
+}
+
+export function PortfolioCard({ title, category, description, image, href, index = 0 }: PortfolioCardProps) {
+  const cardRef = useRef<HTMLDivElement>(null)
+  const { scrollYProgress } = useScroll({
+    target: cardRef,
+    offset: ["start end", "end start"]
+  })
+
+  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [1.15, 1, 1.15])
+
+  return (
+    <motion.div
+      ref={cardRef}
+      initial={{ opacity: 0, y: 60 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, delay: index * 0.15, ease: [0.22, 1, 0.36, 1] }}
+      viewport={{ once: true }}
+    >
+      <Link href={href} className="group block">
+        <div className="relative aspect-[4/3] rounded-2xl overflow-hidden mb-6 bg-border">
+          <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          <div className="absolute inset-0 flex items-center justify-center z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+            <div className="w-14 h-14 bg-foreground rounded-full flex items-center justify-center">
+              <ArrowUpRight size={24} className="text-background" />
+            </div>
+          </div>
+          <motion.div style={{ scale }} className="absolute inset-0 will-change-transform">
+            <Image
+              src={image}
+              alt={title}
+              fill
+              className="object-cover transition-transform duration-700 group-hover:scale-105"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            />
+          </motion.div>
+        </div>
+        <div className="flex items-start justify-between">
+          <div>
+            <span className="text-xs text-muted-dark uppercase tracking-wider">{category}</span>
+            <h3 className="text-xl font-display font-semibold text-foreground mt-1 group-hover:text-muted transition-colors">
+              {title}
+            </h3>
+            <p className="text-muted-dark text-sm mt-2 max-w-sm">{description}</p>
+          </div>
+        </div>
+      </Link>
+    </motion.div>
+  )
+}
+</file>
+
+<file path="components/project-brief-faq.tsx">
+'use client'
+
+import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { ChevronDown } from 'lucide-react'
+
+const faqs = [
+  {
+    question: 'How long until I receive a response?',
+    answer: 'We typically review and respond to all project briefs within 24-48 business hours. For urgent projects, please mention it in your brief or contact us directly.',
+  },
+  {
+    question: 'What happens after I submit my brief?',
+    answer: 'After submission, our team will review your requirements and schedule a discovery call to discuss the project in detail. We\'ll then provide a detailed proposal and timeline.',
+  },
+  {
+    question: 'Can I edit my brief after submitting?',
+    answer: 'Yes, you can submit an updated brief if needed. However, we recommend including all relevant details initially to help us provide the most accurate proposal.',
+  },
+  {
+    question: 'Is there a minimum project size?',
+    answer: 'We typically work on projects starting from $5,000. However, we\'re open to discussing smaller projects that have potential for long-term collaboration.',
+  },
+  {
+    question: 'Do you work with international clients?',
+    answer: 'Absolutely! We work with clients globally and have experience managing projects across different time zones. We use modern collaboration tools to ensure smooth communication.',
+  },
+  {
+    question: 'What information should I include in my brief?',
+    answer: 'The more details the better! Include your company background, project goals, target audience, design preferences, timeline, and budget range. Reference websites are also helpful.',
+  },
+]
+
+export function ProjectBriefFAQ() {
+  const [openIndex, setOpenIndex] = useState<number | null>(null)
+
+  const toggleFaq = (index: number) => {
+    setOpenIndex(openIndex === index ? null : index)
+  }
+
+  return (
+    <div className="space-y-4">
+      {faqs.map((faq, index) => (
+        <motion.div
+          key={index}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: index * 0.1 }}
+          viewport={{ once: true }}
+          className="border border-border rounded-xl overflow-hidden"
+        >
+          <button
+            onClick={() => toggleFaq(index)}
+            className="w-full flex items-center justify-between p-5 text-left hover:bg-white/[0.02] transition-colors"
+          >
+            <span className="font-medium text-foreground pr-4">
+              {faq.question}
+            </span>
+            <motion.div
+              animate={{ rotate: openIndex === index ? 180 : 0 }}
+              transition={{ duration: 0.2 }}
+            >
+              <ChevronDown size={20} className="text-muted shrink-0" />
+            </motion.div>
+          </button>
+          
+          <AnimatePresence>
+            {openIndex === index && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: 'auto', opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                <div className="px-5 pb-5 pt-0">
+                  <p className="text-muted-dark leading-relaxed">
+                    {faq.answer}
+                  </p>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </motion.div>
+      ))}
+    </div>
+  )
+}
+</file>
+
+<file path="components/reading-progress.tsx">
+'use client'
+
+import { motion, useScroll, useSpring } from 'framer-motion'
+
+export function ReadingProgress() {
+  const { scrollYProgress } = useScroll()
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  })
+
+  return (
+    <motion.div
+      className="fixed top-0 left-0 right-0 h-[2px] bg-foreground origin-left z-[100]"
+      style={{ scaleX }}
+    />
+  )
+}
+</file>
+
+<file path="components/scroll-reveal.tsx">
+'use client'
+
+import { motion } from 'framer-motion'
+import { ReactNode } from 'react'
+
+interface ScrollRevealProps {
+  children: ReactNode
+  delay?: number
+  direction?: 'up' | 'down' | 'left' | 'right'
+  className?: string
+  once?: boolean
+}
+
+const directions = {
+  up: { y: 40, x: 0 },
+  down: { y: -40, x: 0 },
+  left: { y: 0, x: 40 },
+  right: { y: 0, x: -40 },
+}
+
+export function ScrollReveal({ 
+  children, 
+  delay = 0, 
+  direction = 'up',
+  className = '',
+  once = true
+}: ScrollRevealProps) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, ...directions[direction] }}
+      whileInView={{ opacity: 1, x: 0, y: 0 }}
+      transition={{ 
+        duration: 0.8, 
+        delay,
+        ease: [0.22, 1, 0.36, 1]
+      }}
+      viewport={{ once, margin: '-50px' }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  )
+}
+
+// Staggered container for grids
+interface StaggerContainerProps {
+  children: ReactNode
+  className?: string
+  staggerDelay?: number
+}
+
+export function StaggerContainer({ 
+  children, 
+  className = '',
+  staggerDelay = 0.1
+}: StaggerContainerProps) {
+  return (
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: '-50px' }}
+      variants={{
+        hidden: {},
+        visible: {
+          transition: {
+            staggerChildren: staggerDelay,
+          },
+        },
+      }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  )
+}
+
+// Staggered item to use inside StaggerContainer
+interface StaggerItemProps {
+  children: ReactNode
+  className?: string
+}
+
+export function StaggerItem({ children, className = '' }: StaggerItemProps) {
+  return (
+    <motion.div
+      variants={{
+        hidden: { opacity: 0, y: 30 },
+        visible: { 
+          opacity: 1, 
+          y: 0,
+          transition: {
+            duration: 0.6,
+            ease: [0.22, 1, 0.36, 1]
+          }
+        },
+      }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  )
+}
+</file>
+
+<file path="components/section-header.tsx">
+'use client'
+
+import { motion } from 'framer-motion'
+
+interface SectionHeaderProps {
+  label?: string
+  title: string
+  description?: string
+  centered?: boolean
+}
+
+export function SectionHeader({ label, title, description, centered = false }: SectionHeaderProps) {
+  return (
+    <div className={`${centered ? 'text-center' : ''} mb-16`}>
+      {label && (
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-muted-dark text-sm tracking-[0.2em] uppercase mb-4"
+        >
+          {label}
+        </motion.p>
+      )}
+      <motion.h2
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.1 }}
+        viewport={{ once: true }}
+        className="text-3xl md:text-5xl font-display font-bold text-foreground leading-tight"
+      >
+        {title}
+      </motion.h2>
+      {description && (
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          viewport={{ once: true }}
+          className={`text-muted-dark text-lg mt-4 max-w-2xl ${centered ? 'mx-auto' : ''}`}
+        >
+          {description}
+        </motion.p>
+      )}
+    </div>
+  )
+}
+</file>
+
+<file path="components/service-card.tsx">
+'use client'
+
+import { motion } from 'framer-motion'
+import { ArrowUpRight } from 'lucide-react'
+import Link from 'next/link'
+
+interface ServiceCardProps {
+  title: string
+  description: string
+  icon: React.ReactNode
+  href: string
+  index?: number
+}
+
+export function ServiceCard({ title, description, icon, href, index = 0 }: ServiceCardProps) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
+      viewport={{ once: true }}
+    >
+      {/* Monochrome color-invert on hover — the card flips to solid white,
+          per PRD interaction guideline ("invert warna saat di-hover"). */}
+      <Link
+        href={href}
+        className="group block p-8 border border-border rounded-2xl hover:bg-foreground hover:border-foreground transition-colors duration-500"
+      >
+        <div className="flex items-start justify-between mb-6">
+          <div className="p-4 bg-white/5 rounded-xl text-foreground group-hover:bg-background/10 group-hover:text-background transition-colors duration-500">
+            {icon}
+          </div>
+          <div className="flex items-center gap-4">
+            {/* Editorial index — breaks the "three identical cards" pattern */}
+            <span className="text-sm font-display text-muted-dark/60 group-hover:text-background/50 transition-colors duration-500">
+              {String(index + 1).padStart(2, '0')}
+            </span>
+            <ArrowUpRight
+              size={20}
+              className="text-background -translate-x-1 translate-y-1 opacity-0 group-hover:translate-x-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300"
+            />
+          </div>
+        </div>
+        <h3 className="text-xl font-display font-semibold text-foreground mb-3 group-hover:text-background transition-colors duration-500">
+          {title}
+        </h3>
+        <p className="text-muted-dark text-sm leading-relaxed group-hover:text-background/70 transition-colors duration-500">
+          {description}
+        </p>
+      </Link>
+    </motion.div>
+  )
+}
+</file>
+
+<file path="components/text-reveal.tsx">
+'use client'
+
+import { motion, useInView } from 'framer-motion'
+import { useRef, ReactNode } from 'react'
+
+interface TextRevealProps {
+  children: ReactNode
+  className?: string
+  delay?: number
+  once?: boolean
+}
+
+export function TextReveal({ 
+  children, 
+  className = '', 
+  delay = 0,
+  once = true 
+}: TextRevealProps) {
+  const ref = useRef<HTMLDivElement>(null)
+  const isInView = useInView(ref, { once, margin: '-50px' })
+
+  return (
+    <div ref={ref} className={`overflow-hidden ${className}`}>
+      <motion.div
+        initial={{ y: '100%' }}
+        animate={isInView ? { y: 0 } : { y: '100%' }}
+        transition={{
+          duration: 0.8,
+          delay,
+          ease: [0.22, 1, 0.36, 1],
+        }}
+      >
+        {children}
+      </motion.div>
+    </div>
+  )
+}
+
+interface SplitTextProps {
+  text: string
+  className?: string
+  delay?: number
+  staggerDelay?: number
+}
+
+export function SplitText({ 
+  text, 
+  className = '', 
+  delay = 0,
+  staggerDelay = 0.03 
+}: SplitTextProps) {
+  const ref = useRef<HTMLDivElement>(null)
+  const isInView = useInView(ref, { once: true, margin: '-50px' })
+  const words = text.split(' ')
+
+  return (
+    <div ref={ref} className={className}>
+      {words.map((word, i) => (
+        <span key={i} className="inline-block overflow-hidden mr-[0.25em]">
+          <motion.span
+            className="inline-block"
+            initial={{ y: '100%', opacity: 0 }}
+            animate={isInView ? { y: 0, opacity: 1 } : { y: '100%', opacity: 0 }}
+            transition={{
+              duration: 0.6,
+              delay: delay + i * staggerDelay,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+          >
+            {word}
+          </motion.span>
+        </span>
+      ))}
+    </div>
+  )
+}
+</file>
+
+<file path="types/puter.d.ts">
+// types/puter.d.ts
+export {};
+
+declare global {
+  interface Window {
+    puter: {
+      ai: {
+        // Update di sini: tambah parameter options
+        chat: (
+          messages: string | object[], 
+          options?: { model?: string }
+        ) => Promise<any>;
+      };
+    };
+  }
+}
+</file>
+
+<file path=".gitignore">
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# local env files
+.env*.local
+.env
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# gemini/agent
+.gemini/
+.commandcode/
+.opencoderules
+</file>
+
+<file path="next.config.js">
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  reactStrictMode: true,
+  images: {
+    unoptimized: true,
+  },
+}
+
+module.exports = nextConfig
+</file>
+
+<file path="package.json">
+{
+  "name": "syntax-loft",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@gsap/react": "^2.1.2",
+    "@heyputer/puter.js": "^2.2.15",
+    "framer-motion": "^11.0.0",
+    "gsap": "^3.15.0",
+    "lucide-react": "^0.363.0",
+    "next": "*",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "autoprefixer": "^10.4.18",
+    "repomix": "^1.18.0",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5.3.0"
+  },
+  "overrides": {
+    "postcss": "^8.5.10"
+  }
+}
+</file>
+
+<file path="postcss.config.js">
+module.exports = {
+  plugins: {
+    tailwindcss: {},
+    autoprefixer: {},
+  },
+}
+</file>
+
+<file path="tailwind.config.ts">
+import type { Config } from 'tailwindcss'
+
+const config: Config = {
+  content: [
+    './pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './components/**/*.{js,ts,jsx,tsx,mdx}',
+    './app/**/*.{js,ts,jsx,tsx,mdx}',
+  ],
+  theme: {
+    extend: {
+      colors: {
+        background: '#0A0A0A',
+        foreground: '#FFFFFF',
+        muted: '#E5E5E5',
+        'muted-dark': '#737373',
+        border: '#262626',
+      },
+      fontFamily: {
+        sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
+        display: ['var(--font-syne)', 'var(--font-inter)', 'system-ui', 'sans-serif'],
+      },
+      animation: {
+        'marquee': 'marquee 30s linear infinite',
+        'marquee-reverse': 'marquee-reverse 30s linear infinite',
+      },
+      keyframes: {
+        marquee: {
+          '0%': { transform: 'translateX(0%)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
+        'marquee-reverse': {
+          '0%': { transform: 'translateX(-50%)' },
+          '100%': { transform: 'translateX(0%)' },
+        },
+      },
+    },
+  },
+  plugins: [],
+}
+
+export default config
+</file>
+
+<file path="tsconfig.json">
+{
+  "compilerOptions": {
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": [
+        "./*"
+      ]
+    },
+    "target": "ES2017"
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    ".next/dev/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
+</file>
+
+</files>
